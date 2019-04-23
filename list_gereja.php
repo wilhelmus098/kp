@@ -61,7 +61,7 @@
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
-										<td><a href="edit_gereja.php?idschedule=<?=$row["idGereja"]?>"><?=$row["idGereja"]?></a></td>
+										<td><a href="edit_gereja.php?idgereja=<?=$row["idGereja"]?>"><?=$row["idGereja"]?></a></td>
 										<td><?=$row["JenisGereja"]?></td>
 										<td><?=$row["AlamatGereja"]?></td>
 									</tr>
