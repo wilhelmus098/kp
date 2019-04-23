@@ -33,7 +33,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Create Schedule</li>
+				<li class="active">Edit Gereja</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -61,22 +61,22 @@
 								}
 							}
 						?>
-							<form role="form" method="POST" action="controllers/schedule.php">
+							<form role="form" method="POST" action="controllers/gereja.php">
 									<div class="form-group">
 										<label>ID Gereja</label>
                                         <input class="form-control" placeholder="" name="idgereja" type="text" autofocus="" value="<?=$idgereja1?>">
 									</div>
 									<div class="form-group">
 										<label>Jenis Gereja</label>
-                                        <input class="form-control" placeholder="" name="schedule_user" type="text" autofocus="" value="<?=$jenisgereja1?>">
+                                        <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>">
 									</div>
 									
 									<div class="form-group">
 										<label>Alamat Gereja</label>
-										<input type="text" class="form-control" name="schedule_start" placeholder="" value="<?=$alamatgereja1?>">
+										<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>">
 									</div>
-									<button type="submit" class="btn btn-primary" name="edit_schedule">Update Schedule</button>
-									<button type="submit" class="btn btn-primary" name="delete_schedule">Delete Schedule</button>
+									<button type="submit" class="btn btn-primary" name="edit_gereja">Update Gereja</button>
+									<button type="submit" class="btn btn-primary" name="delete_gereja">Delete Gereja</button>
 							</form>
 						</div>
 					</div>
