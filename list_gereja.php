@@ -48,6 +48,7 @@
 							<table class="table table-hover">
 								<thead>
 								  <tr>
+								  	<th>ID Gereja</th>
 									<th>Alamat Gereja</th>
 									<th>Jenis Gereja</th>
 								  </tr>
@@ -60,6 +61,7 @@
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
+										<td><a href="edit_gereja.php?idschedule=<?=$row["idGereja"]?>"><?=$row["idGereja"]?></a></td>
 										<td><?=$row["JenisGereja"]?></td>
 										<td><?=$row["AlamatGereja"]?></td>
 									</tr>
