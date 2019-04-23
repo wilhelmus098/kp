@@ -31,7 +31,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Create Schedule</li>
+				<li class="active">Laporan Persembahan</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -44,17 +44,17 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-md-6">
-							<form role="form" method="POST" action="controllers/schedule.php">
+							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
-										<label>Schedule User</label>
-										<select class="form-control" name="schedule_user_id">
+										<label>Pemimpin Ibadah</label>
+										<select class="form-control" name="pemimpin_ibadah">
 											<?php
-												$sql = "select * from users where user_position = 'Actress'";
+												$sql = "SELECT * FROM USER WHERE Jabatan != 'BENDAHARA'";
 												$result = mysqli_query($mysqli, $sql);
 												if ($result->num_rows > 0) {
 													// output data of each row
 													while($row = $result->fetch_assoc()) {
-														echo "<option value=\"".$row["iduser"]."\">".$row["user_name"]."</option>";
+														echo "<option value=\"".$row["idjemaat"]."\">".$row["uname"]."</option>";
 													}
 												}
 											?>
@@ -68,33 +68,74 @@
 									</div>
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="datetime-local" class="form-control" name="jumlah_hadir" placeholder="">
+										<input type="text" class="form-control" name="jumlah_hadir" placeholder="">
 									</div>
 									<div class="form-group">
-										<label>Hari Tuhan</label>
+										<label>Persembahan Hari Tuhan</label>
 										<input type="text" class="form-control" name="hari_tuhan" placeholder="">
 									</div>
 									<div class="form-group">
-										<label>Sekolah Minggu</label>
+										<label>Persembahan Sekolah Minggu</label>
 										<input type="text" class="form-control" name="sekolah_minggu" placeholder="">
 									</div>
                                     <div class="form-group">
-										<label>Doa Tengah Minggu</label>
+										<label>Persembahan Doa Tengah Minggu</label>
 										<input type="text" class="form-control" name="doa_tengah_minggu" placeholder="">
 									</div>
 									<div class="form-group">
+										<label>Grand Total</label>
+										<input type="text" class="form-control" name="Grand Total" placeholder="">
+									</div>
+									<div class="form-group">
+										<label>Terbilang</label>
+										<input type="text" class="form-control" name="Grand Total" placeholder="">
+									</div>
+									<div class="form-group">
 										<label>Bendahara</label>
-										<input type="text" class="form-control" name="bendahara" placeholder="">
+										<select class="form-control" name="bendahara">
+											<?php
+												$sql = "SELECT * FROM user WHERE Jabatan = 'Bendahara'";
+												$result = mysqli_query($mysqli, $sql);
+												if ($result->num_rows > 0) {
+													// output data of each row
+													while($row = $result->fetch_assoc()) {
+														echo "<option value=\"".$row["idJemaat"]."\">".$row["uname"]."</option>";
+													}
+												}
+											?>	
+										</select>
 									</div>
                                     <div class="form-group">
 										<label>Penghitung</label>
-										<input type="text" class="form-control" name="penghitung" placeholder="">
+										<select class="form-control" name="penghitung">
+											<?php
+												$sql = "SELECT * FROM jemaat";
+												$result = mysqli_query($mysqli, $sql);
+												if ($result->num_rows > 0) {
+													// output data of each row
+													while($row = $result->fetch_assoc()) {
+														echo "<option value=\"".$row["idJemaat"]."\">".$row["NamaJemaat"]."</option>";
+													}
+												}
+											?>
+										</select>
 									</div>
                                     <div class="form-group">
-										<label>Penghitung</label>
-										<input type="text" class="form-control" name="idgereja" placeholder="">
+										<label>ID Gereja</label>
+										<select class="form-control" name="idgereja">
+											<?php
+												$sql = "SELECT * FROM gereja";
+												$result = mysqli_query($mysqli, $sql);
+												if ($result->num_rows > 0) {
+													// output data of each row
+													while($row = $result->fetch_assoc()) {
+														echo "<option value=\"".$row["idGereja"]."\">".$row["idGereja"]."</option>";
+													}
+												}
+											?>
+										</select>
 									</div>
-									<button type="submit" class="btn btn-primary" name="create_schedule">Buat Persembahan</button>
+									<button type="submit" class="btn btn-primary" name="create_persembahan">Buat Laporan</button>
 							</form>
 						</div>
 					</div>
