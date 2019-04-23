@@ -1,0 +1,19 @@
+cara penggunaan
+
+1. buat database, import file yang berada di dalam folder db bernama artis.sql
+2. edit settingan database anda di file conn.php (tempatnya setara dengan file index.php)
+3. login bisa menggunakan,
+
+untuk role Admin:
+username: admin
+pass: admin
+
+
+untuk role manager:
+username: jukir
+pass: admin
+
+
+untuk role artis
+username: surti
+pass: admin
