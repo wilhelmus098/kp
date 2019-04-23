@@ -22,7 +22,8 @@
 </head>
 <body>
 <?php
-	require_once('sidemenu.php');		
+	require_once('sidemenu.php');
+	//buat sidebar		
 ?>
 	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
