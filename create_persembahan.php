@@ -54,7 +54,7 @@
 												if ($result->num_rows > 0) {
 													// output data of each row
 													while($row = $result->fetch_assoc()) {
-														echo "<option value=\"".$row["idjemaat"]."\">".$row["uname"]."</option>";
+														echo "<option value=\"".$row["idJemaat"]."\">".$row["uname"]."</option>";
 													}
 												}
 											?>
@@ -84,17 +84,17 @@
 									</div>
 									<div class="form-group">
 										<label>Grand Total</label>
-										<input type="text" class="form-control" name="Grand Total" placeholder="">
+										<input type="text" class="form-control" name="grand_total" placeholder="">
 									</div>
 									<div class="form-group">
 										<label>Terbilang</label>
-										<input type="text" class="form-control" name="Grand Total" placeholder="">
+										<input type="text" class="form-control" name="terbilang" placeholder="">
 									</div>
 									<div class="form-group">
 										<label>Bendahara</label>
 										<select class="form-control" name="bendahara">
 											<?php
-												$sql = "SELECT * FROM user WHERE Jabatan = 'Bendahara'";
+												$sql = "SELECT * FROM user WHERE Jabatan = 'BENDAHARA'";
 												$result = mysqli_query($mysqli, $sql);
 												if ($result->num_rows > 0) {
 													// output data of each row
