@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-	include 'checksession.php';
+	//include 'checksession.php';
 ?>
 <html>
 <head>
