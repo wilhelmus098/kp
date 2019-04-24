@@ -9,7 +9,7 @@ if(isset($_POST['btnRegister']))
         $plainpass = $_POST["password"];
         $mc = new MagicCrypt('isa', 256);
         $cipherpass = $mc->encrypt($plainpass);
-        addUser($_POST["username"],$cipherpass,$_POST["position"]);
+        addUser($_POST["username"],$cipherpass,$_POST["jabatan"],$_POST['gereja_jemaat_id']);
     }
 }
 if(isset($_POST['btnUpdate']))
@@ -35,13 +35,13 @@ if(isset($_POST['btnDelete']))
     deleteUser($_POST["id"]);
 }
 
-function addUser($name,$pwd,$pos)
+function addUser($uname,$pwd,$pos,$idgrjdanjemaat)
   {
     global $mysqli;
-    $sql = "INSERT INTO users VALUE(NULL, '" . $name . "','" . $pwd . "','" . $pos . "')";
+    $sql = "INSERT INTO user VALUE('" . $uname . "','" . $pwd . "','" . $pos . "','" . $idgrjdanjemaat . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
-        echo "New record created successfully <a href=\"../list_user.php\">back to list user</a>";
+        echo "New record created successfully";
     }
     else
     {

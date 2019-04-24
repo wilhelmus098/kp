@@ -41,7 +41,29 @@ else
 								<input class="form-control" placeholder="Retype Password" name="password1" type="password" value="">
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Posisi" name="position" type="text" value="">
+								<select class="form-control" name="jabatan">
+									<option value="Pendeta">Pendeta</option>
+									<option value="Penginjil">Penginjil</option>
+									<option value="KoorPusat">Koordinator Pusat</option>
+									<option value="KoorCab">Koordinator Cabang</option>
+									<option value="Bendahara">Bendahara</option>								
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Berjemaat di Gereja: </label>
+								<select class="form-control" name="gereja_jemaat_id">
+									<?php
+										$sql = "select * from gereja";
+										$result = mysqli_query($mysqli, $sql);
+										if($result->num_rows > 0)
+										{
+											while($row = $result->fetch_assoc())
+											{
+											echo "<option value=\"".$row["idGereja"]."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+											}
+										}
+									?>
+								</select>
 							</div>
 							<div class="checkbox">
 								<label>

@@ -33,8 +33,9 @@ if (isset($_SESSION["user_logged_in"]))
 							<div class="form-group">
 								<input class="form-control" id="password" placeholder="Password" name="password" type="password" value="">
 							</div>
-							<button type="button" class="btn btn-primary" id="submit" name="btn_login" value="Login">Login</button>
-
+							<button type="button" class="btn btn-primary" id="submit" name="btn_login" value="Login">Login</button><span><button type="button" class="btn btn-primary" id="register" name="btn_register" value="Register">Register</button>
+							</span>
+							
 					</form>
 					<br/>
 					<br/>
