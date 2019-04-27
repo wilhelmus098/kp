@@ -41,6 +41,23 @@ else
 								<input class="form-control" placeholder="Retype Password" name="password1" type="password" value="">
 							</div>
 							<div class="form-group">
+								<label>Nama Jemaat: </label>
+								<select class="form-control" name="gereja_jemaat_id">
+									<?php
+										$sql = "select * from jemaat";
+										$result = mysqli_query($mysqli, $sql);
+										if($result->num_rows > 0)
+										{
+											while($row = $result->fetch_assoc())
+											{
+											echo "<option value=\"".$row["idJemaat"]."\">".$row["NamaJemaat"]."</option>";
+											}
+										}
+									?>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Jabatan: </label>
 								<select class="form-control" name="jabatan">
 									<option value="Pendeta">Pendeta</option>
 									<option value="Penginjil">Penginjil</option>
@@ -48,23 +65,7 @@ else
 									<option value="KoorCab">Koordinator Cabang</option>
 									<option value="Bendahara">Bendahara</option>								
 								</select>
-							</div>
-							<div class="form-group">
-								<label>Berjemaat di Gereja: </label>
-								<select class="form-control" name="gereja_jemaat_id">
-									<?php
-										$sql = "select * from gereja";
-										$result = mysqli_query($mysqli, $sql);
-										if($result->num_rows > 0)
-										{
-											while($row = $result->fetch_assoc())
-											{
-											echo "<option value=\"".$row["idGereja"]."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
-											}
-										}
-									?>
-								</select>
-							</div>
+							</div>							
 							<div class="checkbox">
 								<label>
 									<input name="remember" type="checkbox" value="Remember Me">Remember Me

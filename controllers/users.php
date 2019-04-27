@@ -2,8 +2,9 @@
 include '../conn.php';
 require('../MagicCrypt.php');
 use org\magiclen\magiccrypt\MagicCrypt;
-if(isset($_POST['btnRegister']))
+if(isset($_POST['btn_register']))
 {
+    header('Location:../register.php');
     if ($_POST["password"] === $_POST["password1"])
     {
         $plainpass = $_POST["password"];
