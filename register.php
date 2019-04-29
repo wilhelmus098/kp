@@ -1,5 +1,6 @@
 <!-- <?php
 include 'auth.php';
+include 'conn.php';
 if (isset ($_SESSION['stat']))
 {
 	session_destroy();
@@ -44,13 +45,13 @@ else
 								<label>Nama Jemaat: </label>
 								<select class="form-control" name="gereja_jemaat_id">
 									<?php
-										$sql = "select * from jemaat";
+										$sql = "SELECT * FROM jemaat";
 										$result = mysqli_query($mysqli, $sql);
 										if($result->num_rows > 0)
 										{
 											while($row = $result->fetch_assoc())
 											{
-											echo "<option value=\"".$row["idJemaat"]."\">".$row["NamaJemaat"]."</option>";
+												echo "<option value=\"".$row["idJemaat"]."\">".$row["NamaJemaat"]."</option>";
 											}
 										}
 									?>
