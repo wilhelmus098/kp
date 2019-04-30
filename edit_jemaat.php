@@ -109,7 +109,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\""."<?=idgereja1?>"."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														if($idgereja1==$row['idGereja'])
+														{
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["idGereja"]." - ".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['idGereja'] ."\">".$row["idGereja"]." - ".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
 													}
 												}
 											?>
