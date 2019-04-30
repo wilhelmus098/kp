@@ -7,7 +7,7 @@ if(isset($_POST['create_jemaat']))
 
 if(isset($_POST['edit_jemaat']))
 {
-    update($_POST["nama_jemaat"],$_POST["tempat_lahir"],$_POST["tgl_lahir"],$_POST["alamat_jemaat"],$_POST["nomor_jemaat"],$_POST["gereja_jemaat_id"]);
+    update($_POST["idjemaat"],$_POST["nama_jemaat"],$_POST["tempat_lahir"],$_POST["tgl_lahir"],$_POST["alamat_jemaat"],$_POST["nomor_jemaat"],$_POST["gereja_jemaat_id"]);
 }
 
 if(isset($_POST["delete_jemaat"]))
@@ -36,7 +36,7 @@ function update($idJemaat,$name, $bornplace, $birthdate, $address, $phonenumber,
     $sql = "UPDATE jemaat set NamaJemaat ='" . $name . "', TempatLahir = '" . $bornplace ."', TglLahir = '". $birthdate ."', Alamat = '" . $address . "', NoTelp = '" . $phonenumber ."', idGereja = '" . $churchid ."' WHERE idJemaat='" . $idJemaat . "'";
     if (mysqli_query($mysqli, $sql)) 
     {        
-        header("Location:../list_jemaat.php");
+        echo "sukses";
     }
     else
     {
