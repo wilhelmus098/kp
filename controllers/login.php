@@ -3,24 +3,32 @@ include '../conn.php';
 require('../MagicCrypt.php');
 use org\magiclen\magiccrypt\MagicCrypt;
 
-$username = strtolower($_POST["username"]);
-$plainpass = $_POST["password"];
-$mc = new MagicCrypt('isa', 256);
-$cipherpass = $mc->encrypt($plainpass);
-$password = $cipherpass;
+// $username = strtolower($_POST["username"]);
+// $plainpass = $_POST["password"];
+// $mc = new MagicCrypt('isa', 256);
+// $cipherpass = $mc->encrypt($plainpass);
+// $password = $cipherpass;
+
+$username = $_POST["username"];
+$password = $_POST["password"];
 
 global $mysqli;
-$sql = "select * from users where lower(user_name)='$username' and user_password='$password'";
+$sql = "SELECT * FROM user WHERE lower(uname)='$username' AND pass='$password'";
 $result = mysqli_query($mysqli, $sql);
 $row = $result->num_rows;
 if ($row==1){
 	echo "1";
 	session_start();
 	$_SESSION["user_logged_in"] = true;
-	$_SESSION["user_name"] = $username;
+	$_SESSION["uname"] = $username;
 	while($row = $result->fetch_assoc()) {
-      	$_SESSION["user_position"] = $row['user_position'];
+		  $_SESSION["Jabatan"] = $row['Jabatan'];
+		  print_r($row);
+		  echo "<br><br>";
 	}
+	print_r($_SESSION);
+	
+	
 }else if ($row==0)
 {
 	echo "0";

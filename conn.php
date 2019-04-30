@@ -13,6 +13,6 @@ $mysqli = mysqli_connect($srvName,$srvUser,$srvPWD,$dbName);
   }
   else
   {
-    echo "sukses";
+    
   }
  ?>
