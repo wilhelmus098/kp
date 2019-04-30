@@ -3,7 +3,7 @@
 session_start();
 if (isset($_SESSION["user_logged_in"]))
 {
-	header("location:list_schedule.php");
+	header("location:list_jemaat.php");
 }
 ?>
 <html>

@@ -62,7 +62,7 @@
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
-										<td><?=$row["NamaJemaat"]?></td>
+										<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
 										<td><?=$row["TempatLahir"]?></td>
 										<td><?=$row["TglLahir"]?></td>
 										<td><?=$row["Alamat"]?></td>

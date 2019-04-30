@@ -49,8 +49,8 @@
 								<thead>
 								  <tr>
 								  	<th>ID Gereja</th>
-									<th>Alamat Gereja</th>
 									<th>Jenis Gereja</th>
+									<th>Alamat Gereja</th>
 								  </tr>
 								</thead>
 								<tbody>

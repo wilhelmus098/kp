@@ -61,30 +61,30 @@
 								}
 							}
 						?>
-							<form role="form" method="POST" action="controllers/gereja.php">
-									<div class="form-group">
-										<label>ID Gereja</label>
-                                        <input class="form-control" placeholder="" name="idgereja" type="text" autofocus="" value="<?=$idgereja1?>">
-									</div>
-									<div class="form-group">
-										<label>Jenis Gereja</label>
-                                        <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>">
-									</div>
-									
-									<div class="form-group">
-										<label>Alamat Gereja</label>
-										<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>">
-									</div>
-									<button type="submit" class="btn btn-primary" name="edit_gereja">Update Gereja</button>
-									<button type="submit" class="btn btn-primary" name="delete_gereja">Delete Gereja</button>
-							</form>
+						<form role="form" method="POST" action="controllers/gereja.php">
+								<div class="form-group">
+									<label>ID Gereja</label>
+                                    <input class="form-control" placeholder="" name="idgereja" type="text" autofocus="" value="<?=$idgereja1?>">
+								</div>
+								<div class="form-group">
+									<label>Jenis Gereja</label>
+                                    <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>">
+								</div>
+								
+								<div class="form-group">
+									<label>Alamat Gereja</label>
+									<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>">
+								</div>
+								<button type="submit" class="btn btn-primary" name="edit_gereja">Update Gereja</button>
+								<button type="submit" class="btn btn-primary" name="delete_gereja">Delete Gereja</button>
+						</form>
 						</div>
 					</div>
-				</div><!-- /.panel-->
-			</div><!-- /.col-->
-			
-		</div><!-- /.row -->
+			</div><!-- /.panel-->
+		</div><!-- /.col-->
 		
+	</div><!-- /.row -->
+	
 	</div>	<!--/.main-->
 	
 	<script src="js/jquery-1.11.1.min.js"></script>

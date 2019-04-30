@@ -22,16 +22,17 @@ if ($row==1){
 	$_SESSION["user_logged_in"] = true;
 	$_SESSION["uname"] = $username;
 	while($row = $result->fetch_assoc()) {
-		  $_SESSION["Jabatan"] = $row['Jabatan'];
-		  print_r($row);
-		  echo "<br><br>";
+		  $_SESSION["jabatan"] = $row['Jabatan'];
+		   // print_r($row);
+		   // echo "<br><br>";
 	}
-	print_r($_SESSION);
+	// print_r($_SESSION);
+	header("Location:../create_persembahan.php");
 	
 	
 }else if ($row==0)
 {
-	echo "0";
+	// echo "0";
 }
 mysqli_close($mysqli);
 ?>

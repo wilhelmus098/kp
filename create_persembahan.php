@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	//include 'checksession.php';
+	include 'checksession.php';
 ?>
 <html>
 <head>
@@ -18,20 +18,20 @@
 	<!--[if lt IE 9]>
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
-	<![endif]--
-></head>
+	<![endif]-->
+</head>
 <body>
 	<?php
 		require_once('sidemenu.php');
 	?>
-	
+	 -->
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">Laporan Persembahan</li>
+				<li class="active">Buat Laporan Persembahan Mingguan</li>
 			</ol>
 		</div><!--/.row-->
 		

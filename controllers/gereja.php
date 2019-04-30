@@ -21,7 +21,8 @@ function add($type,$address)
     $sql = "INSERT INTO gereja VALUE(NULL, '" . $type . "','" . $address . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
-        echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        // echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        header("Location:../list_gereja.php");
     }
     else
     {
@@ -36,7 +37,8 @@ function update($id,$address)
     $sql = "UPDATE gereja set AlamatGereja='" . $address . "' WHERE idGereja='" . $id . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
-        echo "Record updated successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        // echo "Record updated successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        header("Location:../list_gereja.php");
     }
     else
     {
@@ -51,7 +53,8 @@ function delete($id)
     $sql = "DELETE FROM gereja WHERE idGereja='" . $id . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
-        echo "Record deleted successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        // echo "Record deleted successfully <a href=\"../list_gereja.php\">back to list user</a>";
+        header("Location:../list_gereja.php");
     }
     else
     {

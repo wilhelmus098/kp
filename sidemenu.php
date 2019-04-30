@@ -10,12 +10,12 @@
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">
 				
 					<span>Position : </span>
-					<?php
+					<!-- <?php
 						if (isset($_SESSION["user_logged_in"]))
 						{
-							echo $_SESSION["user_position"];
+							echo $_SESSION["jabatan"];
 						}	
-					?>
+					?> -->
 					
 				</div>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">
@@ -24,7 +24,7 @@
 					<?php
 						if (isset($_SESSION["user_logged_in"]))
 						{
-							echo $_SESSION["user_name"];
+							echo $_SESSION["uname"];
 						}	
 					?>
 					
@@ -55,23 +55,11 @@
 				<em class="fa fa-navicon">&nbsp;</em> Gereja <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-2">
-					<li><a class="" href="create_contract.php">
+					<li><a class="" href="create_gereja.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Tambah Gereja
 					</a></li>
-					<li><a class="" href="list_contract.php">
+					<li><a class="" href="list_gereja.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Gereja
-					</a></li>
-				</ul>
-			</li>
-			<li class="parent "><a data-toggle="collapse" href="#sub-item-3">
-				<em class="fa fa-navicon">&nbsp;</em> Users <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
-				</a>
-				<ul class="children collapse" id="sub-item-3">
-					<li><a class="" href="create_user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Create User
-					</a></li>
-					<li><a class="" href="list_user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> List User
 					</a></li>
 				</ul>
 			</li>
@@ -84,6 +72,15 @@
 					</a></li>
 					<li><a class="" href="list_jemaat.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Jemaat
+					</a></li>
+				</ul>
+			</li>
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-3">
+				<em class="fa fa-navicon">&nbsp;</em> Users <span data-toggle="collapse" href="#sub-item-3" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-3">
+					<li><a class="" href="update_user.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Update User
 					</a></li>
 				</ul>
 			</li>
