@@ -15,31 +15,26 @@ if(isset($_POST['btn_delete']))
     echo "delete";
 }
 
-
-if(isset($_POST['create_persembahan']))
+if(isset($_POST['btn_create_nota']))
 {
-    add($_POST["pemimpin_ibadah"],$_POST["tanggal_ibadah"],$_POST["jumlah_hadir"],$_POST["hari_tuhan"],$_POST["sekolah_minggu"],$_POST["doa_tengah_minggu"],$_POST["grand_total"],$_POST["terbilang"],$_POST["bendahara"],$_POST["penghitung"],$_POST["idgereja"]);  
+    //echo "create";
+    header('Location:../create_nota_persembahan.php');
 }
 
-if(isset($_POST['create_persembahan_khusus']))
+if(isset($_POST['btn_pk_jemaat']))
 {
-    $idnota1 = $_POST["nota_persemabahan_id"];
-    $idjemaat1 = $_POST["jemaat_nama_id"];
-
-    // addPK_HariTuhan($idnota1, $idjemaat1, $_POST["persembahan_hari_tuhan"]);
-    // addPK_Perpuluhan($idnota1, $idjemaat1, $_POST["perpuluhan"]);
-    // addPK_UcapanSyukur($idnota1, $idjemaat1, $_POST["ucapan_syukur"]);
-    // addPK_JanjiIman($idnota1, $idjemaat1, $_POST["janji_iman"]);
-    // addPK_PembangunanGereja($idnota1, $idjemaat1, $_POST["pembangunan_gereja"]);
-    // addPK_Lain($idnota1, $idjemaat1, $_POST["lain_lain"]);
-
-    addPK($idnota1,$idjemaat1,$_POST["persembahan_hari_tuhan"],$_POST["perpuluhan"],$_POST["ucapan_syukur"],$_POST["janji_iman"],$_POST["pembangunan_gereja"],$_POST["lain_lain"]);
+    echo "jssj";
 }
 
-function add($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tengahminggu,$grandtotal,$terbilang,$bendahara,$penghitung,$idgereja)
+if(isset($_POST['btn_insert_nota']))
+{
+    addNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"]);
+}
+
+function addNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja)
 {
     global $mysqli;
-    $sql = "INSERT INTO notapersembahan VALUE(NULL, '" . $pemimpin . "','" . $date . "','" . $hadir . "','" . $harituhan . "','" . $sekolahminggu . "','" . $tengahminggu . "','" . $grandtotal . "','" . $terbilang . "','" . $bendahara . "','" . $penghitung . "','" . $idgereja . "')";
+    $sql = "INSERT INTO NotaPersembahan VALUE(NULL, '" . $pemimpin . "','" . $date . "','" . $hadir . "','" . $harituhan . "','" . $sekolahminggu . "','" . $tgltengahminggu ."' ,'" . $tengahminggu . "','" . $grandtotal . "','" . $bendahara . "','" . $penghitung . "', '" . $verified . "','" . $idgereja . "')";
     if (mysqli_query($mysqli, $sql))
     {
         echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
@@ -48,7 +43,7 @@ function add($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tengahminggu,$gra
     {
         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
     }
-    //mysqli_close($mysqli);
+    mysqli_close($mysqli);
 }
 
 function addPK_HariTuhan($idnota, $idjemaat, $nilaipkhusus)

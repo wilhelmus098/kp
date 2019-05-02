@@ -71,6 +71,22 @@
 									<input class="form-control" placeholder="Retype New Password" name="password2" type="password" value="">
 								</div>
 								<div class="form-group">
+									<label>Berjemaat di Gereja: </label>
+										<select class="form-control" name="gereja_jemaat_id">
+											<?php
+												$sql = "select * from Gereja";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+													}
+												}
+											?>
+										</select>
+								</div>
+								<div class="form-group">
 									<label>Position</label>
 									<select class="form-control" name="position">
 										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
@@ -80,6 +96,7 @@
 										<option value="BENDAHARA"<?php if($userPos=='BENDAHARA')echo " selected"?>>BENDAHARA</option>
 									</select>
 								</div>
+
 								<input type="submit" class="btn btn-primary" name="btnUpdate" value="Update User">
 								<input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User">
 							</form>

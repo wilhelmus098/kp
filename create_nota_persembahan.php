@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	//include 'checksession.php';
+	include 'checksession.php';
 ?>
 <html>
 <head>
@@ -47,30 +47,154 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
-							<table class="table table-hover">
-								<thead>
-								  <tr>
-								  	<th>ID Nota</th>
-									<th>TANGGAL IBADAH</th>
-									<th>ACTION</th>
-								  </tr>
-								</thead>
-								<tbody>
-								<?php
-									$sql = "SELECT * FROM jemaat";
-									$result = mysqli_query($mysqli, $sql);
-								?>	
-								<?php while($row = $result->fetch_assoc()) { ?>
-									<tr>
-										<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
-										<td><?=$row["TempatLahir"]?></td>
-										<td><?=$row["TglLahir"]?></td>
-										<td><?=$row["Alamat"]?></td>
-										<td><?=$row["NoTelp"]?></td>
-									</tr>
-								<?php } ?>
-								</tbody>
-						  </table>
+							<form role="form" method="POST" action="controllers/persembahan.php">
+									<div class="form-group">
+										<label>Tanggal Ibadah</label>
+										<input type="date" class="form-control" name="tgl_ibadah" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Pemimpin Ibadah</label>
+										<select class="form-control" name="nama_pemimpin">
+											<?php
+												$sql = "select * from User where Jabatan != 'BENDAHARA'";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+													}
+												}
+											?>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Jumlah Hadir</label>
+										<input type="text" class="form-control" name="jumlah_hadir" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Persembahan Tanpa Nama</label>
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Persembahan Sekolah Minggu</label>
+										<input type="text" class="form-control" name="persembahan_sm" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Tanggal Doa Tengah Minggu</label>
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Persembahan Doa Tengah Minggu</label>
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" placeholder="">
+									</div>
+
+									<div class="form-group">
+										<label>Bendahara</label>
+										<select class="form-control" name="bendahara">
+											<?php
+												$sql = "select * from User where Jabatan = 'BENDAHARA'";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+													}
+												}
+											?>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Petugas Penghitung</label>
+										<select class="form-control" name="petugas_penghitung">
+											<?php
+												$sql = "select * from Jemaat";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
+													}
+												}
+											?>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Gereja</label>
+										<select class="form-control" name="id_gereja">
+											<?php
+												$sql = "select * from Gereja";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+													}
+												}
+											?>
+										</select>	
+									</div>
+
+									<div class="form-group">
+										<label>Verfied</label>
+										<select name="status_verifikasi">
+											<option value="YES">YES</option>
+											<option value="NO">NO</option>
+										</select>
+									</div>
+
+									<div class="form-group">
+										<label>Total Keseluruhan Persembahan</label>
+										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
+									</div>
+
+									<div class="form-group">
+										<label>Detail Nota Persembahan</label>
+										<button type="submit" class="btn btn-primary" name="btn_pk_jemaat" >ADD DETAIL</button>
+									</div>
+
+									<table class="table table-hover">
+										<thead>
+										  <tr>
+										  	<th>ID Jemaat</th>
+											<th>Nama Jemaat</th>
+											<th>Hari Tuhan</th>
+											<th>Perpuluhan</th>
+											<th>Ucapan Syukur</th>
+											<th>Pembangunan Gereja</th>
+											<th>Lain - lain</th>
+											<th>ACTION</th>
+										  </tr>
+										</thead>
+										<tbody>
+										<?php
+											$sql = "SELECT * FROM Jemaat";
+											$result = mysqli_query($mysqli, $sql);
+										?>	
+										<?php while($row = $result->fetch_assoc()) { ?>
+											<tr>
+												<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
+												<td><?=$row["TempatLahir"]?></td>
+												<td><?=$row["TglLahir"]?></td>
+												<td><?=$row["Alamat"]?></td>
+												<td><?=$row["NoTelp"]?></td>
+											</tr>
+										<?php } ?>
+										</tbody>
+						  			</table>
+									<button type="submit" class="btn btn-primary" name="btn_insert_nota" >SAVE</button>
+							</form>
 						</div>
 					</div>
 				</div><!-- /.panel-->

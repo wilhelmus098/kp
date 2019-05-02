@@ -26,7 +26,7 @@ if(isset($_POST['btnUpdate']))
             $plainpass = $_POST["password1"];
             // $mc = new MagicCrypt('isa', 256);
             // $cipherpass = $mc->encrypt($plainpass);
-            updateUser($_POST["username"],$plainpass,$_POST["position"]);
+            updateUser($_POST["username"],$plainpass,$_POST["position"], $_POST["gereja_jemaat_id"]);
         }
     }
 }
@@ -52,10 +52,10 @@ if(isset($_POST['btnUpdate']))
 //     mysqli_close($mysqli);
 //   }
 
-function updateUser($name,$pwd,$pos)
+function updateUser($name,$pwd,$pos,$idgrj)
 {
     global $mysqli;
-    $sql = "UPDATE User SET uname ='" . $name . "', pass = '" . $pwd . "', Jabatan = '" . $pos . "' WHERE uname = '" . $name . "'";
+    $sql = "UPDATE User SET uname ='" . $name . "', pass = '" . $pwd . "', Jabatan = '" . $pos . "', idGereja = '" . $idgrj ."' WHERE uname = '" . $name . "'";
     if (mysqli_query($mysqli, $sql))
     {
         echo "Successfully updated user on user id " . $name." <a href=\"../list_user.php\">back to list user</a>";

@@ -41,13 +41,13 @@
 			<!-- <div class="text-center" style="margin: 8px;">
 				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
 			</div> -->
-			<div class="text-center" style="margin: 8px">
-				<button class='btn btn-primary m-2' style="width:200px">CREATE NEW</button>				
-			</div>
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
 						<form method="POST" action=controllers/persembahan.php>
+							<div class="text-center" style="margin: 8px">
+								<button class='btn btn-primary m-2' style="width:200px" name="btn_create_nota">CREATE NEW</button>				
+							</div>
 							<table class="table table-hover">
 								<thead>
 								  <tr>
