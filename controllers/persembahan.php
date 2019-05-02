@@ -1,5 +1,21 @@
 <?php
 include '../conn.php';
+if(isset($_POST['btn_view']))
+{
+    echo "view";
+}
+
+if(isset($_POST['btn_edit']))
+{
+    echo "edit";
+}
+
+if(isset($_POST['btn_delete']))
+{
+    echo "delete";
+}
+
+
 if(isset($_POST['create_persembahan']))
 {
     add($_POST["pemimpin_ibadah"],$_POST["tanggal_ibadah"],$_POST["jumlah_hadir"],$_POST["hari_tuhan"],$_POST["sekolah_minggu"],$_POST["doa_tengah_minggu"],$_POST["grand_total"],$_POST["terbilang"],$_POST["bendahara"],$_POST["penghitung"],$_POST["idgereja"]);  
