@@ -71,7 +71,7 @@
 						<form role="form" method="POST" action="controllers/jemaat.php">
 								<div class="form-group">
 									<label>ID Jemaat</label>
-                                    <input class="form-control" placeholder="" name="idjemaat " type="text" autofocus="" value="<?=$idjemaat1?>">
+                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$idjemaat1?>">
 								</div>
 
 								<div class="form-group">
