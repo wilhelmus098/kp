@@ -18,7 +18,7 @@ if(isset($_POST['delete_gereja']))
 function add($type,$address)
 {
     global $mysqli;
-    $sql = "INSERT INTO gereja VALUE(NULL, '" . $type . "','" . $address . "')";
+    $sql = "INSERT INTO Gereja VALUE(NULL, '" . $type . "','" . $address . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
         // echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
@@ -34,7 +34,7 @@ function add($type,$address)
 function update($id,$address)
 {
     global $mysqli;
-    $sql = "UPDATE gereja set AlamatGereja='" . $address . "' WHERE idGereja='" . $id . "'";
+    $sql = "UPDATE Gereja set AlamatGereja='" . $address . "' WHERE idGereja='" . $id . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
         // echo "Record updated successfully <a href=\"../list_gereja.php\">back to list user</a>";
