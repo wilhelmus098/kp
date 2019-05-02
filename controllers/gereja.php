@@ -50,7 +50,7 @@ function update($id,$address)
 function delete($id)
 {
     global $mysqli;
-    $sql = "DELETE FROM gereja WHERE idGereja='" . $id . "'";
+    $sql = "DELETE FROM Gereja WHERE idGereja='" . $id . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
         // echo "Record deleted successfully <a href=\"../list_gereja.php\">back to list user</a>";

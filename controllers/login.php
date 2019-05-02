@@ -13,7 +13,7 @@ $username = $_POST["username"];
 $password = $_POST["password"];
 
 global $mysqli;
-$sql = "SELECT * FROM user WHERE lower(uname)='$username' AND pass='$password'";
+$sql = "SELECT * FROM User WHERE lower(uname)='$username' AND pass='$password'";
 $result = mysqli_query($mysqli, $sql);
 $row = $result->num_rows;
 if ($row==1){

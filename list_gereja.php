@@ -55,7 +55,7 @@
 								</thead>
 								<tbody>
 								<?php
-									$sql = "SELECT * FROM gereja";
+									$sql = "SELECT * FROM Gereja";
 									$result = mysqli_query($mysqli, $sql);
 										// output data of each row
 								?>	

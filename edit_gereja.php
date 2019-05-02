@@ -45,7 +45,7 @@
 						<div class="col-md-6">
                         <?php
 							$idGereja = $_GET['idgereja'];
-							$sql = "SELECT * FROM gereja WHERE idGereja='" . $idGereja . "'";
+							$sql = "SELECT * FROM Gereja WHERE idGereja='" . $idGereja . "'";
 							$result = mysqli_query($mysqli, $sql);
 							$idgereja1 = "";
                             $alamatgereja1 = "";

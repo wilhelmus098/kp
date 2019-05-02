@@ -44,7 +44,7 @@
 						<div class="col-md-6">
                         <?php
 							$idJemaat = $_GET['idjemaat'];
-							$sql = "SELECT * FROM jemaat WHERE idJemaat='" . $idJemaat . "'";
+							$sql = "SELECT * FROM Jemaat WHERE idJemaat='" . $idJemaat . "'";
 							$result = mysqli_query($mysqli, $sql);
 							$idjemaat1 = "";
                             $namajemaat1 = "";
@@ -103,7 +103,7 @@
 									<label>Berjemaat di Gereja: </label>
 										<select class="form-control" name="gereja_jemaat_id">
 											<?php
-												$sql = "select * from gereja";
+												$sql = "select * from Gereja";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{

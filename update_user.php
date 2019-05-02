@@ -41,9 +41,9 @@
 							<div class="col-md-6">
 							<?php
 								$iduser = $_SESSION["uname"];
-								$sql = "select * from user where iduser='" . $iduser . "'";
+								$sql = "select * from User where uname='" . $iduser . "'";
 								$result = mysqli_query($mysqli, $sql);
-								$idUser1 = "";
+								$uname = "";
 								$userName = "";
 								$userPass = "";
 								$userPos = "";
@@ -51,9 +51,8 @@
 								{
 									while($row = $result->fetch_assoc())
 									{
-										$idUser1 = $row["iduser"];
-										$userName = $row["user_name"];
-										$userPass = $row["user_password"];
+										$uname = $row["uname"];
+										$userPass = $row["pass"];
 									}
 								}
 						    ?>
@@ -74,9 +73,11 @@
 								<div class="form-group">
 									<label>Position</label>
 									<select class="form-control" name="position">
-										<option value="Admin"<?php if($userPos=='Admin')echo " selected"?>>Admin</option>
-										<option value="Actress"<?php if($userPos=='Actress')echo " selected"?>>Actress</option>
-										<option value="Manager"<?php if($userPos=='Manager')echo " selected"?>>Manager</option>
+										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
+										<option value="PENGINJIL"<?php if($userPos=='PENGINJIL')echo " selected"?>>PENGINJIL</option>
+										<option value="KOOR PUSAT"<?php if($userPos=='KOOR PUSAT')echo " selected"?>>KOORDINATOR PUSAT</option>
+										<option value="KOOR CABANG"<?php if($userPos=='KOOR CABANG')echo " selected"?>>KOORDINATOR CABANG</option>
+										<option value="BENDAHARA"<?php if($userPos=='BENDAHARA')echo " selected"?>>BENDAHARA</option>
 									</select>
 								</div>
 								<input type="submit" class="btn btn-primary" name="btnUpdate" value="Update User">

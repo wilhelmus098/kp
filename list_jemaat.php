@@ -58,7 +58,7 @@
 								</thead>
 								<tbody>
 								<?php
-									$sql = "SELECT * FROM jemaat";
+									$sql = "SELECT * FROM Jemaat";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>

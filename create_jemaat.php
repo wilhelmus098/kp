@@ -72,7 +72,7 @@
 										<label>Berjemaat di Gereja: </label>
 										<select class="form-control" name="gereja_jemaat_id">
 											<?php
-												$sql = "select * from gereja";
+												$sql = "select * from Gereja";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
