@@ -70,19 +70,29 @@
 
 									<div class="form-group">
 										<label>Berjemaat di Gereja: </label>
-											<select class="form-control" name="gereja_jemaat_id">
-												<?php
-													$sql = "select * from gereja";
-													$result = mysqli_query($mysqli, $sql);
-													if($result->num_rows > 0)
+										<select class="form-control" name="gereja_jemaat_id">
+											<?php
+												$sql = "select * from gereja";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
 													{
-														while($row = $result->fetch_assoc()){
-															echo "<option value=\"".$row["idGereja"]."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														if($idgereja1==$row['idGereja'])
+														{
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['idGereja'] ."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
 													}
 												}
-												?>
-											</select>
+											?>
+										</select>
 									</div>
+
+									
 
 									<button type="submit" class="btn btn-primary" name="create_jemaat" >Tambah Jemaat</button>
 							</form>

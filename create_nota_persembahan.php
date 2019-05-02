@@ -25,22 +25,24 @@
 	require_once('sidemenu.php');
 			
 ?>
-	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">List Gereja</li>
+				<li class="active">CREATE NEW RECEIPT!</li>
 			</ol>
 		</div><!--/.row-->
 		
 		
 		<div class="row">
 			<div class="col-lg-12">
-			<div class="text-center" style="margin: 8px;">
+			<!-- <div class="text-center" style="margin: 8px;">
 				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
+			</div> -->
+			<div class="text-center" style="margin: 8px">
+				<button class='btn btn-primary m-2' style="width:200px">CREATE NEW</button>				
 			</div>
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
@@ -48,12 +50,9 @@
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-									<th>Nama Jemaat</th>
-									<th>Tempat Lahir</th>
-									<th>Tanggal Lahir</th>
-									<th>Alamat</th>
-									<th>Nomor Telepon<th>
-									<th>Jemaat Gereja: </th>
+								  	<th>ID Nota</th>
+									<th>TANGGAL IBADAH</th>
+									<th>ACTION</th>
 								  </tr>
 								</thead>
 								<tbody>
@@ -68,7 +67,6 @@
 										<td><?=$row["TglLahir"]?></td>
 										<td><?=$row["Alamat"]?></td>
 										<td><?=$row["NoTelp"]?></td>
-										<td><?=$row["idGereja"]?></td>
 									</tr>
 								<?php } ?>
 								</tbody>
@@ -100,6 +98,5 @@
             return true;
         }
     </script>
-		
 </body>
 </html>

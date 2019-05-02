@@ -51,6 +51,7 @@ function update($idJemaat,$name, $bornplace, $birthdate, $address, $phonenumber,
     if (mysqli_query($mysqli, $sql)) 
     {        
         echo "sukses";
+        header("Location:../list_jemaat.php");
     }
     else
     {
