@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	//include 'checksession.php';
+	include 'checksession.php';
 ?>
 <html>
 <head>

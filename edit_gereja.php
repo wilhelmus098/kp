@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <?php
 	include 'conn.php';
-	// include 'checksession.php';
-	// require('MagicCrypt.php');
-	// use org\magiclen\magiccrypt\MagicCrypt;
+	include 'checksession.php';
+	 require('MagicCrypt.php');
+	 use org\magiclen\magiccrypt\MagicCrypt;
 ?>
 <html>
 <head>
