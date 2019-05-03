@@ -181,17 +181,17 @@
 											$sql = "SELECT * FROM DetailNotaPersembahan, Jemaat WHERE idNotaPersembahan='" .$idnota. "' AND DetailNotaPersembahan.idJemaat=Jemaat.idJemaat";
 											$result = mysqli_query($mysqli, $sql);
 										?>	
-										<?php while($row = $result->fetch_assoc()) { ?>
+										<?php while($row2 = $result->fetch_assoc()) { ?>
 											<tr>
-                                                <td><?=$row["idJemaat"]?></td>
-												<td><?=$row["NamaJemaat"]?></td>
-												<td><?=$row["PK_HariTuhan"]?></td>
-												<td><?=$row["PK_Perpuluhan"]?></td>
-                                                <td><?=$row["PK_UcapanSyukur"]?></td>
-                                                <td><?=$row["PK_JanjiIman"]?></td>
-                                                <td><?=$row["PK_PembangunanGereja"]?></td>
-                                                <td><?=$row["PK_LainLain"]?></td>
-                                                <td><?=$row["CaraPemabayaran"]?></td>
+                                                <td><?=$row2["idJemaat"]?></td>
+												<td><?=$row2["NamaJemaat"]?></td>
+												<td><?=$row2["PK_HariTuhan"]?></td>
+												<td><?=$row2["PK_Perpuluhan"]?></td>
+                                                <td><?=$row2["PK_UcapanSyukur"]?></td>
+                                                <td><?=$row2["PK_JanjiIman"]?></td>
+                                                <td><?=$row2["PK_PembangunanGereja"]?></td>
+                                                <td><?=$row2["PK_LainLain"]?></td>
+                                                <td><?=$row2["CaraPemabayaran"]?></td>
 											</tr>
 										<?php } ?>
 										</tbody>
