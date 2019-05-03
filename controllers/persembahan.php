@@ -2,7 +2,7 @@
 include '../conn.php';
 if(isset($_POST['btn_view']))
 {
-    echo "view";
+    header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_view']);
 }
 
 if(isset($_POST['btn_edit']))
