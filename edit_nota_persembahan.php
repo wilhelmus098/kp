@@ -163,19 +163,19 @@
 										<label>Petugas Penghitung</label>
 										<select class="form-control" name="petugas_penghitung">
 											<?php
-												$sql = "select * from Jemaat";
+												$sql = "SELECT * FROM Jemaat WHERE idGereja ='" . $_SESSION['idgereja'] . "'";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
 													while($row = $result->fetch_assoc())
 													{
-														if($penghitung1==$row['Penghitung'])
+														if($penghitung1==$row['NamaJemaat'])
 														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+															echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["idJemaat"]." - ".$row["NamaJemaat"]."</option>";
 														}
 														else
 														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+															echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["idJemaat"]." - ".$row["NamaJemaat"]."</option>";
 														}
 													}
 												}
