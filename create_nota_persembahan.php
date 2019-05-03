@@ -159,10 +159,6 @@
 										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
 									</div>
 
-									<div class="form-group">
-										<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
-										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat" >ADD DETAIL</button>
-									</div>
 									<?php
 										$sql = "SELECT  MAX(n.idNotaPersembahan) as lastid FROM NotaPersembahan n ";
 										$result = mysqli_query($mysqli, $sql);
@@ -175,7 +171,7 @@
 											}
 										}
 									?>
-									<button type="submit" class="btn btn-primary" name="btn_insert_nota" value="<?=$idterakhir?>">SAVE</button>
+									<button class='btn btn-primary m-2' style="width:200px"  type="submit" name="btn_insert_nota" value="<?=$idterakhir?>">SAVE</button>
 							</form>
 						</div>
 					</div>

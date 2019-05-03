@@ -196,7 +196,7 @@
 										<?php } ?>
 										</tbody>
 						  			</table>
-									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE EDIT</button>
+									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE</button>
 							</form>
 						</div>
 					</div>

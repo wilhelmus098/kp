@@ -8,12 +8,6 @@ if(isset($_POST['btn_view']))
 if(isset($_POST['btn_edit']))
 {    
     header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_edit']);
-    //echo 'Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_edit'];
-}
-
-if(isset($_POST['btn_edit_nota']))
-{
-    editNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"]);
 }
 
 if(isset($_POST['btn_insert_nota']))
@@ -24,21 +18,28 @@ if(isset($_POST['btn_insert_nota']))
     addNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"], $newid);
 }
 
-if(isset($_POST['btn_delete']))
-{
-    echo "delete";
-}
-
 if(isset($_POST['btn_create_nota']))
 {
     header('Location:../create_nota_persembahan.php');
 }
 
-if(isset($_POST['btn_pk_jemaat']))
+if(isset($_POST['btn_edit_nota']))
 {
-    //echo "jssj";
+    editNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"]);
 }
 
+if(isset($_POST['btn_pk_jemaat']))
+{
+    header('Location:../create_detail_persembahan.php');
+}
+
+if(isset($_POST['btn_detail_persembahan']))
+{
+    addDetailNota();
+    header('Location:../view_nota.php?idnota=' . $_POST['btn_detail_persembahan']);
+}
+
+//METHOD
 function addNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja,$idbaru)
 {
     global $mysqli;
