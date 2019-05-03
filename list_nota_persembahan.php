@@ -45,6 +45,7 @@
 					<div class="panel-body">
 						<div class="col-md-12">
 						<form method="POST" action=controllers/persembahan.php>
+							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
 							<div class="text-center" style="margin: 8px">
 								<button class='btn btn-primary m-2' style="width:200px" name="btn_create_nota">CREATE NEW</button>				
 							</div>
@@ -60,7 +61,8 @@
 								</thead>
 								<tbody>
 								<?php
-									$sql = "SELECT * FROM NotaPersembahan";
+									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
+									$sql = "SELECT * FROM NotaPersembahan ORDER BY idNotaPersembahan DESC";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
@@ -71,7 +73,7 @@
 										<td><?=$row["Verified"]?></td>
 										<td>
 											<button type="submit" class="btn btn-primary" name="btn_view" >DETAIL</button>
-											<button type="submit" class="btn btn-primary" name="btn_edit" >EDIT</button>
+											<button type="submit" class="btn btn-primary" name="btn_edit" value="edit_nota_persembahan.php?idnotapersembahan=<?="$row["idNotaPersembahan"]"?>">EDIT</button>
 											<button type="submit" class="btn btn-primary" name="btn_delete" >DELETE</button>
 										</td>
 									</tr>

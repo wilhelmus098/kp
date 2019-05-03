@@ -2,6 +2,8 @@
 <?php
 	include 'conn.php';
 	include 'checksession.php';
+	require('MagicCrypt.php');
+	use org\magiclen\magiccrypt\MagicCrypt;
 ?>
 <html>
 <head>
@@ -21,36 +23,67 @@
 	<![endif]-->
 </head>
 <body>
-<?php
-	require_once('sidemenu.php');
-			
-?>
+	<?php
+		require_once('sidemenu.php');
+	?>
+
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">CREATE NEW RECEIPT!</li>
+				<li class="active">EDIT NOTA PERSEMBAHAN</li>
 			</ol>
-		</div><!--/.row-->
-		
-		
-		<div class="row">
-			<div class="col-lg-12">
-			<!-- <div class="text-center" style="margin: 8px;">
-				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
-			</div> -->
-			<div class="text-center" style="margin: 8px">
-				<button class='btn btn-primary m-2' style="width:200px">PRINT LAPORAN</button>				
-			</div>
-				<div class="panel panel-default"  id="section-to-print">
+	</div><!--/.row-->
+
+	<div class="row">
+			<div class="col-lg-12">	
+				<div class="panel panel-default">
 					<div class="panel-body">
-						<div class="col-md-12">
-							<form role="form" method="POST" action="controllers/persembahan.php">
+						<div class="col-md-6">
+                        <?php
+							$idnota = $_GET["idnotapersembahan"];
+							$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan = '" .$idnota . "'";
+							$result = mysqli_query($mysqli, $sql);
+							$idnota1 = "";
+                            $pemimpinibadah1 = "";
+                            $tglibadah1 = "";
+                            $hadir1 = "";
+                            $harituhan1 = "";
+                            $sm1 = "";
+                            $tgldoatengahminggu1 = "";
+                            $doatengahminggu1 = "";
+                            $gtotal1 = "";
+                            $bendahara1 = "";
+                            $penghitung1 = "";
+                            $status1 = "";
+                            $idgereja1 = "";
+                            
+							if ($result->num_rows > 0)
+							{
+								while($row = $result->fetch_assoc())
+								{
+									$idnota1 = "";
+		                            $pemimpinibadah1 = $row["PemimpinIbadah"];
+		                            $tglibadah1 = $row["TglIbadah"];
+		                            $hadir1 = $row["JumlahHadir"];
+		                            $harituhan1 = $row["HariTuhan"];
+		                            $sm1 = $row["SekolahMinggu"];
+		                            $tgldoatengahminggu1 = $row["TglDoaTengahMinggu"];
+		                            $doatengahminggu1 = $row["DoaTengahMinggu"];
+		                            $gtotal1 = $row["GrandTotal"];
+		                            $bendahara1 = $row["Bendahara"];
+		                            $penghitung1 = $row["Penghitung"];
+		                            $status1 = $row["Verified"];
+		                            $idgereja1 = $row["idGereja"];
+								}
+							}
+						?>
+						<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
-										<input type="date" class="form-control" name="tgl_ibadah" placeholder="">
+										<input type="date" class="form-control" name="tgl_ibadah" value="<?=$tglibadah1?>">
 									</div>
 
 									<div class="form-group">
@@ -63,7 +96,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														if($pemimpinibadah1==$row['PemimpinIbadah'])
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
 													}
 												}
 											?>
@@ -72,27 +112,27 @@
 
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="text" class="form-control" name="jumlah_hadir" placeholder="">
+										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>">
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Tanpa Nama</label>
-										<input type="text" class="form-control" name="persembahan_tanpa_nama" placeholder="">
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>">
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Sekolah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_sm" placeholder="">
+										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>">
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Doa Tengah Minggu</label>
-										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" placeholder="">
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>">
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Doa Tengah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_tengah_minggu" placeholder="">
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>">
 									</div>
 
 									<div class="form-group">
@@ -105,7 +145,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														if($bendahara1==$row['Bendahara'])
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
 													}
 												}
 											?>
@@ -122,7 +169,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
+														if($penghitung1==$row['Penghitung'])
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
 													}
 												}
 											?>
@@ -139,7 +193,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														if($idgereja1 == $row["idGereja"])
+														{
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														}
 													}
 												}
 											?>
@@ -193,15 +254,15 @@
 										<?php } ?>
 										</tbody>
 						  			</table>
-									<button type="submit" class="btn btn-primary" name="btn_insert_nota" >SAVE</button>
+									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE EDIT</button>
 							</form>
 						</div>
 					</div>
-				</div><!-- /.panel-->
-			</div><!-- /.col-->
-			
-		</div><!-- /.row -->
+			</div><!-- /.panel-->
+		</div><!-- /.col-->
 		
+	</div><!-- /.row -->
+	
 	</div>	<!--/.main-->
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
@@ -211,16 +272,7 @@
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script>
-	<script>
-        function myFunction() {
-            var printContents = document.getElementById("section-to-print").innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-            return true;
-        }
-    </script>
+	<script src="js/custom.js"></script>	
+
 </body>
 </html>

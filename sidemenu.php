@@ -46,7 +46,7 @@
 					<li><a class="" href="create_nota_persembahan.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> Buat Persembahan
 					</a></li>
-					<li><a class="" href="list_persembahan.php">
+					<li><a class="" href="list_nota_persembahan.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Persembahan
 					</a></li>
 				</ul>

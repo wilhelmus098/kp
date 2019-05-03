@@ -50,7 +50,7 @@ function update($idJemaat,$name, $bornplace, $birthdate, $address, $phonenumber,
     $sql = "UPDATE Jemaat set NamaJemaat ='" . $name . "', TempatLahir = '" . $bornplace ."', TglLahir = '". $birthdate ."', Alamat = '" . $address . "', NoTelp = '" . $phonenumber ."', idGereja = '" . $churchid ."' WHERE idJemaat='" . $idJemaat . "'";
     if (mysqli_query($mysqli, $sql)) 
     {        
-        echo "sukses";
+        // echo "sukses";
         header("Location:../list_jemaat.php");
     }
     else

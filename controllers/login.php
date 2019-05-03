@@ -27,7 +27,7 @@ if ($row==1){
 		   // echo "<br><br>";
 	}
 	// print_r($_SESSION);
-	header("Location:../create_persembahan.php");
+	header("Location:../create_nota_persembahan.php");
 	
 	
 }else if ($row==0)
