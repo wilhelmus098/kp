@@ -77,7 +77,6 @@
 										<td>
 											<button type="submit" class="btn btn-primary" name="btn_view">DETAIL</button>
 											<button type="submit" class="btn btn-primary" name="btn_edit" value="<?=$id?>">EDIT</button>
-											<button type="submit" class="btn btn-primary" name="btn_delete">DELETE</button>
 										</td>
 									</tr>
 								<?php } ?>

@@ -163,19 +163,37 @@
 										<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
 										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat" >ADD DETAIL</button>
 									</div>
-									<?php
-										$sql = "SELECT  MAX(n.idNotaPersembahan) as lastid FROM NotaPersembahan n ";
-										$result = mysqli_query($mysqli, $sql);
-										$idterakhir = "";
-										if($result->num_rows > 0)
-										{
-											while($row = $result->fetch_assoc())
-											{
-												$idterakhir = $row["lastid"]; 
-											}
-										}
-									?>
-									<button type="submit" class="btn btn-primary" name="btn_insert_nota" value="<?=$idterakhir?>">SAVE</button>
+
+									<table class="table table-hover">
+										<thead>
+										  <tr>
+										  	<th>ID Jemaat</th>
+											<th>Nama Jemaat</th>
+											<th>Hari Tuhan</th>
+											<th>Perpuluhan</th>
+											<th>Ucapan Syukur</th>
+											<th>Pembangunan Gereja</th>
+											<th>Lain - lain</th>
+											<th>ACTION</th>
+										  </tr>
+										</thead>
+										<tbody>
+										<?php
+											$sql = "SELECT * FROM Jemaat";
+											$result = mysqli_query($mysqli, $sql);
+										?>	
+										<?php while($row = $result->fetch_assoc()) { ?>
+											<tr>
+												<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
+												<td><?=$row["TempatLahir"]?></td>
+												<td><?=$row["TglLahir"]?></td>
+												<td><?=$row["Alamat"]?></td>
+												<td><?=$row["NoTelp"]?></td>
+											</tr>
+										<?php } ?>
+										</tbody>
+						  			</table>
+									<button type="submit" class="btn btn-primary" name="btn_insert_nota" >SAVE</button>
 							</form>
 						</div>
 					</div>

@@ -18,7 +18,10 @@ if(isset($_POST['btn_edit_nota']))
 
 if(isset($_POST['btn_insert_nota']))
 {
-    addNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"]);
+    $lastid = $_POST['btn_insert_nota'];
+    $newid = $lastid + 1;
+    //echo $newid;
+    addNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"], $newid);
 }
 
 if(isset($_POST['btn_delete']))
@@ -36,14 +39,14 @@ if(isset($_POST['btn_pk_jemaat']))
     //echo "jssj";
 }
 
-function addNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja)
+function addNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja,$idbaru)
 {
     global $mysqli;
     $sql = "INSERT INTO NotaPersembahan VALUE(NULL, '" . $pemimpin . "','" . $date . "','" . $hadir . "','" . $harituhan . "','" . $sekolahminggu . "','" . $tgltengahminggu ."' ,'" . $tengahminggu . "','" . $grandtotal . "','" . $bendahara . "','" . $penghitung . "', '" . $verified . "','" . $idgereja . "')";
     if (mysqli_query($mysqli, $sql))
     {
         // echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
-        header('Location:../list_nota_persembahan.php');
+        header('Location:../view_nota.php?idnota=' . $idbaru);
     }
     else
     {
