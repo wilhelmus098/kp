@@ -73,17 +73,68 @@
                                     $pembayaran = $row['CaraPembayaran'];
 								}
 							}
+                        ?>
+                        
+                        <?php
+							$sql = "SELECT * FROM Jemaat WHERE idJemaat='" . $idjemaat1 . "'";
+							$result = mysqli_query($mysqli, $sql);
+                            $idjemaat2 = "";
+                            $namajemaat = "";
+                            $tempatlahir = "";
+                            $tanggallahir = "";
+                            $alamat = "";
+                            $phone = "";
+                            $idgereja = "";
+                            
+							if ($result->num_rows > 0)
+							{
+								while($row1 = $result->fetch_assoc())
+								{	
+                                    $idjemaat2 = $row1['idJemaat'];
+                                    $namajemaat = $row1['NamaJemaat'];
+                                    $tempatlahir = $row1['TempatLahir'];
+                                    $tanggallahir = $row1['TglLahir'];
+                                    $alamat = $row1['Alamat'];
+                                    $phone = $row1['NoTelp'];
+                                    $idgereja = $row1['idGereja'];
+								}
+							}
+                        ?>
+                        
+                        <?php
+							$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan='" . $idnota . "'";
+							$result = mysqli_query($mysqli, $sql);
+                            $idnota2 = "";
+                            $pemimpin = "";
+                            $tglibadah = "";
+                            
+							if ($result->num_rows > 0)
+							{
+								while($row2 = $result->fetch_assoc())
+								{	
+                                    $idnota2 = $row2['idNotaPersembahan'];
+                                    $pemimpin = $row2['PemimpinIbadah'];
+                                    $tglibadah = $row2['TglIbadah'];                      
+								}
+							}
 						?>
 						<form role="form" method="POST" action="controllers/gereja.php">
 								<div class="form-group">
 									<label>ID Nota</label>
-                                    <input class="form-control" placeholder="" name="idnota" type="text" autofocus="" value="<?=$idnota1?>">
+                                    <input class="form-control" placeholder="" name="idnota" type="text" autofocus="" value="<?=$idnota1?>" disabled>
+                                </div>
+                                <div class="form-group">
+									<label>Tanggal Ibadah</label>
+                                    <input class="form-control" placeholder="" name="tanggal_ibadah" type="text" autofocus="" value="<?=$tglibadah?>" disabled>
 								</div>
 								<div class="form-group">
 									<label>ID Jemaat</label>
-                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$idjemaat1?>">
+                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$idjemaat2?>" disabled>
 								</div>
-								
+                                <div class="form-group">
+									<label>Nama Jemaat</label>
+                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$namajemaat?>" disabled>
+								</div>
 								<div class="form-group">
 									<label>Hari Tuhan</label>
 									<input type="text" class="form-control" name="hari_tuhan" placeholder="" value="<?=$hari_tuhan?>">
@@ -109,8 +160,12 @@
 									<input type="text" class="form-control" name="lain_lain" placeholder="" value="<?=$lain?>">
                                 </div>
                                 <div class="form-group">
-									<label>Cara Pembayaran</label>
-									<input type="text" class="form-control" name="cara_pembayaran" placeholder="" value="<?=$pembayaran?>">
+                                    <label>Cara Pembayaran</label>
+                                    <select class="form-control" name="position">
+										<option value="TUNAI" <?php if($pembayaran=='TUNAI')echo 'selected'?>>TUNAI</option>
+										<option value="TRANSFER" <?php if($pembayaran=='TRANSFER')echo 'selected'?>>TRANSFER</option>
+									</select>
+									<!-- <input type="text" class="form-control" name="cara_pembayaran" placeholder="" value="<?=$pembayaran?>"> -->
 								</div>
 								<button type="submit" class="btn btn-primary" name="edit_gereja">Update Detail Nota</button>
 						</form>
