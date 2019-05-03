@@ -43,7 +43,7 @@
 					<div class="panel-body">
 						<div class="col-md-6">
                         <?php
-							$idnota = $_GET["idnotapersembahan"];
+							$idnota = $_GET["idnota"];
 							$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan = '" .$idnota . "'";
 							$result = mysqli_query($mysqli, $sql);
 							$idnota1 = "";

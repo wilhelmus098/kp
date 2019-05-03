@@ -7,8 +7,8 @@ if(isset($_POST['btn_view']))
 
 if(isset($_POST['btn_edit']))
 {    
-    // header('Location:../edit_nota_persembahan.php?id='.$_POST['btn_edit']);  
-    header('Location:../edit_nota_persembahan.php');
+    header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_edit']);
+    //echo 'Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_edit'];
 }
 
 if(isset($_POST['btn_edit_nota']))
