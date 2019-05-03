@@ -46,8 +46,25 @@
 						<div class="col-md-12">
 							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
-										<label>Nama Jemaat</label>
-										<input type="text" class="form-control" name="nama_jemaat">
+										<label>ID NOTA</label>	
+										<select></select>
+									</div>
+
+									<div class="form-group">
+										<label>NAMA JEMAAT</label>
+										<select class="form-control" name="nama_jemaat">
+											<?php
+												$sql = "select * from Jemaat WHERE idGereja = '" . $_SESSION["idgereja"] . "'";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["idGereja"]." - ".$row["NamaJemaat"]."</option>";
+													}
+												}
+											?>
+										</select>	
 									</div>
 
 									<div class="form-group">

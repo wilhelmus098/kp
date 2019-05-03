@@ -36,7 +36,6 @@ if(isset($_POST['btn_pk_jemaat']))
 if(isset($_POST['btn_detail_persembahan']))
 {
     addDetailNota();
-    header('Location:../view_nota.php?idnota=' . $_POST['btn_detail_persembahan']);
 }
 
 //METHOD
@@ -72,7 +71,20 @@ function editNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahmin
     mysqli_close($mysqli);
 }
 
-
+function addDetailNota($pk)
+{
+    global $mysqli;
+    $sql = "INSERT INTO DetailNotaPersembahan";
+    if (mysqli_query($mysqli, $sql))
+    {
+        header('Location:../view_nota.php?idnota=' . $_POST['btn_detail_persembahan']);   
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    mysqli_close($mysqli);  
+}
 
 
 
