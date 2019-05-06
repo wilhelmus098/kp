@@ -148,7 +148,7 @@
 
 									<div class="form-group">
 										<label>Verfied</label>
-										<select name="status_verifikasi">
+										<select class="form-control" name="status_verifikasi">
 											<option value="YES">YES</option>
 											<option value="NO">NO</option>
 										</select>

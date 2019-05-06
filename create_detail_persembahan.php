@@ -46,8 +46,20 @@
 						<div class="col-md-12">
 							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
-										<label>ID NOTA</label>	
-										<select></select>
+										<label>ID Nota</label>
+										<select class="form-control" name="id_nota">
+											<?php
+												$sql = "SELECT * FROM NotaPersembahan";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														echo "<option value=\"". $row['idNotaPersembahan'] ."\" selected >".$row["idNotaPersembahan"]."</option>";
+													}
+												}
+											?>
+										</select>
 									</div>
 
 									<div class="form-group">
@@ -60,7 +72,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["idGereja"]." - ".$row["NamaJemaat"]."</option>";
+														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["NamaJemaat"]."</option>";
 													}
 												}
 											?>
