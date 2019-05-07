@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-group">
 									<label>Position</label>
-									<select class="form-control" name="position">
+									<select class="form-control" name="position" <?php if($_SESSION['jabatan']=='BENDAHARA') echo 'disabled'; ?>>
 										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
 										<option value="PENGINJIL"<?php if($userPos=='PENGINJIL')echo " selected"?>>PENGINJIL</option>
 										<option value="KOOR PUSAT"<?php if($userPos=='KOOR PUSAT')echo " selected"?>>KOORDINATOR PUSAT</option>
