@@ -35,7 +35,7 @@ if(isset($_POST['btn_pk_jemaat']))
 
 if(isset($_POST['btn_detail_persembahan']))
 {
-    addDetailNota();
+    addDetailNota($_POST["id_nota"], $_POST["nama_jemaat"], $_POST["nilai_hari_tuhan"], $_POST["nilai_perpuluhan"], $_POST["nilai_ucapan_syukur"], $_POST["nilai_janji_iman"], $_POST["nilai_pembangunan_gereja"], $_POST["nilai_lain"], $_POST["metode_persembahan"]);
 }
 
 //METHOD
@@ -71,13 +71,14 @@ function editNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahmin
     mysqli_close($mysqli);
 }
 
-function addDetailNota($pk)
+function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode, $currentid)
 {
     global $mysqli;
-    $sql = "INSERT INTO DetailNotaPersembahan";
+    $sql = "INSERT INTO DetailNotaPersembahan VALUE('" . $idnotapersembahan . "', '" . $idjemaat . "', '" . $pk1 ."', '" . $pk2 ."', '" . $pk3 ."', '" . $pk4 ."', '" . $pk5 ."', '" . $pk6 ."', '" . $metode ."')";
+    ;
     if (mysqli_query($mysqli, $sql))
-    {
-        header('Location:../view_nota.php?idnota=' . $_POST['btn_detail_persembahan']);   
+    {        
+        header('Location:../view_nota.php?idnota=' . $currentid);  
     }
     else
     {

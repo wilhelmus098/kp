@@ -109,6 +109,14 @@
 										<input type="text" class="form-control" name="nilai_lain" placeholder="RP.">
 									</div>
 
+									<div class="form-group">
+										<label>METODE PERSEMBAHAN</label>
+										<select class="form-control" name="metode_persembahan">
+											<option value="TUNAI">TUNAI</option>
+											<option value="TRANSFER">TRANSFER</option>
+										</select>	
+									</div>
+
 									<div class="text-center" style="margin: 8px">
 										<button class='btn btn-primary m-2' style="width:200px" value="<?=$currentid?>" name="btn_detail_persembahan">SAVE</button>				
 									</div>

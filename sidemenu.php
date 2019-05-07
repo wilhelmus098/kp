@@ -10,12 +10,12 @@
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">
 				
 					<span>Position : </span>
-					<!-- <?php
+					<?php
 						if (isset($_SESSION["user_logged_in"]))
 						{
 							echo $_SESSION["jabatan"];
 						}	
-					?> -->
+					?>
 					
 				</div>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">

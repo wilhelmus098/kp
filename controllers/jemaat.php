@@ -10,6 +10,8 @@ if(isset($_POST['edit_jemaat']))
     update($_POST["idjemaat"],$_POST["nama_jemaat"],$_POST["tempat_lahir"],$_POST["tgl_lahir"],$_POST["alamat_jemaat"],$_POST["nomor_jemaat"],$_POST["gereja_jemaat_id"]);
 }
 
+
+//INI TEST MODAL DARI BUTTON VIEW
 if(isset($_POST['view_jemaat_modal']))
 {
     show($_POST["view_jemaat_modal"]);
@@ -67,6 +69,7 @@ function delete($id)
     mysqli_close($mysqli);
 }
 
+//INI TEST MODAL DARI BUTTON VIEW
 function show($id)
 {
     global $mysqli;
