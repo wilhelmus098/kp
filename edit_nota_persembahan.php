@@ -138,13 +138,12 @@
                                             {
                                                 while($row1 = $result->fetch_assoc())
                                                 {
-                                                    $idgereja2 = $row1['idGereja'];
                                                     $jenisGereja2 = $row1['JenisGereja'];
-                                                    $alamatGereja2 = $row1['AlamatGereja'];
+                                                    $alamatGereja2 = $row1['Nama'];
                                                 }
                                             }
                                         ?>
-                                        <input type="text" class="form-control" name="gereja" value="<?php echo $idgereja2." - ".$jenisGereja2." - ".$alamatGereja2;?>" disabled>
+                                        <input type="text" class="form-control" name="gereja" value="<?php echo $jenisGereja2." - ".$alamatGereja2;?>" disabled>
 									</div>
 
 									<!-- <div class="form-group">
@@ -161,7 +160,7 @@
 									</div> -->
 
 									<div class="form-group">
-										<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
+										<!-- <label font-size="24px">DETAIL NOTA PERSEMBAHAN</label> -->
 										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat">ADD DETAIL</button>
 									</div>
 

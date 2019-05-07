@@ -69,7 +69,7 @@
 									</div>
 
 									<div class="form-group">
-										<label>Berjemaat di Gereja: </label>
+										<label>Jemaat GBA</label>
 										<select class="form-control" name="gereja_jemaat_id">
 											<?php
 												$sql = "select * from Gereja";
@@ -78,7 +78,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idGereja'] ."\">".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														echo "<option value=\"". $row['idGereja'] ."\">".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
 													}
 												}
 											?>

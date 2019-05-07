@@ -71,7 +71,7 @@
 									<input class="form-control" placeholder="Retype New Password" name="password2" type="password" value="">
 								</div>
 								<div class="form-group">
-									<label>Berjemaat di Gereja: </label>
+									<label>Jemaat GBA</label>
 										<select class="form-control" name="gereja_jemaat_id">
 											<?php
 												$sql = "select * from Gereja";
@@ -80,14 +80,14 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
 													}
 												}
 											?>
 										</select>
 								</div>
 								<div class="form-group">
-									<label>Position</label>
+									<label>Jabatan</label>
 									<select class="form-control" name="position" <?php if($_SESSION['jabatan']=='BENDAHARA') echo 'disabled'; ?>>
 										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
 										<option value="PENGINJIL"<?php if($userPos=='PENGINJIL')echo " selected"?>>PENGINJIL</option>

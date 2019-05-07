@@ -158,7 +158,7 @@
 									</div>
 
 									<div class="form-group">
-										<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
+										//<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
 										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat">ADD DETAIL</button>
 									</div>
 
