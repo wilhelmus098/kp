@@ -22,6 +22,7 @@ if ($row==1){
 	$_SESSION["user_logged_in"] = true;
 	$_SESSION["uname"] = $username;
 	while($row = $result->fetch_assoc()) {
+		$_SESSION['uname'] = $row['uname'];
 		  $_SESSION["jabatan"] = $row['Jabatan'];
 		  $_SESSION['idgereja'] = $row['idGereja'];
 		   // print_r($row);

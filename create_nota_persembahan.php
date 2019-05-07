@@ -95,7 +95,7 @@
 										<input type="text" class="form-control" name="persembahan_tengah_minggu" placeholder="">
 									</div>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Bendahara</label>
 										<select class="form-control" name="bendahara">
 											<?php
@@ -110,7 +110,7 @@
 												}
 											?>
 										</select>
-									</div>
+									</div> -->
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
@@ -129,7 +129,7 @@
 										</select>
 									</div>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Gereja</label>
 										<select class="form-control" name="id_gereja">
 											<?php
@@ -144,11 +144,11 @@
 												}
 											?>
 										</select>	
-									</div>
+									</div> -->
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Verfied</label>
-										<select class="form-control" name="status_verifikasi">
+										<select class="form-control" name="status_verifikasi" disabled>
 											<option value="YES">YES</option>
 											<option value="NO">NO</option>
 										</select>
@@ -157,7 +157,7 @@
 									<div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
 										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
-									</div>
+									</div> -->
 
 									<?php
 										$sql = "SELECT  MAX(n.idNotaPersembahan) as lastid FROM NotaPersembahan n ";

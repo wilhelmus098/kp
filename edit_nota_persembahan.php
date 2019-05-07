@@ -33,7 +33,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">EDIT NOTA PERSEMBAHAN</li>
+				<li class="active">VIEW NOTA PERSEMBAHAN</li>
 			</ol>
 	</div><!--/.row-->
 
@@ -88,141 +88,81 @@
 
 									<div class="form-group">
 										<label>Pemimpin Ibadah</label>
-										<select class="form-control" name="nama_pemimpin">
-											<?php
-												$sql = "select * from User where Jabatan != 'BENDAHARA'";
-												$result = mysqli_query($mysqli, $sql);
-												if($result->num_rows > 0)
-												{
-													while($row = $result->fetch_assoc())
-													{
-														if($pemimpinibadah1==$row['PemimpinIbadah'])
-														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
-														}
-														else
-														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
-														}
-													}
-												}
-											?>
-										</select>
+                                        <input type="text" class="form-control" name="pemimpin_ibadah" value="<?=$pemimpinibadah1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>">
+										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Tanpa Nama</label>
-										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>">
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Sekolah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>">
+										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Doa Tengah Minggu</label>
-										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>">
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Doa Tengah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>">
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Bendahara</label>
-										<select class="form-control" name="bendahara">
-											<?php
-												$sql = "select * from User where Jabatan = 'BENDAHARA'";
-												$result = mysqli_query($mysqli, $sql);
-												if($result->num_rows > 0)
-												{
-													while($row = $result->fetch_assoc())
-													{
-														if($bendahara1==$row['Bendahara'])
-														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
-														}
-														else
-														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
-														}
-													}
-												}
-											?>
-										</select>
+                                        <input type="text" class="form-control" name="bendahara" value="<?=$bendahara1?>" >
 									</div>
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
-										<select class="form-control" name="petugas_penghitung">
-											<?php
-												$sql = "SELECT * FROM Jemaat WHERE idGereja ='" . $_SESSION['idgereja'] . "'";
-												$result = mysqli_query($mysqli, $sql);
-												if($result->num_rows > 0)
-												{
-													while($row = $result->fetch_assoc())
-													{
-														if($penghitung1==$row['NamaJemaat'])
-														{
-															echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["idJemaat"]." - ".$row["NamaJemaat"]."</option>";
-														}
-														else
-														{
-															echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["idJemaat"]." - ".$row["NamaJemaat"]."</option>";
-														}
-													}
-												}
-											?>
-										</select>
+                                        <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>">
 									</div>
 
 									<div class="form-group">
 										<label>Gereja</label>
-										<select class="form-control" name="id_gereja">
-											<?php
-												$sql = "select * from Gereja";
-												$result = mysqli_query($mysqli, $sql);
-												if($result->num_rows > 0)
-												{
-													while($row = $result->fetch_assoc())
-													{
-														if($idgereja1 == $row["idGereja"])
-														{
-															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
-														}
-														else
-														{
-															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
-														}
-													}
-												}
-											?>
-										</select>	
+                                        <?php
+                                            $sql = "SELECT * FROM Gereja WHERE idGereja='". $idgereja1 . "'";
+											$result = mysqli_query($mysqli, $sql);
+											$idgereja2 = '';
+											$jenisGereja2 = '';
+											$alamatGereja2 = '';
+                                            if($result->num_rows > 0)
+                                            {
+                                                while($row1 = $result->fetch_assoc())
+                                                {
+                                                    $idgereja2 = $row1['idGereja'];
+                                                    $jenisGereja2 = $row1['JenisGereja'];
+                                                    $alamatGereja2 = $row1['AlamatGereja'];
+                                                }
+                                            }
+                                        ?>
+                                        <input type="text" class="form-control" name="gereja" value="<?php echo $idgereja2." - ".$jenisGereja2." - ".$alamatGereja2;?>" disabled>
 									</div>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Verfied</label>
 										<select name="status_verifikasi">
 											<option value="YES">YES</option>
 											<option value="NO">NO</option>
 										</select>
-									</div>
+									</div> -->
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
 										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
-									</div>
+									</div> -->
 
 									<div class="form-group">
 										<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
-										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat" >ADD DETAIL</button>
+										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat">ADD DETAIL</button>
 									</div>
 
 									<table class="table table-hover">
@@ -235,26 +175,31 @@
 											<th>Ucapan Syukur</th>
 											<th>Pembangunan Gereja</th>
 											<th>Lain - lain</th>
+                                            <th>Cara Bayar</th>
 											<th>ACTION</th>
 										  </tr>
 										</thead>
 										<tbody>
 										<?php
-											$sql = "SELECT * FROM Jemaat";
+											$sql = "SELECT * FROM DetailNotaPersembahan, Jemaat WHERE idNotaPersembahan='" .$idnota. "' AND DetailNotaPersembahan.idJemaat=Jemaat.idJemaat";
 											$result = mysqli_query($mysqli, $sql);
 										?>	
-										<?php while($row = $result->fetch_assoc()) { ?>
+										<?php while($row2 = $result->fetch_assoc()) { ?>
 											<tr>
-												<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
-												<td><?=$row["TempatLahir"]?></td>
-												<td><?=$row["TglLahir"]?></td>
-												<td><?=$row["Alamat"]?></td>
-												<td><?=$row["NoTelp"]?></td>
+                                                <td><?=$row2["idJemaat"]?></td>
+												<td><?=$row2["NamaJemaat"]?></td>
+												<td><?=$row2["PK_HariTuhan"]?></td>
+												<td><?=$row2["PK_Perpuluhan"]?></td>
+                                                <td><?=$row2["PK_UcapanSyukur"]?></td>
+                                                <td><?=$row2["PK_JanjiIman"]?></td>
+                                                <td><?=$row2["PK_PembangunanGereja"]?></td>
+                                                <td><?=$row2["PK_LainLain"]?></td>
+                                                <td><?=$row2["CaraPembayaran"]?></td>
 											</tr>
 										<?php } ?>
 										</tbody>
 						  			</table>
-									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE EDIT</button>
+									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE</button>
 							</form>
 						</div>
 					</div>

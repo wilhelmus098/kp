@@ -1,5 +1,6 @@
 <?php
 include '../conn.php';
+include '../checksession.php';
 if(isset($_POST['btn_view']))
 {
     header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_view']);
@@ -10,17 +11,19 @@ if(isset($_POST['btn_edit']))
     header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_edit']);
 }
 
+if(isset($_POST['btn_create_nota']))
+{
+    header('Location:../create_nota_persembahan.php');
+}
+
 if(isset($_POST['btn_insert_nota']))
 {
     $lastid = $_POST['btn_insert_nota'];
     $newid = $lastid + 1;
+    //print_r($_SESSION);
+    //print_r($_POST);
     //echo $newid;
-    addNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"], $newid);
-}
-
-if(isset($_POST['btn_create_nota']))
-{
-    header('Location:../create_nota_persembahan.php');
+    addNota($newid,$_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'0',$_SESSION['uname'],$_POST["petugas_penghitung"],'NO',$_SESSION['idgereja'], $newid);
 }
 
 if(isset($_POST['btn_edit_nota']))
@@ -39,14 +42,15 @@ if(isset($_POST['btn_detail_persembahan']))
 }
 
 //METHOD
-function addNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja,$idbaru)
+function addNota($idbaru1,$pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja,$idbaru)
 {
     global $mysqli;
-    $sql = "INSERT INTO NotaPersembahan VALUE(NULL, '" . $pemimpin . "','" . $date . "','" . $hadir . "','" . $harituhan . "','" . $sekolahminggu . "','" . $tgltengahminggu ."' ,'" . $tengahminggu . "','" . $grandtotal . "','" . $bendahara . "','" . $penghitung . "', '" . $verified . "','" . $idgereja . "')";
+    $sql = "INSERT INTO NotaPersembahan VALUE('" . $idbaru1 . "', '" . $pemimpin . "','" . $date . "','" . $hadir . "','" . $harituhan . "','" . $sekolahminggu . "','" . $tgltengahminggu ."' ,'" . $tengahminggu . "','" . $grandtotal . "','" . $bendahara . "','" . $penghitung . "', '" . $verified . "','" . $idgereja . "')";
     if (mysqli_query($mysqli, $sql))
     {
         // echo "New record created successfully <a href=\"../list_gereja.php\">back to list user</a>";
-        header('Location:../view_nota.php?idnota=' . $idbaru);
+        header('Location:../edit_nota_persembahan.php?idnota=' . $idbaru);
+        //echo $sql;
     }
     else
     {
@@ -75,7 +79,6 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
 {
     global $mysqli;
     $sql = "INSERT INTO DetailNotaPersembahan VALUE('" . $idnotapersembahan . "', '" . $idjemaat . "', '" . $pk1 ."', '" . $pk2 ."', '" . $pk3 ."', '" . $pk4 ."', '" . $pk5 ."', '" . $pk6 ."', '" . $metode ."')";
-    ;
     if (mysqli_query($mysqli, $sql))
     {        
         header('Location:../view_nota.php?idnota=' . $currentid);  
