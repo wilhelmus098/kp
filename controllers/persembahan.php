@@ -75,13 +75,13 @@ function editNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahmin
     mysqli_close($mysqli);
 }
 
-function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode, $currentid)
+function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode)
 {
     global $mysqli;
     $sql = "INSERT INTO DetailNotaPersembahan VALUE('" . $idnotapersembahan . "', '" . $idjemaat . "', '" . $pk1 ."', '" . $pk2 ."', '" . $pk3 ."', '" . $pk4 ."', '" . $pk5 ."', '" . $pk6 ."', '" . $metode ."')";
     if (mysqli_query($mysqli, $sql))
     {        
-        header('Location:../view_nota.php?idnota=' . $currentid);  
+        header('Location:../create_detail_persembahan.php');  
     }
     else
     {
