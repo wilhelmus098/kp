@@ -45,34 +45,45 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
+							<form method="POST" action=controllers/jemaat.php>
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-									<th>Nama Jemaat</th>
-									<th>Tempat Lahir</th>
-									<th>Tanggal Lahir</th>
-									<th>Alamat</th>
-									<th>Nomor Telepon<th>
-									<th>Jemaat Gereja: </th>
+								  	<th>ID JEMAAT</th>
+									<th>NAMA JEMAAT</th>
+									<th>TEMPAT LAHIR</th>
+									<th>TANGGAL LAHIR</th>
+									<th>ALAMAT</th>
+									<th>NOMOR TELEPON</th>
+									<th>JEMAAT GBA</th>
+									<th>ACTION</th>									
 								  </tr>
 								</thead>
 								<tbody>
 								<?php
-									$sql = "SELECT * FROM Jemaat";
+									$sql = "SELECT * FROM Jemaat, Gereja WHERE Jemaat.idGereja = Gereja.idGereja";
 									$result = mysqli_query($mysqli, $sql);
-								?>	
+								?>
+
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
-										<td><a href="edit_jemaat.php?idjemaat=<?=$row["idJemaat"]?>"><?=$row["NamaJemaat"]?></td>
+										<td><?=$row["idJemaat"]?></td>
+										<td><?=$row["NamaJemaat"]?></td>
 										<td><?=$row["TempatLahir"]?></td>
 										<td><?=$row["TglLahir"]?></td>
 										<td><?=$row["Alamat"]?></td>
 										<td><?=$row["NoTelp"]?></td>
-										<td><?=$row["idGereja"]?></td>
+										<td><?=$row["Nama"]?></td> 
+										<td>
+											<button type="submit" class="btn btn-warning" name="edit_jemaat" value="<?=$row["idJemaat"]?>">EDIT</button>
+											<!-- <button type="submit" class="btn btn-danger" id="delete" name="delete_jemaat" value="<?=$row["idJemaat"]?>">DELETE</button> -->
+											<a class="btn btn-sm btn-danger" name="delete_jemaat" id="delete_jemaat" data-id="<?=$row["idJemaat"];?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash"></i></a>
+										</td>
 									</tr>
 								<?php } ?>
 								</tbody>
-						  </table>
+						  	</table>
+						  	</form>
 						</div>
 					</div>
 				</div><!-- /.panel-->
@@ -90,6 +101,9 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/swal2/sweetalert2.min.js"></script>
 	<script>
         function myFunction() {
             var printContents = document.getElementById("section-to-print").innerHTML;
@@ -99,6 +113,49 @@
             document.body.innerHTML = originalContents;
             return true;
         }
+
+        $(document).on('click', '#delete_jemaat', function(e)
+        {
+			var jemaatId = $(this).data('id');
+			SwalDelete(jemaatId);
+			e.preventDefault();
+		});
+		
+		function SwalDelete(jemaatId)
+		{
+				swal({
+				title: 'Are you sure?',
+				text: "It will be deleted permanently!",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Yes, delete it!',
+				showLoaderOnConfirm: true,
+				  
+				preConfirm: function() {
+				  return new Promise(function(resolve) {
+				       
+				     $.ajax({
+				   		url: 'controllers/jemaat.php',
+				    	type: 'POST',
+				       	data: 'delete='+jemaatId,
+				       	dataType: 'json'
+				     })
+				     .done(function(response){
+				     	swal('Deleted!', response.message, response.status);
+						readProducts();
+				     })
+				     .fail(function(){
+				     	swal('Oops...', 'Something went wrong with ajax !', 'error');
+				     });
+				  });
+			    },
+				allowOutsideClick: false			  
+			});	
+		
+		}
+	
     </script>
 		
 </body>

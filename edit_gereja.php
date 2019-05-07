@@ -44,11 +44,12 @@
 					<div class="panel-body">
 						<div class="col-md-6">
                         <?php
-							$idGereja = $_GET['idgereja'];
+							$idGereja = $_GET['idgrj'];
 							$sql = "SELECT * FROM Gereja WHERE idGereja='" . $idGereja . "'";
 							$result = mysqli_query($mysqli, $sql);
 							$idgereja1 = "";
                             $alamatgereja1 = "";
+                            $nama1 = "";
                             $jenisgereja1 = "";
                             
 							if ($result->num_rows > 0)
@@ -56,8 +57,10 @@
 								while($row = $result->fetch_assoc())
 								{	
                                     $idgereja1 = $row["idGereja"];
-                                    $alamatgereja1 = $row["AlamatGereja"];
                                     $jenisgereja1 = $row["JenisGereja"];
+                                    $nama1 = $row["Nama"];
+                                    $alamatgereja1 = $row["AlamatGereja"];
+
 								}
 							}
 						?>
@@ -70,13 +73,17 @@
 									<label>Jenis Gereja</label>
                                     <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>">
 								</div>
+
+								<div class="form-group">
+									<label>Kota Gereja</label>
+									<input type="text" class="form-control" name="kota_gereja" value="<?=$nama1?>">
+								</div>
 								
 								<div class="form-group">
 									<label>Alamat Gereja</label>
 									<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>">
 								</div>
-								<button type="submit" class="btn btn-primary" name="edit_gereja">Update Gereja</button>
-								<button type="submit" class="btn btn-primary" name="delete_gereja">Delete Gereja</button>
+								<button type="submit" class="btn btn-success" name="btn_edit_gereja">UPDATE</button>
 						</form>
 						</div>
 					</div>

@@ -52,6 +52,11 @@
 									</div>
 
 									<div class="form-group">
+										<label>Kota Gereja</label>
+										<input type="text" class="form-control" name="kota_gereja" placeholder="">
+									</div>
+
+									<div class="form-group">
 										<label>Alamat Gereja</label>
 										<input type="text" class="form-control" name="alamat_gereja" placeholder="">
 									</div>

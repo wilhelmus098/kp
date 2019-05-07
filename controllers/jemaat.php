@@ -7,6 +7,11 @@ if(isset($_POST['create_jemaat']))
 
 if(isset($_POST['edit_jemaat']))
 {
+    header('Location:../edit_jemaat.php?idjemaat='.$_POST['edit_jemaat']);
+}
+
+if(isset($_POST['btn_edit_jemaat']))
+{
     update($_POST["idjemaat"],$_POST["nama_jemaat"],$_POST["tempat_lahir"],$_POST["tgl_lahir"],$_POST["alamat_jemaat"],$_POST["nomor_jemaat"],$_POST["gereja_jemaat_id"]);
 }
 
@@ -19,7 +24,7 @@ if(isset($_POST['view_jemaat_modal']))
 
 if(isset($_POST["delete_jemaat"]))
 {
-    delete($_POST["idjemaat"]);
+    delete($_POST["delete_jemaat"]);
 }
 
 function add($name, $bornplace, $birthdate, $address, $phonenumber, $churchid)

@@ -111,11 +111,11 @@
 													{
 														if($idgereja1==$row['idGereja'])
 														{
-															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["idGereja"]." - ".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
 														}
 														else
 														{
-															echo "<option value=\"". $row['idGereja'] ."\">".$row["idGereja"]." - ".$row["JenisGereja"]." - ".$row["AlamatGereja"]."</option>";
+															echo "<option value=\"". $row['idGereja'] ."\">".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
 														}
 													}
 												}
@@ -123,8 +123,7 @@
 									</select>
 								</div>
 
-								<button type="submit" class="btn btn-primary" name="edit_jemaat">Update Jemaat</button>
-								<button type="submit" class="btn btn-primary" name="delete_jemaat">Delete Jemaat</button>
+								<button type="submit" class="btn btn-success" name="btn_edit_jemaat">UPDATE</button>
 						</form>
 						</div>
 					</div>

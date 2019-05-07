@@ -39,35 +39,44 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-			<div class="text-center" style="margin: 8px;">
+			<!-- <div class="text-center" style="margin: 8px;">
 				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
-			</div>
+			</div> -->
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
+							<form method="POST" action=controllers/gereja.php>
 							<table class="table table-hover">
 								<thead>
 								  <tr>
-								  	<th>ID Gereja</th>
-									<th>Jenis Gereja</th>
-									<th>Alamat Gereja</th>
+								  	<th>ID GEREJA</th>
+									<th>JENIS GEREJA</th>
+									<th>KOTA GEREA
+									<th>ALAMAT GEREJA</th>
+									<th>ACTION</th>
 								  </tr>
 								</thead>
 								<tbody>
 								<?php
 									$sql = "SELECT * FROM Gereja";
 									$result = mysqli_query($mysqli, $sql);
-										// output data of each row
+									// output data of each row
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
-										<td><a href="edit_gereja.php?idgereja=<?=$row["idGereja"]?>"><?=$row["idGereja"]?></a></td>
+										<td><?=$row["idGereja"]?></td>
 										<td><?=$row["JenisGereja"]?></td>
+										<td><?=$row["Nama"]?></td>
 										<td><?=$row["AlamatGereja"]?></td>
+										<td>
+											<button type="submit" class="btn btn-warning" name="edit_gereja" value="<?=$row["idGereja"]?>">EDIT</button>
+											<!-- <button type="submit" class="btn btn-danger" id="delete" name="delete_gereja" value="<?=$row["idGereja"]?>">DELETE</button> -->
+										</td>
 									</tr>
 								<?php } ?>
 								</tbody>
-						  </table>
+						  	</table>
+						 	</form> 
 						</div>
 					</div>
 				</div><!-- /.panel-->
@@ -94,6 +103,11 @@
             document.body.innerHTML = originalContents;
             return true;
         }
+
+        // $('.table tbody').onclick('click', '#delete', function()
+        // {
+        // 	$(this).closest('tr').remove();
+        // });
     </script>
 		
 </body>
