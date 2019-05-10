@@ -43,11 +43,20 @@
 				<em class="fa fa-navicon">&nbsp;</em> Persembahan <span data-toggle="collapse" href="#sub-item-1" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-1">
-					<li><a class="" href="create_nota_persembahan.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Buat Persembahan
-					</a></li>
 					<li><a class="" href="list_nota_persembahan.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Persembahan
+					</a></li>
+				</ul>
+			</li>
+			<li class="parent "><a data-toggle="collapse" href="#sub-item-2">
+				<em class="fa fa-navicon">&nbsp;</em> Gereja <span data-toggle="collapse" href="#sub-item-2" class="icon pull-right"><em class="fa fa-plus"></em></span>
+				</a>
+				<ul class="children collapse" id="sub-item-2">
+					<li><a class="" href="create_gereja.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Tambah Gereja
+					</a></li>
+					<li><a class="" href="list_gereja.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> List Gereja
 					</a></li>
 				</ul>
 			</li>
@@ -55,6 +64,9 @@
 				<em class="fa fa-navicon">&nbsp;</em> Jemaat <span data-toggle="collapse" href="#sub-item-4" class="icon pull-right"><em class="fa fa-plus"></em></span>
 				</a>
 				<ul class="children collapse" id="sub-item-4">
+					<li><a class="" href="create_jemaat.php">
+						<span class="fa fa-arrow-right">&nbsp;</span> Create Jemaat
+					</a></li>
 					<li><a class="" href="list_jemaat.php">
 						<span class="fa fa-arrow-right">&nbsp;</span> List Jemaat
 					</a></li>

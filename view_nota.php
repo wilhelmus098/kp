@@ -23,10 +23,20 @@
 	<![endif]-->
 </head>
 <body>
-	<?php
+<?php
+	if($_SESSION['jabatan'] == "PENDETA")
+	{
+		require_once('sidemenupendeta.php');
+	}
+	if($_SESSION['jabatan'] == "BENDAHARA")
+	{
 		require_once('sidemenu.php');
-	?>
-
+	}
+	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	{
+		require_once('sidemenupemimpin.php');
+	}		
+?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
@@ -59,7 +69,7 @@
                             $penghitung1 = "";
                             $status1 = "";
                             $idgereja1 = "";
-                            
+                            $sumpersembahanumum = "";
 							if ($result->num_rows > 0)
 							{
 								while($row = $result->fetch_assoc())
@@ -77,6 +87,19 @@
 		                            $penghitung1 = $row["Penghitung"];
 		                            $status1 = $row["Verified"];
 		                            $idgereja1 = $row["idGereja"];
+								}
+							}
+							$sumpersembahanumum = $harituhan1 + $sm1 + $doatengahminggu1
+						?>
+						<?php
+							$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan ='" . $idnota . "'";
+							$result0 =  mysqli_query($mysqli, $sql0);
+							$sumpersembahankhusus = "";
+							if($result0->num_rows > 0)
+							{
+								while($row0 = $result0->fetch_assoc())
+								{
+									$sumpersembahankhusus = $row0['totalkhusus'];
 								}
 							}
 						?>
@@ -125,10 +148,12 @@
 										<label>Petugas Penghitung</label>
                                         <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>" disabled>
 									</div>
-
+									<?php
+										$grandtotal = $sumpersembahankhusus + $sumpersembahanumum;
+									?>
 									<div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
-										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
+										<input type="text" class="form-control" name="total_seluruh_persembahan" value="<?=$grandtotal?>" disabled="true">
 									</div>
 
 									<table class="table table-hover">
@@ -168,13 +193,17 @@
 
 									<div class="form-group">
 										<label>Verfied</label>
-										<select class="form-control" name="status_verifikasi">
+										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'disabled'?>>
 											<option value="YES">YES</option>
-											<option value="NO">NO</option>
+											<option value="NO" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'selected'?>>NO</option>
 										</select>
 									</div>
-
-									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE</button>
+									<?php
+										if($_SESSION['jabatan'] != "BENDAHARA")
+										{
+											echo "<button type='submit' class='btn btn-primary' name='btn_edit_nota' value='$idnota'>SAVE</button>";
+										}
+									?>
 							</form>
 						</div>
 					</div>

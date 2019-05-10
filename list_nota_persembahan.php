@@ -22,8 +22,18 @@
 </head>
 <body>
 <?php
-	require_once('sidemenu.php');
-			
+	if($_SESSION['jabatan'] == "PENDETA")
+	{
+		require_once('sidemenupendeta.php');
+	}
+	if($_SESSION['jabatan'] == "BENDAHARA")
+	{
+		require_once('sidemenu.php');
+	}
+	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	{
+		require_once('sidemenupemimpin.php');
+	}		
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -47,7 +57,13 @@
 						<form method="POST" action=controllers/persembahan.php>
 							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
 							<div class="text-center" style="margin: 8px">
-								<button class='btn btn-primary m-2' style="width:200px" name="btn_create_nota">CREATE NEW</button>				
+							<?php
+								if($_SESSION['jabatan'] == "BENDAHARA")
+								{
+									echo "<button class='btn btn-primary m-2' style='width:200px' name='btn_create_nota'>CREATE NEW</button>";
+								}	
+							?>
+												
 							</div>
 							<table class="table table-hover">
 								<thead>
@@ -62,7 +78,7 @@
 								<tbody>
 								<?php
 									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
-									$sql = "SELECT * FROM NotaPersembahan ORDER BY idNotaPersembahan DESC";
+									$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
@@ -83,17 +99,21 @@
 
 											<?php while ($row = $result->fetch_assoc())?> 
 												<?php
-													if($_SESSION['jabatan'] != ($row["Jabatan"] = "BENDAHARA") )
+													if($_SESSION['jabatan'] == "BENDAHARA")
 													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> <i class='glyphicon glyphicon-eye-open'></i</button>";
-													}
-													else
-													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> <i class='glyphicon glyphicon-eye-open'></i></button>";
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
 
 														echo "&nbsp";
 														
-														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='<?=$id?>'> <i class='glyphicon glyphicon-edit'></i></button>";
+														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
+
+														echo "&nbsp";
+
+														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+													}
+													else
+													{
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
 
 														echo "&nbsp";
 

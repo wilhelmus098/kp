@@ -34,7 +34,6 @@ if (isset($_SESSION["user_logged_in"]))
 								<input class="form-control" id="password" placeholder="Password" name="password" type="password" value="">
 							</div>
 							<input type="submit" class="btn btn-primary" id="submit" name="btn_login" value="Login"></input><span>
-							<input type="submit" class="btn btn-primary" id="register" name="btn_register" value="Register"></input>
 							</span>
 							
 					</form>

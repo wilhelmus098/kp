@@ -22,10 +22,19 @@
 </head>
 <body>
 <?php
-	require_once('sidemenu.php');
-			
+	if($_SESSION['jabatan'] == "PENDETA")
+	{
+		require_once('sidemenupendeta.php');
+	}
+	if($_SESSION['jabatan'] == "BENDAHARA")
+	{
+		require_once('sidemenu.php');
+	}
+	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	{
+		require_once('sidemenupemimpin.php');
+	}		
 ?>
-	
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
