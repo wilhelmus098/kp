@@ -69,7 +69,7 @@
                             $penghitung1 = "";
                             $status1 = "";
                             $idgereja1 = "";
-                            
+                            $sumpersembahanumum = "";
 							if ($result->num_rows > 0)
 							{
 								while($row = $result->fetch_assoc())
@@ -89,6 +89,7 @@
 		                            $idgereja1 = $row["idGereja"];
 								}
 							}
+							$sumpersembahanumum = $harituhan1 + $sm1 + $doatengahminggu1
 						?>
 						<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
@@ -135,10 +136,10 @@
 										<label>Petugas Penghitung</label>
                                         <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>" disabled>
 									</div>
-
+									
 									<div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
-										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
+										<input type="text" class="form-control" name="total_seluruh_persembahan" value="<?=$sumpersembahanumum?>" disabled="true">
 									</div>
 
 									<table class="table table-hover">
