@@ -47,7 +47,13 @@
 						<form method="POST" action=controllers/persembahan.php>
 							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
 							<div class="text-center" style="margin: 8px">
-								<button class='btn btn-primary m-2' style="width:200px" name="btn_create_nota">CREATE NEW</button>				
+							<?php
+								if($_SESSION['jabatan'] == "BENDAHARA")
+								{
+									echo "<button class='btn btn-primary m-2' style='width:200px' name='btn_create_nota'>CREATE NEW</button>";
+								}	
+							?>
+												
 							</div>
 							<table class="table table-hover">
 								<thead>
