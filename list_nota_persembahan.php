@@ -85,19 +85,19 @@
 												<?php
 													if($_SESSION['jabatan'] != ($row["Jabatan"] = "BENDAHARA") )
 													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> DETAIL</button>";
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> <i class='glyphicon glyphicon-eye-open'></i</button>";
 													}
 													else
 													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> DETAIL</button>";
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> <i class='glyphicon glyphicon-eye-open'></i></button>";
 
 														echo "&nbsp";
 														
-														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='<?=$id?>'> EDIT</button>";
+														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='<?=$id?>'> <i class='glyphicon glyphicon-edit'></i></button>";
 
 														echo "&nbsp";
 
-														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'>PRINT</button>";
+														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
 													}
 												?>
 										</td>											

@@ -69,8 +69,7 @@
 										<td><?=$row["Nama"]?></td>
 										<td><?=$row["AlamatGereja"]?></td>
 										<td>
-											<button type="submit" class="btn btn-warning" name="edit_gereja" value="<?=$row["idGereja"]?>">EDIT</button>
-											<!-- <button type="submit" class="btn btn-danger" id="delete" name="delete_gereja" value="<?=$row["idGereja"]?>">DELETE</button> -->
+											<button type="submit" class="btn btn-success" name="edit_gereja" value="<?=$row["idGereja"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 										</td>
 									</tr>
 								<?php } ?>
