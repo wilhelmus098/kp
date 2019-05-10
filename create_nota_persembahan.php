@@ -38,15 +38,9 @@
 		
 		<div class="row">
 			<div class="col-lg-12">
-			<!-- <div class="text-center" style="margin: 8px;">
-				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
-			</div> -->
-<!-- 			<div class="text-center" style="margin: 8px">
-				<button class='btn btn-primary m-2' style="width:200px">PRINT LAPORAN</button>				
-			</div> -->
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
-						<div class="col-md-12">
+						<div class="col-md-6">
 							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
