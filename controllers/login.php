@@ -29,7 +29,7 @@ if ($row==1){
 		   // echo "<br><br>";
 	}
 	// print_r($_SESSION);
-	header("Location:../create_nota_persembahan.php");
+	header("Location:../list_nota_persembahan.php");
 	
 	
 }else if ($row==0)
