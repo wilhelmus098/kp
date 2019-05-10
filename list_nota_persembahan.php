@@ -76,19 +76,31 @@
 										<td><?=$row["Verified"]?></td>
 										<td>
 											<?php
-											if($_SESSION['jabatan'] != 'BENDAHARA')
-											{
-												echo "<button type="submit" class="btn btn-success" name="btn_view" value="<?=$id?>">DETAIL</button>"
-											}
+											$sql = "SELECT * FROM User";
+											$result = mysqli_query($mysqli, $sql);
+
 											?>
-											
 
+											<?php while ($row = $result->fetch_assoc())?> 
+												<?php
+													if($_SESSION['jabatan'] != ($row["Jabatan"] = "BENDAHARA") )
+													{
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> DETAIL</button>";
+													}
+													else
+													{
+														echo "<button type='submit' class='btn btn-success' name='btn_view' value='<?=$id?>'> DETAIL</button>";
 
-											<button type="submit" class="btn btn-primary" name="btn_edit" value="<?=$id?>">EDIT</button>
-										</td>
-										<td>
-											<button onclick='myFunction()'  class='btn btn-default' id="btn_print">Print</button>
-										</td>
+														echo "&nbsp";
+														
+														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='<?=$id?>'> EDIT</button>";
+
+														echo "&nbsp";
+
+														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'>PRINT</button>";
+													}
+												?>
+										</td>											
 									</tr>
 								<?php } ?>
 								</tbody>
