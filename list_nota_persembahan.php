@@ -75,8 +75,19 @@
 										<td><?=$row["PemimpinIbadah"]?></td>
 										<td><?=$row["Verified"]?></td>
 										<td>
-											<button type="submit" class="btn btn-primary" name="btn_view">DETAIL</button>
+											<?php
+											if($_SESSION['jabatan'] != 'BENDAHARA')
+											{
+												echo "<button type="submit" class="btn btn-success" name="btn_view" value="<?=$id?>">DETAIL</button>"
+											}
+											?>
+											
+
+
 											<button type="submit" class="btn btn-primary" name="btn_edit" value="<?=$id?>">EDIT</button>
+										</td>
+										<td>
+											<button onclick='myFunction()'  class='btn btn-default' id="btn_print">Print</button>
 										</td>
 									</tr>
 								<?php } ?>

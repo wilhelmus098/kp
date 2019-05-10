@@ -59,7 +59,7 @@
 							<form role="form" action="controllers/users.php" method="POST"> 
 								<label>User Name</label>
 								<div class="form-group">
-									<input class="form-control" placeholder="Username" name="username" type="username" autofocus="" value="<?=$iduser?>">
+									<input class="form-control" placeholder="Username" name="username" type="username" autofocus="" value="<?=$iduser?>" disabled>
 								</div>
 								<div class="form-group">
 									<input class="form-control" placeholder="Old Password" name="password" type="password" value="">
@@ -80,13 +80,21 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
+														if($row["idGereja"] == $_SESSION['idgereja'])
+														{
+															echo "<option value=\"". $row['idGereja'] ."\" selected >".$row["JenisGereja"]." - ".$row["Nama"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['idGereja'] ."\"  >".$row["JenisGereja"]." - ".$row["Nama"]."</option>";	
+														}
+														
 													}
 												}
 											?>
 										</select>
 								</div>
-								<div class="form-group">
+<!-- 								<div class="form-group">
 									<label>Jabatan</label>
 									<select class="form-control" name="position" <?php if($_SESSION['jabatan']=='BENDAHARA') echo 'disabled'; ?>>
 										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
@@ -95,7 +103,7 @@
 										<option value="KOOR CABANG"<?php if($userPos=='KOOR CABANG')echo " selected"?>>KOORDINATOR CABANG</option>
 										<option value="BENDAHARA"<?php if($userPos=='BENDAHARA')echo " selected"?>>BENDAHARA</option>
 									</select>
-								</div>
+								</div> -->
 
 								<input type="submit" class="btn btn-primary" name="btnUpdate" value="Update User">
 								<input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User">

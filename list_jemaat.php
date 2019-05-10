@@ -61,7 +61,7 @@
 								</thead>
 								<tbody>
 								<?php
-									$sql = "SELECT * FROM Jemaat, Gereja WHERE Jemaat.idGereja = Gereja.idGereja";
+									$sql = "SELECT * FROM Jemaat j INNER JOIN Gereja g on j.idGereja = g.idGereja WHERE j.idGereja = '" . $_SESSION['idgereja'] . "' ORDER BY NamaJemaat ASC";
 									$result = mysqli_query($mysqli, $sql);
 								?>
 
@@ -76,8 +76,8 @@
 										<td><?=$row["Nama"]?></td> 
 										<td>
 											<button type="submit" class="btn btn-warning" name="edit_jemaat" value="<?=$row["idJemaat"]?>">EDIT</button>
-											<!-- <button type="submit" class="btn btn-danger" id="delete" name="delete_jemaat" value="<?=$row["idJemaat"]?>">DELETE</button> -->
-											<a class="btn btn-sm btn-danger" name="delete_jemaat" id="delete_jemaat" data-id="<?=$row["idJemaat"];?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash"></i></a>
+											<button type="submit" class="btn btn-danger" id="delete" name="delete_jemaat" value="<?=$row["idJemaat"]?>">DELETE</button> 
+											<!-- <a class="btn btn-sm btn-danger" name="delete_jemaat" id="delete_jemaat" did="<?=$row["idJemaat"];?>" href="javascript:void(0)"><i class="glyphicon glyphicon-trash"></i></a> -->
 										</td>
 									</tr>
 								<?php } ?>

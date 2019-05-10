@@ -41,9 +41,9 @@
 			<!-- <div class="text-center" style="margin: 8px;">
 				<button onclick='myFunction()'  class='btn btn-primary m-2' style="width:200px">Print</button>
 			</div> -->
-			<div class="text-center" style="margin: 8px">
+<!-- 			<div class="text-center" style="margin: 8px">
 				<button class='btn btn-primary m-2' style="width:200px">PRINT LAPORAN</button>				
-			</div>
+			</div> -->
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
@@ -57,7 +57,7 @@
 										<label>Pemimpin Ibadah</label>
 										<select class="form-control" name="nama_pemimpin">
 											<?php
-												$sql = "select * from User where Jabatan != 'BENDAHARA'";
+												$sql = "SELECT * FROM User u WHERE u.Jabatan != 'BENDAHARA' AND u.idGereja =  '" . $_SESSION['idgereja'] . "' OR u.Jabatan = 'PENDETA' ";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
@@ -99,7 +99,7 @@
 										<label>Bendahara</label>
 										<select class="form-control" name="bendahara">
 											<?php
-												$sql = "select * from User where Jabatan = 'BENDAHARA'";
+												$sql = "SELECT * FROM User WHERE Jabatan = 'BENDAHARA'";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
@@ -116,13 +116,15 @@
 										<label>Petugas Penghitung</label>
 										<select class="form-control" name="petugas_penghitung">
 											<?php
-												$sql = "select * from Jemaat";
+												$sql = "SELECT * FROM Jemaat j WHERE j.idGereja = '" . $_SESSION['idgereja'] . "'";
 												$result = mysqli_query($mysqli, $sql);
+												//echo $sql;
 												if($result->num_rows > 0)
 												{
 													while($row = $result->fetch_assoc())
 													{
 														echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
+														//echo $sql;
 													}
 												}
 											?>
@@ -133,7 +135,7 @@
 										<label>Gereja</label>
 										<select class="form-control" name="id_gereja">
 											<?php
-												$sql = "select * from Gereja";
+												$sql = "SELECT * FROM Gereja";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{

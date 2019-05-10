@@ -83,83 +83,52 @@
 						<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
-										<input type="date" class="form-control" name="tgl_ibadah" value="<?=$tglibadah1?>">
+										<input type="date" class="form-control" name="tgl_ibadah" value="<?=$tglibadah1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Pemimpin Ibadah</label>
-                                        <input type="text" class="form-control" name="pemimpin_ibadah" value="<?=$pemimpinibadah1?>" >
+                                        <input type="text" class="form-control" name="pemimpin_ibadah" value="<?=$pemimpinibadah1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>" >
+										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Tanpa Nama</label>
-										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>" >
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Sekolah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>" >
+										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Doa Tengah Minggu</label>
-										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>" >
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Doa Tengah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>" >
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Bendahara</label>
-                                        <input type="text" class="form-control" name="bendahara" value="<?=$bendahara1?>" >
+                                        <input type="text" class="form-control" name="bendahara" value="<?=$bendahara1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
-                                        <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>">
-									</div>
-
-									<div class="form-group">
-										<label>Gereja</label>
-                                        <?php
-                                            $sql = "SELECT * FROM Gereja WHERE idGereja='". $idgereja1 . "'";
-                                            $result = mysqli_query($mysqli, $sql);
-                                            if($result->num_rows > 0)
-                                            {
-                                                while($row1 = $result->fetch_assoc())
-                                                {
-                                                    $idgereja2 = $row1['idGereja'];
-                                                    $jenisGereja2 = $row1['JenisGereja'];
-                                                    $alamatGereja2 = $row1['AlamatGereja'];
-                                                }
-                                            }
-                                        ?>
-                                        <input type="text" class="form-control" name="gereja" value="<?php echo $idgereja2." - ".$jenisGereja2." - ".$alamatGereja2;?>" disabled>
-									</div>
-
-									<div class="form-group">
-										<label>Verfied</label>
-										<select name="status_verifikasi">
-											<option value="YES">YES</option>
-											<option value="NO">NO</option>
-										</select>
+                                        <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>" disabled>
 									</div>
 
 									<div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
 										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
-									</div>
-
-									<div class="form-group">
-										//<label font-size="24px">DETAIL NOTA PERSEMBAHAN</label>
-										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat">ADD DETAIL</button>
 									</div>
 
 									<table class="table table-hover">
@@ -196,6 +165,15 @@
 										<?php } ?>
 										</tbody>
 						  			</table>
+
+									<div class="form-group">
+										<label>Verfied</label>
+										<select class="form-control" name="status_verifikasi">
+											<option value="YES">YES</option>
+											<option value="NO">NO</option>
+										</select>
+									</div>
+
 									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE</button>
 							</form>
 						</div>

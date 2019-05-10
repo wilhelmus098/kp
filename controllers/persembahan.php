@@ -3,7 +3,7 @@ include '../conn.php';
 include '../checksession.php';
 if(isset($_POST['btn_view']))
 {
-    header('Location:../edit_nota_persembahan.php?idnota='.$_POST['btn_view']);
+    header('Location:../view_nota.php?idnota='.$_POST['btn_view']);
 }
 
 if(isset($_POST['btn_edit']))
@@ -28,7 +28,7 @@ if(isset($_POST['btn_insert_nota']))
 
 if(isset($_POST['btn_edit_nota']))
 {
-    editNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],$_POST["status_verifikasi"],$_POST["id_gereja"]);
+    editNota($_POST["nama_pemimpin"],$_POST["tgl_ibadah"],$_POST["jumlah_hadir"],$_POST["persembahan_tanpa_nama"],$_POST["persembahan_sm"],$_POST["tgl_doa_tengah_minggu"],$_POST["persembahan_tengah_minggu"],'10000',$_POST["bendahara"],$_POST["petugas_penghitung"],'NO',$_SESSION['idgereja']);
 }
 
 if(isset($_POST['btn_pk_jemaat']))

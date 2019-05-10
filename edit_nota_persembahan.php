@@ -88,7 +88,26 @@
 
 									<div class="form-group">
 										<label>Pemimpin Ibadah</label>
-                                        <input type="text" class="form-control" name="pemimpin_ibadah" value="<?=$pemimpinibadah1?>" >
+										<select class="form-control" name="nama_pemimpin">
+											<?php
+												$sql = "SELECT * FROM User u WHERE u.Jabatan != 'BENDAHARA' AND u.idGereja =  '" . $_SESSION['idgereja'] . "' OR u.Jabatan = 'PENDETA' ";
+												$result = mysqli_query($mysqli, $sql);
+												if($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														if($pemimpinibadah1 == $row['uname'])
+														{
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														}
+														else
+														{
+															echo "<option value=\"". $row['uname'] ."\">".$row["uname"]." - ".$row["Jabatan"]."</option>";	
+														}
+													}
+												}
+											?>
+										</select>
 									</div>
 
 									<div class="form-group">
@@ -123,7 +142,7 @@
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
-                                        <input type="text" class="form-control" name="penghitung" value="<?=$penghitung1?>">
+                                        <input type="text" class="form-control" name="petugas_penghitung" value="<?=$penghitung1?>">
 									</div>
 
 									<div class="form-group">
@@ -143,7 +162,6 @@
                                                 }
                                             }
                                         ?>
-                                        <input type="text" class="form-control" name="gereja" value="<?php echo $jenisGereja2." - ".$alamatGereja2;?>" disabled>
 									</div>
 
 									<!-- <div class="form-group">
