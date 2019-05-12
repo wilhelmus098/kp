@@ -34,7 +34,7 @@ if ($row==1){
 	
 }else if ($row==0)
 {
-	// echo "0";
+	header("Location:../login.php");
 }
 mysqli_close($mysqli);
 ?>

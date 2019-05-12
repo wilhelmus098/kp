@@ -62,7 +62,7 @@ if (isset($_SESSION["user_logged_in"]))
 							console.log(data);
 							if(data == 1)
 							{
-								window.open("list_schedule.php","_self")
+								window.open("list_nota_persembahan.php","_self")
 							}
 							else
 								$("#error").text("wrong username or password")
@@ -76,7 +76,7 @@ if (isset($_SESSION["user_logged_in"]))
 					$.post("controllers/login.php",{username: username.value, password: password.value},function(data){		
 						if(data == 1)
 						{
-							window.open("list_schedule.php","_self")
+							window.open("list_nota_persembahan.php","_self")
 						}
 						else
 							$("#error").text("wrong username or password")
