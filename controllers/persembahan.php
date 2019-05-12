@@ -1,6 +1,12 @@
 <?php
 include '../conn.php';
 include '../checksession.php';
+
+if(isset($_POST['btn_filter']))
+{
+    header('Location:../list_nota_persembahan.php?awal='.$_POST['awal'].'&akhir='.$_POST['akhir']);
+}
+
 if(isset($_POST['btn_view']))
 {
     header('Location:../view_nota.php?idnota='.$_POST['btn_view']);

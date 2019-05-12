@@ -56,7 +56,7 @@
 						<div class="col-md-12">
 						<!-- TAMPILAN FITUR SEARCH -->
 
-						<form method="GET" action=list_nota_persembahan.php>
+						<form method="POST" action=controllers/persembahan.php>
 							<div class="form-group">
 								<label>Tanggal Awal</label>
 								<input type="date" class="form-control" name="awal" placeholder="">
@@ -91,7 +91,7 @@
 								</thead>
 								<tbody>
 								<?php
-									if(isset($_GET['btn_filter']))
+									if(isset($_GET['awal']) && isset($_GET['akhir']))
 									{
 										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
 									}
@@ -99,7 +99,7 @@
 									{
 										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
 									}
-									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
+									// NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
 									//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
