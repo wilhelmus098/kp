@@ -77,8 +77,16 @@
 								</thead>
 								<tbody>
 								<?php
+									//if(isset($_GET['btn_search']))
+									//{
+										//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
+									//}
+									//else
+									//{
+										//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+									//}
 									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
-									$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+									$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
@@ -92,34 +100,21 @@
 										<td><?=$row["Verified"]?></td>
 										<td>
 											<?php
-											$sql = "SELECT * FROM User";
-											$result = mysqli_query($mysqli, $sql);
-
+												if($_SESSION['jabatan'] == "BENDAHARA")
+												{
+													echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
+													echo "&nbsp";
+													echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
+													echo "&nbsp";
+													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+												}
+												else
+												{
+													echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
+													echo "&nbsp";
+													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+												}
 											?>
-
-											<?php while ($row = $result->fetch_assoc())?> 
-												<?php
-													if($_SESSION['jabatan'] == "BENDAHARA")
-													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
-
-														echo "&nbsp";
-														
-														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
-
-														echo "&nbsp";
-
-														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
-													}
-													else
-													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
-
-														echo "&nbsp";
-
-														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
-													}
-												?>
 										</td>											
 									</tr>
 								<?php } ?>
