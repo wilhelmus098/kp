@@ -54,6 +54,20 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
+						<!-- TAMPILAN FITUR SEARCH -->
+
+						<form method="GET" action=list_nota_persembahan.php>
+							<div class="form-group">
+								<label>Tanggal Awal</label>
+								<input type="date" class="form-control" name="awal" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>Tanggal Akhir</label>
+								<input type="date" class="form-control" name="akhir" placeholder="">
+							</div>
+							<button type="submit" class="btn btn-primary" name="btn_filter" >Filter Nota</button>
+						<form>
+						
 						<form method="POST" action=controllers/persembahan.php>
 							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
 							<div class="text-center" style="margin: 8px">
@@ -77,16 +91,16 @@
 								</thead>
 								<tbody>
 								<?php
-									//if(isset($_GET['btn_search']))
-									//{
-										//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
-									//}
-									//else
-									//{
-										//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
-									//}
+									if(isset($_GET['btn_filter']))
+									{
+										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
+									}
+									else
+									{
+										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+									}
 									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
-									$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
+									//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
