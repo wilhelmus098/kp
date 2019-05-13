@@ -43,7 +43,7 @@
 				<li><a href="#">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">VIEW NOTA PERSEMBAHAN</li>
+				<li class="active">EDIT NOTA PERSEMBAHAN</li>
 			</ol>
 	</div><!--/.row-->
 
@@ -93,12 +93,12 @@
 						<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
-										<input type="date" class="form-control" name="tgl_ibadah" value="<?=$tglibadah1?>">
+										<input type="date" class="form-control" name="tgl_ibadah" value="<?=$tglibadah1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Pemimpin Ibadah</label>
-										<select class="form-control" name="nama_pemimpin">
+										<select class="form-control" name="nama_pemimpin" required>
 											<?php
 												$sql = "SELECT * FROM User u WHERE u.Jabatan != 'BENDAHARA' AND u.idGereja =  '" . $_SESSION['idgereja'] . "' OR u.Jabatan = 'PENDETA' ";
 												$result = mysqli_query($mysqli, $sql);
@@ -122,37 +122,37 @@
 
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>" >
+										<input type="text" class="form-control" name="jumlah_hadir" value="<?=$hadir1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Tanpa Nama</label>
-										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>" >
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" value="<?=$harituhan1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Sekolah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>" >
+										<input type="text" class="form-control" name="persembahan_sm" value="<?=$sm1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Doa Tengah Minggu</label>
-										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>" >
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" value="<?=$tgldoatengahminggu1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Doa Tengah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>" >
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" value="<?=$doatengahminggu1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Bendahara</label>
-                                        <input type="text" class="form-control" name="bendahara" value="<?=$bendahara1?>" >
+                                        <input type="text" class="form-control" name="bendahara" value="<?=$bendahara1?>" required>
 									</div>
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
-                                        <input type="text" class="form-control" name="petugas_penghitung" value="<?=$penghitung1?>">
+                                        <input type="text" class="form-control" name="petugas_penghitung" value="<?=$penghitung1?>" required>
 									</div>
 
 									<div class="form-group">

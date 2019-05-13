@@ -77,21 +77,21 @@
 						<form role="form" method="POST" action="controllers/gereja.php">
 								<div class="form-group">
 									<label>ID Gereja</label>
-                                    <input class="form-control" placeholder="" name="idgereja" type="text" autofocus="" value="<?=$idgereja1?>">
+                                    <input class="form-control" placeholder="" name="idgereja" type="text" autofocus="" value="<?=$idgereja1?>" required>
 								</div>
 								<div class="form-group">
 									<label>Jenis Gereja</label>
-                                    <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>">
+                                    <input class="form-control" placeholder="" name="jenis_gereja" type="text" autofocus="" value="<?=$jenisgereja1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Kota Gereja</label>
-									<input type="text" class="form-control" name="kota_gereja" value="<?=$nama1?>">
+									<input type="text" class="form-control" name="kota_gereja" value="<?=$nama1?>" required>
 								</div>
 								
 								<div class="form-group">
 									<label>Alamat Gereja</label>
-									<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>">
+									<input type="text" class="form-control" name="alamat_gereja" placeholder="" value="<?=$alamatgereja1?>" required>
 								</div>
 								<button type="submit" class="btn btn-success" name="btn_edit_gereja">UPDATE</button>
 						</form>

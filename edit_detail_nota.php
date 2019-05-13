@@ -147,31 +147,31 @@
 								</div>
 								<div class="form-group">
 									<label>Hari Tuhan</label>
-									<input type="text" class="form-control" name="hari_tuhan" placeholder="" value="<?=$hari_tuhan?>">
+									<input type="text" class="form-control" name="hari_tuhan" placeholder="" value="<?=$hari_tuhan?>" required>
                                 </div>
                                 <div class="form-group">
 									<label>Perpuluhan</label>
-									<input type="text" class="form-control" name="perpuluhan" placeholder="" value="<?=$perpuluhan?>">
+									<input type="text" class="form-control" name="perpuluhan" placeholder="" value="<?=$perpuluhan?>" required>
                                 </div>
                                 <div class="form-group">
 									<label>Ucapan Syukur</label>
-									<input type="text" class="form-control" name="ucapan_syukur" placeholder="" value="<?=$ucapan_syukur?>">
+									<input type="text" class="form-control" name="ucapan_syukur" placeholder="" value="<?=$ucapan_syukur?>" required>
                                 </div>
                                 <div class="form-group">
 									<label>Janji Iman</label>
-									<input type="text" class="form-control" name="janji_iman" placeholder="" value="<?=$janji_iman?>">
+									<input type="text" class="form-control" name="janji_iman" placeholder="" value="<?=$janji_iman?>" required>
                                 </div>
                                 <div class="form-group">
 									<label>Pembangunan Gereja</label>
-									<input type="text" class="form-control" name="pembangunan_gereja" placeholder="" value="<?=$pembangunan_gereja?>">
+									<input type="text" class="form-control" name="pembangunan_gereja" placeholder="" value="<?=$pembangunan_gereja?>" required>
                                 </div>
                                 <div class="form-group">
 									<label>Lain - Lain</label>
-									<input type="text" class="form-control" name="lain_lain" placeholder="" value="<?=$lain?>">
+									<input type="text" class="form-control" name="lain_lain" placeholder="" value="<?=$lain?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Cara Pembayaran</label>
-                                    <select class="form-control" name="position">
+                                    <select class="form-control" name="position" required>
 										<option value="TUNAI" <?php if($pembayaran=='TUNAI')echo 'selected'?>>TUNAI</option>
 										<option value="TRANSFER" <?php if($pembayaran=='TRANSFER')echo 'selected'?>>TRANSFER</option>
 									</select>

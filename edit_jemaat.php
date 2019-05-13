@@ -81,37 +81,37 @@
 						<form role="form" method="POST" action="controllers/jemaat.php">
 								<div class="form-group">
 									<label>ID Jemaat</label>
-                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$idjemaat1?>">
+                                    <input class="form-control" placeholder="" name="idjemaat" type="text" autofocus="" value="<?=$idjemaat1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Nama</label>
-									<input type="text" class="form-control" name="nama_jemaat" value="<?=$namajemaat1?>">
+									<input type="text" class="form-control" name="nama_jemaat" value="<?=$namajemaat1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Tempat Lahir</label>
-									<input type="text" class="form-control" name="tempat_lahir" value="<?=$tempatlahir1?>">
+									<input type="text" class="form-control" name="tempat_lahir" value="<?=$tempatlahir1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Tanggal Lahir</label>
-									<input type="date" class="form-control" name="tgl_lahir" value="<?=$tanggallahir1?>">
+									<input type="date" class="form-control" name="tgl_lahir" value="<?=$tanggallahir1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Alamat</label>
-									<input type="text" class="form-control" name="alamat_jemaat" value="<?=$alamat1?>">
+									<input type="text" class="form-control" name="alamat_jemaat" value="<?=$alamat1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Nomor Telepon</label>
-									<input type="text" class="form-control" name="nomor_jemaat" value="<?=$nomor1?>">
+									<input type="text" class="form-control" name="nomor_jemaat" value="<?=$nomor1?>" required>
 								</div>
 
 								<div class="form-group">
 									<label>Berjemaat di Gereja: </label>
-										<select class="form-control" name="gereja_jemaat_id">
+										<select class="form-control" name="gereja_jemaat_id" required>
 											<?php
 												$sql = "select * from Gereja";
 												$result = mysqli_query($mysqli, $sql);

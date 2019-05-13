@@ -73,17 +73,17 @@
 									<input class="form-control" placeholder="Username" name="username" type="username" autofocus="" value="<?=$iduser?>" disabled>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Old Password" name="password" type="password" value="">
+									<input class="form-control" placeholder="Old Password" name="password" type="password" value="" required>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="New Password" name="password1" type="password" value="">
+									<input class="form-control" placeholder="New Password" name="password1" type="password" value="" required>
 								</div>
 								<div class="form-group">
-									<input class="form-control" placeholder="Retype New Password" name="password2" type="password" value="">
+									<input class="form-control" placeholder="Retype New Password" name="password2" type="password" value="" required>
 								</div>
 								<div class="form-group">
 									<label>Jemaat GBA</label>
-										<select class="form-control" name="gereja_jemaat_id">
+										<select class="form-control" name="gereja_jemaat_id" required>
 											<?php
 												$sql = "select * from Gereja";
 												$result = mysqli_query($mysqli, $sql);

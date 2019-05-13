@@ -54,12 +54,12 @@
 							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
-										<input type="date" class="form-control" name="tgl_ibadah" placeholder="">
+										<input type="date" class="form-control" name="tgl_ibadah" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Pemimpin Ibadah</label>
-										<select class="form-control" name="nama_pemimpin">
+										<select class="form-control" name="nama_pemimpin" required>
 											<?php
 												$sql = "SELECT * FROM User u WHERE u.Jabatan != 'BENDAHARA' AND u.idGereja =  '" . $_SESSION['idgereja'] . "' OR u.Jabatan = 'PENDETA' ";
 												$result = mysqli_query($mysqli, $sql);
@@ -76,27 +76,27 @@
 
 									<div class="form-group">
 										<label>Jumlah Hadir</label>
-										<input type="text" class="form-control" name="jumlah_hadir" placeholder="">
+										<input type="text" class="form-control" name="jumlah_hadir" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Tanpa Nama</label>
-										<input type="text" class="form-control" name="persembahan_tanpa_nama" placeholder="">
+										<input type="text" class="form-control" name="persembahan_tanpa_nama" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Sekolah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_sm" placeholder="">
+										<input type="text" class="form-control" name="persembahan_sm" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Doa Tengah Minggu</label>
-										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" placeholder="">
+										<input type="date" class="form-control" name="tgl_doa_tengah_minggu" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Persembahan Doa Tengah Minggu</label>
-										<input type="text" class="form-control" name="persembahan_tengah_minggu" placeholder="">
+										<input type="text" class="form-control" name="persembahan_tengah_minggu" placeholder="" required>
 									</div>
 
 									<!-- <div class="form-group">
@@ -118,7 +118,7 @@
 
 									<div class="form-group">
 										<label>Petugas Penghitung</label>
-										<select class="form-control" name="petugas_penghitung">
+										<select class="form-control" name="petugas_penghitung" required>
 											<?php
 												$sql = "SELECT * FROM Jemaat j WHERE j.idGereja = '" . $_SESSION['idgereja'] . "'";
 												$result = mysqli_query($mysqli, $sql);

@@ -57,7 +57,7 @@
 							<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>ID Nota</label>
-										<select class="form-control" name="id_nota">
+										<select class="form-control" name="id_nota" required>
 											<?php
 												$sql = "SELECT * FROM NotaPersembahan";
 												$result = mysqli_query($mysqli, $sql);
@@ -74,7 +74,7 @@
 
 									<div class="form-group">
 										<label>NAMA JEMAAT</label>
-										<select class="form-control" name="nama_jemaat">
+										<select class="form-control" name="nama_jemaat" required>
 											<?php
 												$sql = "select * from Jemaat WHERE idGereja = '" . $_SESSION["idgereja"] . "'";
 												$result = mysqli_query($mysqli, $sql);
@@ -91,37 +91,37 @@
 
 									<div class="form-group">
 										<label>HARI TUHAN</label>
-										<input type="text" class="form-control" name="nilai_hari_tuhan" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_hari_tuhan" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>PERPULUHAN</label>
-										<input type="text" class="form-control" name="nilai_perpuluhan" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_perpuluhan" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>UCAPAN SYUKUR</label>
-										<input type="text" class="form-control" name="nilai_ucapan_syukur" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_ucapan_syukur" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>JANJI IMAN</label>
-										<input type="text" class="form-control" name="nilai_janji_iman" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_janji_iman" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>PEMBANGUNAN GEREJA</label>
-										<input type="text" class="form-control" name="nilai_pembangunan_gereja" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_pembangunan_gereja" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>LAIN - LAIN</label>
-										<input type="text" class="form-control" name="nilai_lain" placeholder="RP.">
+										<input type="text" class="form-control" name="nilai_lain" placeholder="RP." required>
 									</div>
 
 									<div class="form-group">
 										<label>METODE PERSEMBAHAN</label>
-										<select class="form-control" name="metode_persembahan">
+										<select class="form-control" name="metode_persembahan" required>
 											<option value="TUNAI">TUNAI</option>
 											<option value="TRANSFER">TRANSFER</option>
 										</select>	

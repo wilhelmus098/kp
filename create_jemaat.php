@@ -55,32 +55,32 @@
 							<form role="form" method="POST" action="controllers/jemaat.php">
 									<div class="form-group">
 										<label>Nama</label>
-										<input type="text" class="form-control" name="nama_jemaat" placeholder="Nama Jemaat">
+										<input type="text" class="form-control" name="nama_jemaat" placeholder="Nama Jemaat" required>
 									</div>
 
 									<div class="form-group">
 										<label>Tempat Lahir</label>
-										<input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir">
+										<input type="text" class="form-control" name="tempat_lahir" placeholder="Tempat Lahir" required>
 									</div>
 
 									<div class="form-group">
 										<label>Tanggal Lahir</label>
-										<input type="date" class="form-control" name="tgl_lahir" placeholder="">
+										<input type="date" class="form-control" name="tgl_lahir" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Alamat</label>
-										<input type="text" class="form-control" name="alamat_jemaat" placeholder="Jalan Apa">
+										<input type="text" class="form-control" name="alamat_jemaat" placeholder="Jalan Apa" required>
 									</div>
 
 									<div class="form-group">
 										<label>Nomor Telepon</label>
-										<input type="text" class="form-control" name="nomor_jemaat" placeholder="">
+										<input type="text" class="form-control" name="nomor_jemaat" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Jemaat GBA</label>
-										<select class="form-control" name="gereja_jemaat_id">
+										<select class="form-control" name="gereja_jemaat_id" required>
 											<?php
 												$sql = "select * from Gereja";
 												$result = mysqli_query($mysqli, $sql);

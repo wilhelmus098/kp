@@ -55,7 +55,7 @@
 							<form role="form" method="POST" action="controllers/gereja.php">
 									<div class="form-group">
 										<label>Jenis Gereja</label>
-										<select class="form-control" name="jenis_gereja">
+										<select class="form-control" name="jenis_gereja" required>
 											<option value="CABANG">Cabang</option>
                                             <option value="PUSAT">Pusat</option>
 										</select>
@@ -63,12 +63,12 @@
 
 									<div class="form-group">
 										<label>Kota Gereja</label>
-										<input type="text" class="form-control" name="kota_gereja" placeholder="">
+										<input type="text" class="form-control" name="kota_gereja" placeholder="" required>
 									</div>
 
 									<div class="form-group">
 										<label>Alamat Gereja</label>
-										<input type="text" class="form-control" name="alamat_gereja" placeholder="">
+										<input type="text" class="form-control" name="alamat_gereja" placeholder="" required>
 									</div>
 									<button type="submit" class="btn btn-primary" name="create_gereja" >Tambah Gereja</button>
 							</form>
