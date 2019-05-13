@@ -25,6 +25,7 @@ if (isset($_SESSION["user_logged_in"]))
 			<div class="login-panel panel panel-default">
 				<div class="panel-heading">Log in</div>
 				<div class="panel-body">
+
 					<form role="form" method="POST" action="controllers/login.php">
 						<fieldset>
 							<div class="form-group">
@@ -65,7 +66,7 @@ if (isset($_SESSION["user_logged_in"]))
 								window.open("list_schedule.php","_self")
 							}
 							else
-								$("#error").text("wrong username or password")
+								$("#error").text("WRONG USERNAME AND PASSWORD")
 
 						}) 
 						
