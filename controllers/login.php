@@ -1,7 +1,7 @@
 <?php
 include '../conn.php';
-require('../MagicCrypt.php');
-use org\magiclen\magiccrypt\MagicCrypt;
+// require('../MagicCrypt.php');
+// use org\magiclen\magiccrypt\MagicCrypt;
 
 // $username = strtolower($_POST["username"]);
 // $plainpass = $_POST["password"];
@@ -9,32 +9,36 @@ use org\magiclen\magiccrypt\MagicCrypt;
 // $cipherpass = $mc->encrypt($plainpass);
 // $password = $cipherpass;
 
-$username = $_POST["username"];
-$password = $_POST["password"];
+$un = $_POST["username"];
+$pwd = $_POST["password"];
 
 global $mysqli;
-$sql = "SELECT * FROM User WHERE lower(uname)='$username' AND pass='$password'";
+$sql = "SELECT * FROM User WHERE lower(uname)='$un' AND pass='$pwd'";
 $result = mysqli_query($mysqli, $sql);
 $row = $result->num_rows;
-if ($row==1){
-	echo "1";
+
+if ($row == 1)
+{	
 	session_start();
 	$_SESSION["user_logged_in"] = true;
-	$_SESSION["uname"] = $username;
-	while($row = $result->fetch_assoc()) {
+	$_SESSION["uname"] = $un;
+
+	while($row = $result->fetch_assoc()) 
+	{
 		$_SESSION['uname'] = $row['uname'];
-		  $_SESSION["jabatan"] = $row['Jabatan'];
-		  $_SESSION['idgereja'] = $row['idGereja'];
-		   // print_r($row);
-		   // echo "<br><br>";
+		$_SESSION["jabatan"] = $row['Jabatan'];
+		$_SESSION['idgereja'] = $row['idGereja'];
+		// print_r($row);
+		// echo "<br><br>";
 	}
 	// print_r($_SESSION);
 	header("Location:../list_nota_persembahan.php");
 	
 	
-}else if ($row==0)
+}
+else if ($row == 0)
 {
-	header("Location:../login.php");
+	//header("Location:../login.php");
 }
 mysqli_close($mysqli);
 ?>

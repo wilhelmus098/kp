@@ -1,15 +1,7 @@
-<!-- <?php
-include 'auth.php';
-include 'conn.php';
-if (isset ($_SESSION['stat']))
-{
-	session_destroy();
-}
-else
-{
-	
-}
-?> -->
+<?php
+    include 'conn.php';
+	// include 'checksession.php';
+?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,52 +20,43 @@ else
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-4">
 			<div class="login-panel panel panel-default">
-				<div class="panel-heading">Log in</div>
+				<div class="panel-heading">CREATE NEW USER</div>
 				<div class="panel-body">
-					<form role="form" action="users.php" method="POST"> 
+					<form role="form" action="controllers/users.php" method="POST"> 
 						<fieldset>
 							<div class="form-group">
 								<input class="form-control" placeholder="Username" name="username" type="username" autofocus="">
 							</div>
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" value="">
-							</div>
+							</div>					
 							<div class="form-group">
-								<input class="form-control" placeholder="Retype Password" name="password1" type="password" value="">
-							</div>
+								<label>JABATAN </label>
+								<select class="form-control" name="jabatan">
+									<option value="PENDETA">PENDETA</option>
+									<option value="PENGINJIL">PENGINJIL</option>
+									<option value="KOORPUSAT">KOORDINATOR PUSAT</option>
+									<option value="KOORCAB">KOORDINATOR CABANG</option>
+									<option value="BENDAHARA">BENDAHARA</option>	
+								</select>
+							</div>							
 							<div class="form-group">
-								<label>Nama Jemaat: </label>
-								<select class="form-control" name="gereja_jemaat_id">
+								<label>JEMAAT GBA</label>
+								<select class="form-control" name="gereja_id">
 									<?php
-										$sql = "SELECT * FROM jemaat";
+										$sql = "SELECT * FROM Gereja";
 										$result = mysqli_query($mysqli, $sql);
 										if($result->num_rows > 0)
 										{
 											while($row = $result->fetch_assoc())
 											{
-												echo "<option value=\"".$row["idJemaat"]."\">".$row["NamaJemaat"]."</option>";
+												echo "<option value=\"".$row["idGereja"]."\">".$row["Nama"]."</option>";
 											}
 										}
 									?>
 								</select>
 							</div>
-							<div class="form-group">
-								<label>Jabatan: </label>
-								<select class="form-control" name="jabatan">
-									<option value="Pendeta">Pendeta</option>
-									<option value="Penginjil">Penginjil</option>
-									<option value="KoorPusat">Koordinator Pusat</option>
-									<option value="KoorCab">Koordinator Cabang</option>
-									<option value="Bendahara">Bendahara</option>								
-								</select>
-							</div>							
-							<div class="checkbox">
-								<label>
-									<input name="remember" type="checkbox" value="Remember Me">Remember Me
-								</label>
-							</div>
-							<input type="submit" name="btnRegister" value="Register">
-							
+							<input type="submit" class="btn btn-success"name="btn_register" value="SUBMIT">		
 					</form>
 				</div>
 			</div>

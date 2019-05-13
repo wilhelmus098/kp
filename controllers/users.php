@@ -1,19 +1,25 @@
 <?php
 include '../conn.php';
-include '../checksession.php';
-require('../MagicCrypt.php');
-use org\magiclen\magiccrypt\MagicCrypt;
-// if(isset($_POST['btn_register']))
-// {
-//     header('Location:../register.php');
-//     if ($_POST["password"] === $_POST["password1"])
-//     {
-//         $plainpass = $_POST["password"];
-//         $mc = new MagicCrypt('isa', 256);
-//         $cipherpass = $mc->encrypt($plainpass);
-//         addUser($_POST["username"],$cipherpass,$_POST["jabatan"],$_POST['gereja_jemaat_id']);
-//     }
-// }
+
+
+
+if(isset($_POST['btn_register']))
+{
+    //GET VALUE
+    $uname = $_POST['username'];
+    $pass = $_POST['password'];
+    $pos = $_POST['jabatan'];
+    $idgrj = $_POST['gereja_id'];
+
+    //ENCRYPT
+    $cipherpass = md5($pass);
+    $salt = strlen($pass);
+    $ecnPass = $cipherpass .$salt;
+    $encFinal = md5($ecnPass); 
+
+    addUser($uname, $encFinal, $pos, $idgrj);
+}
+
 if(isset($_POST['btnUpdate']))
 {
     if ($_POST["password"] == $_POST["password1"] || $_POST["password"] == $_POST["password2"])
@@ -25,33 +31,29 @@ if(isset($_POST['btnUpdate']))
         if ($_POST["password1"] == $_POST["password2"])
         {
             $plainpass = $_POST["password1"];
-            // $mc = new MagicCrypt('isa', 256);
-            // $cipherpass = $mc->encrypt($plainpass);
             updateUser($_SESSION['uname'],$plainpass,$_SESSION['jabatan'], $_POST["gereja_jemaat_id"]);
         }
     }
 }
 
-// if(isset($_POST['btnDelete']))
-// {
-//     deleteUser($_POST["id"]);
-// }
+// ---------------------------------------------------------
+// METHOD
+// ---------------------------------------------------------
+function addUser($uname,$pwd,$pos, $grjid)
+{
+    global $mysqli;
+    $sql = "INSERT INTO User VALUE('" . $uname . "','" . $pwd . "','" . $pos . "','" . $grjid . "')";
+    if (mysqli_query($mysqli, $sql)) 
+    {
+       echo "New record created successfully";
+    }
+    else
+    {
+       echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
 
-// function addUser($uname,$pwd,$pos,$idgrjdanjemaat)
-//   {
-//     global $mysqli;
-//     $sql = "INSERT INTO User VALUE('" . $uname . "','" . $pwd . "','" . $pos . "','" . $idgrjdanjemaat . "')";
-//     if (mysqli_query($mysqli, $sql)) 
-//     {
-//         echo "New record created successfully";
-//     }
-//     else
-//     {
-//         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-//     }
-
-//     mysqli_close($mysqli);
-//   }
+    mysqli_close($mysqli);
+}
 
 function updateUser($name,$pwd,$pos,$idgrj)
 {
