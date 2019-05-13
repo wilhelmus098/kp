@@ -24,6 +24,10 @@ if(isset($_POST['btn_create_nota']))
 
 if(isset($_POST['btn_insert_nota']))
 {
+    if($_POST["nama_pemimpin"] == "" || $_POST['tgl_ibadah'] == "" || $_POST["jumlah_hadir"] == "" || $_POST["persembahan_tanpa_nama"] == "" || $_POST["persembahan_sm"] == "" || $_POST["tgl_doa_tengah_minggu"] == "" || $_POST["persembahan_tengah_minggu"] == "" || $_POST["petugas_penghitung"] == "")
+    {
+        header('Location:../create_nota_persembahan.php?action=' . $_POST['btn_insert_nota']);
+    }
     $lastid = $_POST['btn_insert_nota'];
     $newid = $lastid + 1;
     //print_r($_SESSION);
