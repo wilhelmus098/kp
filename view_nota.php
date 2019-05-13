@@ -103,6 +103,32 @@
 								}
 							}
 						?>
+
+						<?php
+							$sql4 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totaltransfer FROM DetailNotaPersembahan WHERE CaraPembayaran = 'TRF' AND idNotaPersembahan ='" . $idnota . "'";
+							$result4 =  mysqli_query($mysqli, $sql4);
+							$sumtransfer = "";
+							if($result4->num_rows > 0)
+							{
+								while($row4 = $result4->fetch_assoc())
+								{
+									$sumtransfer = $row4['totaltransfer'];
+								}
+							}
+						?>
+
+						<?php
+							$sql5 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totaltunai FROM DetailNotaPersembahan WHERE CaraPembayaran = 'TUNAI' AND idNotaPersembahan ='" . $idnota . "'";
+							$result5 =  mysqli_query($mysqli, $sql5);
+							$sumtunai = "";
+							if($result5->num_rows > 0)
+							{
+								while($row5 = $result5->fetch_assoc())
+								{
+									$sumtunai = $row5['totaltunai'];
+								}
+							}
+						?>
 						<form role="form" method="POST" action="controllers/persembahan.php">
 									<div class="form-group">
 										<label>Tanggal Ibadah</label>
@@ -151,6 +177,14 @@
 									<?php
 										$grandtotal = $sumpersembahankhusus + $sumpersembahanumum;
 									?>
+									<div class="form-group">
+										<label>Total Transfer</label>
+										<input type="text" class="form-control" name="total_transfer" value="<?=$sumtransfer?>" disabled="true">
+									</div>
+									<div class="form-group">
+										<label>Total Tunai</label>
+										<input type="text" class="form-control" name="total_tunai" value="<?=$sumtunai?>" disabled="true">
+									</div>
 									<div class="form-group">
 										<label>Total Keseluruhan Persembahan</label>
 										<input type="text" class="form-control" name="total_seluruh_persembahan" value="<?=$grandtotal?>" disabled="true">
