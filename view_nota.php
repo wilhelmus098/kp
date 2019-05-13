@@ -164,10 +164,10 @@
 											<th>Hari Tuhan</th>
 											<th>Perpuluhan</th>
 											<th>Ucapan Syukur</th>
+											<th>Janji Iman</th>
 											<th>Pembangunan Gereja</th>
 											<th>Lain - lain</th>
                                             <th>Cara Bayar</th>
-											<th>ACTION</th>
 										  </tr>
 										</thead>
 										<tbody>

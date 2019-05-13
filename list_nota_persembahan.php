@@ -54,6 +54,20 @@
 				<div class="panel panel-default"  id="section-to-print">
 					<div class="panel-body">
 						<div class="col-md-12">
+						<!-- TAMPILAN FITUR SEARCH -->
+
+						<form method="POST" action=controllers/persembahan.php>
+							<div class="form-group">
+								<label>Tanggal Awal</label>
+								<input type="date" class="form-control" name="awal" placeholder="">
+							</div>
+							<div class="form-group">
+								<label>Tanggal Akhir</label>
+								<input type="date" class="form-control" name="akhir" placeholder="">
+							</div>
+							<button type="submit" class="btn btn-primary" name="btn_filter" >Filter Nota</button>
+						<form>
+						
 						<form method="POST" action=controllers/persembahan.php>
 							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
 							<div class="text-center" style="margin: 8px">
@@ -77,8 +91,16 @@
 								</thead>
 								<tbody>
 								<?php
-									//NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
-									$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+									if(isset($_GET['awal']) && isset($_GET['akhir']))
+									{
+										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
+									}
+									else
+									{
+										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+									}
+									// NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
+									//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
@@ -92,34 +114,21 @@
 										<td><?=$row["Verified"]?></td>
 										<td>
 											<?php
-											$sql = "SELECT * FROM User";
-											$result = mysqli_query($mysqli, $sql);
-
+												if($_SESSION['jabatan'] == "BENDAHARA")
+												{
+													echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
+													echo "&nbsp";
+													echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
+													echo "&nbsp";
+													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+												}
+												else
+												{
+													echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
+													echo "&nbsp";
+													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+												}
 											?>
-
-											<?php while ($row = $result->fetch_assoc())?> 
-												<?php
-													if($_SESSION['jabatan'] == "BENDAHARA")
-													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
-
-														echo "&nbsp";
-														
-														echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
-
-														echo "&nbsp";
-
-														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
-													}
-													else
-													{
-														echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
-
-														echo "&nbsp";
-
-														echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
-													}
-												?>
 										</td>											
 									</tr>
 								<?php } ?>
