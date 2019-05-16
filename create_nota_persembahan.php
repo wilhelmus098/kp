@@ -127,7 +127,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
+														echo "<option value=\"". $row['NamaJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
 														//echo $sql;
 													}
 												}
