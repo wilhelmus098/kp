@@ -12,12 +12,13 @@ if(isset($_POST['btn_register']))
     $idgrj = $_POST['gereja_id'];
 
     //ENCRYPT
-    $cipherpass = md5($pass);
-    $salt = strlen($pass);
-    $ecnPass = $cipherpass .$salt;
-    $encFinal = md5($ecnPass); 
+    // $cipherpass = md5($pass);
+    // $salt = strlen($pass);
+    // $ecnPass = $cipherpass .$salt;
+    // $encFinal = md5($ecnPass);
+    $encrypted_pass = crypt($pass, $uname);
 
-    addUser($uname, $encFinal, $pos, $idgrj);
+    addUser($uname, $encrypted_pass, $pos, $idgrj);
 }
 
 if(isset($_POST['btnUpdate']))
