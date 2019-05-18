@@ -11,9 +11,10 @@ include '../conn.php';
 
 $un = $_POST["username"];
 $pwd = $_POST["password"];
+$encrypted_pass = crypt($pwd,$un);
 
 global $mysqli;
-$sql = "SELECT * FROM User WHERE lower(uname)='$un' AND pass='$pwd'";
+$sql = "SELECT * FROM User WHERE lower(uname)='$un' AND pass='$encrypted_pass'";
 $result = mysqli_query($mysqli, $sql);
 $row = $result->num_rows;
 
@@ -38,7 +39,7 @@ if ($row == 1)
 }
 else if ($row == 0)
 {
-	//header("Location:../login.php");
+	header("Location:../login.php");
 }
 mysqli_close($mysqli);
 ?>
