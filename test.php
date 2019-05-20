@@ -1,4 +1,4 @@
-<html>
+s<html>
     <body>
     <form role="form" method="GET" action="controllers/schedul.php">
 									<div class="form-group">
