@@ -45,7 +45,8 @@ function addUser($uname,$pwd,$pos, $grjid)
     $sql = "INSERT INTO User VALUE('" . $uname . "','" . $pwd . "','" . $pos . "','" . $grjid . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
-       echo "New record created successfully";
+       //echo "New record created successfully";
+       header('Location:../register.php');
     }
     else
     {
