@@ -33,7 +33,8 @@
 	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
 	{
 		require_once('sidemenupemimpin.php');
-	}		
+	}
+	$arrtotal = array();
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -144,20 +145,7 @@
 												$sumpersembahanumum = $harituhan1 + $sm1 + $doatengahminggu1;
 												$grandtotal = $sumpersembahankhusus + $sumpersembahanumum;
 											?>
-											<?php
-												// $sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
-												// $result0 =  mysqli_query($mysqli, $sql0);
-												// $sumpersembahankhusus = "";
-												// if($result0->num_rows > 0)
-												// {
-												// 	while($row0 = $result0->fetch_assoc())
-												// 	{
-												// 		$sumpersembahankhusus = $row0['totalkhusus'];
-												// 	}
-												// }
-												// $grandtotal = $sumpersembahankhusus;
-											?>
-											<?php echo $grandtotal?>
+											<?php array_push($arrtotal,$grandtotal); echo $grandtotal;?>
 										</td>
 										<td>
 											<?php
@@ -182,6 +170,10 @@
 								</tbody>
 						  </table>
 						</form>
+						<?php
+							$grandgrandtotal = array_sum($arrtotal);
+							echo "GRAND TOTAL : " . $grandgrandtotal;
+						?>
 						</div>
 					</div>
 				</div><!-- /.panel-->
