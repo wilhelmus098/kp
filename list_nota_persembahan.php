@@ -86,6 +86,7 @@
 									<th>TANGGAL IBADAH</th>
 									<th>PEMIMPIN</th>
 									<th>VERIFIKASI</th>
+									<th>TOTAL/LAPORAN</th>
 									<th>ACTION</th>
 								  </tr>
 								</thead>
@@ -112,6 +113,52 @@
 										<td><?=$row["TglIbadah"]?></td>
 										<td><?=$row["PemimpinIbadah"]?></td>
 										<td><?=$row["Verified"]?></td>
+										<td>
+											<?php
+												$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
+												$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan = '" .$row['idNotaPersembahan'] . "'";
+												$result0 =  mysqli_query($mysqli, $sql0);
+												$result = mysqli_query($mysqli, $sql);
+												$sumpersembahankhusus = "";
+												$harituhan1 = "";
+												$sm1 = "";
+												$doatengahminggu1 = "";
+												$sumpersembahanumum = "";
+												$grandtotal = "";
+												if ($result->num_rows > 0)
+												{
+													while($row = $result->fetch_assoc())
+													{
+														$harituhan1 = $row["HariTuhan"];
+														$sm1 = $row["SekolahMinggu"];
+														$doatengahminggu1 = $row["DoaTengahMinggu"];
+													}
+												}
+												if($result0->num_rows > 0)
+												{
+													while($row0 = $result0->fetch_assoc())
+													{
+														$sumpersembahankhusus = $row0['totalkhusus'];
+													}
+												}
+												$sumpersembahanumum = $harituhan1 + $sm1 + $doatengahminggu1;
+												$grandtotal = $sumpersembahankhusus + $sumpersembahanumum;
+											?>
+											<?php
+												// $sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
+												// $result0 =  mysqli_query($mysqli, $sql0);
+												// $sumpersembahankhusus = "";
+												// if($result0->num_rows > 0)
+												// {
+												// 	while($row0 = $result0->fetch_assoc())
+												// 	{
+												// 		$sumpersembahankhusus = $row0['totalkhusus'];
+												// 	}
+												// }
+												// $grandtotal = $sumpersembahankhusus;
+											?>
+											<?php echo $grandtotal?>
+										</td>
 										<td>
 											<?php
 												if($_SESSION['jabatan'] == "BENDAHARA")
