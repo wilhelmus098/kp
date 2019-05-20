@@ -75,7 +75,7 @@
 								<div class="form-group">
 									<input class="form-control" placeholder="Old Password" name="password" type="password" value="" required>
 								</div>
-								<div class="form-group">
+								<div class="form-group" id="message">
 									<input class="form-control" placeholder="New Password" name="password1" type="password" value="" required>
 								</div>
 								<div class="form-group">
@@ -105,21 +105,10 @@
 											?>
 										</select>
 								</div>
-<!-- 								<div class="form-group">
-									<label>Jabatan</label>
-									<select class="form-control" name="position" <?php if($_SESSION['jabatan']=='BENDAHARA') echo 'disabled'; ?>>
-										<option value="PENDETA"<?php if($userPos=='PENDETA')echo " selected"?>>PENDETA</option>
-										<option value="PENGINJIL"<?php if($userPos=='PENGINJIL')echo " selected"?>>PENGINJIL</option>
-										<option value="KOOR PUSAT"<?php if($userPos=='KOOR PUSAT')echo " selected"?>>KOORDINATOR PUSAT</option>
-										<option value="KOOR CABANG"<?php if($userPos=='KOOR CABANG')echo " selected"?>>KOORDINATOR CABANG</option>
-										<option value="BENDAHARA"<?php if($userPos=='BENDAHARA')echo " selected"?>>BENDAHARA</option>
-									</select>
-								</div> -->
-
 								<input type="submit" class="btn btn-primary" name="btnUpdate" value="Update User">
 								<input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User">
 							</form>
-						</div>
+						</div>					
 					</div>
 				</div><!-- /.panel-->
 			</div><!-- /.col-->
@@ -135,8 +124,6 @@
 	<script src="js/easypiechart.js"></script>
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/custom.js"></script>
-	
-		
+	<script src="js/custom.js"></script>		
 </body>
 </html>

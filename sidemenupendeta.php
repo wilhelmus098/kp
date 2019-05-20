@@ -71,7 +71,7 @@
 				</a>
 				<ul class="children collapse" id="sub-item-3">
 					<li><a class="" href="update_user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Update User
+						<span class="fa fa-arrow-right">&nbsp;</span> Change Password
 					</a></li>
 				</ul>
 			</li>

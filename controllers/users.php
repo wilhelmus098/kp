@@ -18,6 +18,7 @@ if(isset($_POST['btn_register']))
     $encrypted_pass = crypt($pass, $uname);
 
     addUser($uname, $encrypted_pass, $pos, $idgrj);
+    //print_r($_POST);
 }
 
 if(isset($_POST['btnUpdate']))

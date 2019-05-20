@@ -35,8 +35,8 @@
 								<select class="form-control" name="jabatan">
 									<option value="PENDETA">PENDETA</option>
 									<option value="PENGINJIL">PENGINJIL</option>
-									<option value="KOORPUSAT">KOORDINATOR PUSAT</option>
-									<option value="KOORCAB">KOORDINATOR CABANG</option>
+									<option value="KOOR PUSAT">KOORDINATOR PUSAT</option>
+									<option value="KOOR CABANG">KOORDINATOR CABANG</option>
 									<option value="BENDAHARA">BENDAHARA</option>	
 								</select>
 							</div>							
