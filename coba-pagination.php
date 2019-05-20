@@ -13,7 +13,6 @@
 <html>
 <head>
 	<link rel="stylesheet" href="pag/dist/simplePagination.css" />
-    <script src="pag/dist/jquery.simplePagination.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Lumino - Dashboard</title>
@@ -102,7 +101,15 @@
 								<?php } ?>
 								</tbody>
 						  	</table>
-						  	<?php  
+
+						 	</form> 
+						</div>
+					</div>
+				</div><!-- /.panel-->
+			</div><!-- /.col-->
+			
+		</div><!-- /.row -->
+		<?php  
 								$sql = "SELECT COUNT(idGereja) FROM Gereja";  
 								$rs_result = mysqli_query($mysqli, $sql);  
 								$row = mysqli_fetch_row($rs_result);  
@@ -115,14 +122,6 @@
 								};  
 								echo $pagLink . "</ul></nav>";  
 							?>
-						 	</form> 
-						</div>
-					</div>
-				</div><!-- /.panel-->
-			</div><!-- /.col-->
-			
-		</div><!-- /.row -->
-		
 	</div>	<!--/.main-->
 	
 	<script src="js/jquery-1.11.1.min.js"></script>
@@ -133,6 +132,8 @@
 	<script src="js/easypiechart-data.js"></script>
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/custom.js"></script>
+	<script src="pag/dist/jquery.simplePagination.js"></script>
+
 	<script>
         function myFunction() {
             var printContents = document.getElementById("section-to-print").innerHTML;
