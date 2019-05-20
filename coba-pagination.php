@@ -3,7 +3,7 @@
 	include 'conn.php';
 	include 'checksession.php';
 
-	$limit = 3;  
+	$limit = 2;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 	$start_from = ($page-1) * $limit;  
 
@@ -15,20 +15,20 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Lumino - Dashboard</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="pag/dist/simplePagination.css" />
+    <script src="pag/dist/jquery.simplePagination.js"></script>
+    </script>
+
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
 	<link href="css/datepicker3.css" rel="stylesheet">
 	<link href="css/styles.css" rel="stylesheet">
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="pag/dist/simplePagination.css" />
-    <script src="pag/dist/jquery.simplePagination.js"></script>
-    <title></title>
-    <script>
-    </script>
+    
 	
 	<!--Custom Font-->
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -108,8 +108,9 @@
 								$total_records = $row[0];  
 								$total_pages = ceil($total_records / $limit);  
 								$pagLink = "<nav><ul class='pagination'>";  
-								for ($i=1; $i<=$total_pages; $i++) {  
-								             $pagLink .= "<li><a href='list_gereja.php?page=".$i."'>".$i."</a></li>";  
+								for ($i=1; $i<=$total_pages; $i++) 
+								{  
+								    $pagLink .= "<li><a href='list_gereja.php?page=".$i."'>".$i."</a></li>";  
 								};  
 								echo $pagLink . "</ul></nav>";  
 							?>
