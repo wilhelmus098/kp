@@ -2,7 +2,6 @@
 include '../conn.php';
 
 
-
 if(isset($_POST['btn_register']))
 {
     //GET VALUE

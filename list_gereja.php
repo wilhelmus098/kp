@@ -82,8 +82,6 @@
 										</td>
 									</tr>
 								<?php } ?>
-								</tbody>
-						  	</table>
 						 	</form> 
 						</div>
 					</div>

@@ -137,7 +137,7 @@
                             </select>
                           </div>
 
-                          <input type="submit" name="create_jemaat" id="create_jemaat" value="CREATE" class="btn btn-success" />
+                          <input type="submit" name="create_jemaat_modal" id="create_jemaat_modal" value="CREATE" class="btn btn-success" />
                       </form>
                   </div>
 
@@ -217,7 +217,7 @@
                 data:$('#jemaat_form').serialize(),  
                 beforeSend:function()
                 {  
-                    $('#create_jemaat').val("Inserting");  
+                    $('#create_jemaat_modal').val("Inserting");  
                 },  
                 success:function(data)
                 {  

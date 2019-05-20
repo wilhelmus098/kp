@@ -16,7 +16,11 @@ if(isset($_POST['btn_edit_jemaat']))
 }
 
 
-//INI TEST MODAL DARI BUTTON VIEW
+//INI TEST GET BUTTON DARI HALAMAN MODAL
+if(isset($_POST['create_jemaat_modal']))
+{
+    add($_POST["nama_jemaat"],$_POST["tempat_lahir"],$_POST["tgl_lahir"],$_POST["alamat_jemaat"],$_POST["nomor_jemaat"],$_POST["gereja_jemaat_id"]);
+}
 if(isset($_POST['view_jemaat_modal']))
 {
     show($_POST["view_jemaat_modal"]);
