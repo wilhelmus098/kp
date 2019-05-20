@@ -3,7 +3,7 @@
 	include 'conn.php';
 	include 'checksession.php';
 
-	$limit = 2;  
+	$limit = 4;  
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 	$start_from = ($page-1) * $limit;  
 
@@ -12,6 +12,8 @@
 	?>
 <html>
 <head>
+	<link rel="stylesheet" href="pag/dist/simplePagination.css" />
+    <script src="pag/dist/jquery.simplePagination.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Lumino - Dashboard</title>
@@ -19,8 +21,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="pag/dist/simplePagination.css" />
-    <script src="pag/dist/jquery.simplePagination.js"></script>
+    
     </script>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
@@ -83,11 +84,11 @@
 								  </tr>
 								</thead>
 								<tbody>
-<!-- 								<?php
-									$sql = "SELECT * FROM Gereja";
-									$result = mysqli_query($mysqli, $sql);
+ 								<?php
+									//$sql = "SELECT * FROM Gereja";
+									//$result = mysqli_query($mysqli, $sql);
 									// output data of each row
-								?>	 -->
+								?>	 
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<tr>
 										<td><?=$row["idGereja"]?></td>
@@ -110,7 +111,7 @@
 								$pagLink = "<nav><ul class='pagination'>";  
 								for ($i=1; $i<=$total_pages; $i++) 
 								{  
-								    $pagLink .= "<li><a href='list_gereja.php?page=".$i."'>".$i."</a></li>";  
+								    $pagLink .= "<li><a href='coba-pagination.php?page=".$i."'>".$i."</a></li>";  
 								};  
 								echo $pagLink . "</ul></nav>";  
 							?>
@@ -142,19 +143,16 @@
             return true;
         }
 
-
-    </script>
-		
-</body>
-</html>
-       	<script type="text/javascript">
-			$(document).ready(function(){
+        $(document).ready(function(){
 			$('.pagination').pagination({
 			        items: <?php echo $total_records;?>,
 			        itemsOnPage: <?php echo $limit;?>,
 			        cssStyle: 'light-theme',
 					currentPage : <?php echo $page;?>,
-					hrefTextPrefix : 'list_gereja.php?page='
+					hrefTextPrefix : 'coba-pagination.php?page='
 			    });
-				});
-		</script>
+		});
+    </script>
+		
+</body>
+</html>
