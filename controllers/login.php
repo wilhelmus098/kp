@@ -32,8 +32,8 @@ if ($row == 1)
 		// print_r($row);
 		// echo "<br><br>";
 	}
-	print_r($_SESSION);
-	//header("Location:../list_nota_persembahan.php");
+	//print_r($_SESSION);
+	header("Location:../list_nota_persembahan.php");
 	
 	
 }
