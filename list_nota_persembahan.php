@@ -103,12 +103,13 @@
 										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
 									}
 									// NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
-									//$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "'";
 									$result = mysqli_query($mysqli, $sql);
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<?php 
-										$id = $row["idNotaPersembahan"];	
+										$id = $row["idNotaPersembahan"];
+										$sum = $row['HariTuhan'] + $row['SekolahMinggu'] + $row['DoaTengahMinggu'];
+										array_push($arrtotal, $sum);
 									?>
 									<tr>
 										<td><?=$row["idNotaPersembahan"]?></td>
@@ -117,36 +118,18 @@
 										<td><?=$row["Verified"]?></td>
 										<td>
 											<?php
-												$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
-												$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan = '" .$row['idNotaPersembahan'] . "'";
-												$result0 =  mysqli_query($mysqli, $sql0);
-												$result = mysqli_query($mysqli, $sql);
-												$sumpersembahankhusus = "";
-												$harituhan1 = "";
-												$sm1 = "";
-												$doatengahminggu1 = "";
-												$sumpersembahanumum = "";
-												$grandtotal = "";
-												if ($result->num_rows > 0)
-												{
-													while($row = $result->fetch_assoc())
-													{
-														$harituhan1 = $row["HariTuhan"];
-														$sm1 = $row["SekolahMinggu"];
-														$doatengahminggu1 = $row["DoaTengahMinggu"];
-													}
-												}
-												if($result0->num_rows > 0)
-												{
-													while($row0 = $result0->fetch_assoc())
-													{
-														$sumpersembahankhusus = $row0['totalkhusus'];
-													}
-												}
-												$sumpersembahanumum = $harituhan1 + $sm1 + $doatengahminggu1;
-												$grandtotal = $sumpersembahankhusus + $sumpersembahanumum;
+											 	$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
+											 	$result0 =  mysqli_query($mysqli, $sql0);
+											 	if($result0->num_rows > 0)
+											 	{
+											 		while($row0 = $result0->fetch_assoc())
+											 		{
+											 			$sumpersembahankhusus = $row0['totalkhusus'];
+											 		}
+											 	}
+											 	$grandtotal = $sum + $sumpersembahankhusus;
 											?>
-											<?php array_push($arrtotal,$grandtotal); echo $grandtotal;?>
+											 <?php echo $grandtotal;?>
 										</td>
 										<td>
 											<?php
@@ -172,7 +155,7 @@
 						  </table>
 						</form>
 						<?php
-							$grandgrandtotal = array_sum($arrtotal);
+							$grandgrandtotal = array_sum($arrtotal) + $sumpersembahankhusus;
 							echo "GRAND TOTAL : " . $grandgrandtotal;
 						?>
 						</div>
