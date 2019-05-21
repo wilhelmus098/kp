@@ -155,7 +155,7 @@
                                         <input type="text" class="form-control" name="petugas_penghitung" value="<?=$penghitung1?>" required>
 									</div>
 
-									<div class="form-group">
+									<!-- <div class="form-group">
 										<label>Gereja</label>
                                         <?php
                                             $sql = "SELECT * FROM Gereja WHERE idGereja='". $idgereja1 . "'";
@@ -172,7 +172,7 @@
                                                 }
                                             }
                                         ?>
-									</div>
+									</div> -->
 
 									<!-- <div class="form-group">
 										<label>Verfied</label>
