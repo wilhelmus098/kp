@@ -32,10 +32,29 @@ if ($row == 1)
 		// print_r($row);
 		// echo "<br><br>";
 	}
+	print_r($_SESSION);
+	//header("Location:../list_nota_persembahan.php");
+	
+	
+}
+
+else if($row['pass'] == null)
+{
+	session_start();
+	$_SESSION["user_logged_in"] = true;
+	$_SESSION["uname"] = $un;
+
+	while($row = $result->fetch_assoc()) 
+	{
+		$_SESSION['uname'] = $row['uname'];
+		$_SESSION["jabatan"] = $row['Jabatan'];
+		$_SESSION['idgereja'] = $row['idGereja'];
+		// print_r($row);
+		// echo "<br><br>";
+	}
 	// print_r($_SESSION);
-	header("Location:../list_nota_persembahan.php");
-	
-	
+	//header("Location:../list_nota_persembahan.php");
+	print_r($_SESSION);
 }
 else if ($row == 0)
 {

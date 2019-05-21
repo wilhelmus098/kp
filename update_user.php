@@ -105,8 +105,8 @@
 											?>
 										</select>
 								</div>
-								<input type="submit" class="btn btn-primary" name="btnUpdate" value="Update User">
-								<input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User">
+								<input type="submit" class="btn btn-success" name="btnUpdate" value="UPDATE">
+								<!-- <input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User"> -->
 							</form>
 						</div>					
 					</div>
