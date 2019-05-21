@@ -33,7 +33,7 @@
 	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
 	{
 		require_once('sidemenupemimpin.php');
-		print_r($_SESSION);
+		//print_r($_SESSION);
 	}
 	$arrtotal = array();
 ?>
