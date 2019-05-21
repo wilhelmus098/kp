@@ -91,7 +91,9 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
     $sql = "INSERT INTO DetailNotaPersembahan VALUE('" . $idnotapersembahan . "', '" . $idjemaat . "', '" . $pk1 ."', '" . $pk2 ."', '" . $pk3 ."', '" . $pk4 ."', '" . $pk5 ."', '" . $pk6 ."', '" . $metode ."')";
     if (mysqli_query($mysqli, $sql))
     {        
-        header('Location:../create_detail_persembahan.php');  
+         
+        header('Location:../edit_nota_persembahan.php?idnota=' . $idnotapersembahan);
+        
     }
     else
     {
@@ -99,35 +101,6 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
     }
     mysqli_close($mysqli);  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function addPK_HariTuhan($idnota, $idjemaat, $nilaipkhusus)
 {

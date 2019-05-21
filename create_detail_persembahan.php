@@ -91,32 +91,32 @@
 
 									<div class="form-group">
 										<label>HARI TUHAN</label>
-										<input type="text" class="form-control" name="nilai_hari_tuhan" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_hari_tuhan" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
 										<label>PERPULUHAN</label>
-										<input type="text" class="form-control" name="nilai_perpuluhan" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_perpuluhan" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
 										<label>UCAPAN SYUKUR</label>
-										<input type="text" class="form-control" name="nilai_ucapan_syukur" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_ucapan_syukur" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
 										<label>JANJI IMAN</label>
-										<input type="text" class="form-control" name="nilai_janji_iman" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_janji_iman" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
 										<label>PEMBANGUNAN GEREJA</label>
-										<input type="text" class="form-control" name="nilai_pembangunan_gereja" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_pembangunan_gereja" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
 										<label>LAIN - LAIN</label>
-										<input type="text" class="form-control" name="nilai_lain" placeholder="RP." required>
+										<input type="text" class="form-control" name="nilai_lain" placeholder="RP." >
 									</div>
 
 									<div class="form-group">
