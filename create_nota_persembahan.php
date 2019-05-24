@@ -67,7 +67,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+														echo "<option value=\"". $row['uname'] ."\" selected >".$row["Jabatan"]." - ".$row["uname"]."</option>";
 													}
 												}
 											?>
@@ -127,7 +127,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														echo "<option value=\"". $row['NamaJemaat'] ."\" selected >".$row['idJemaat']. " - " .$row["NamaJemaat"]."</option>";
+														echo "<option value=\"". $row['NamaJemaat'] ."\" selected >" .$row["NamaJemaat"]."</option>";
 														//echo $sql;
 													}
 												}

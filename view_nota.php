@@ -226,7 +226,7 @@
 						  			</table>
 
 									<div class="form-group">
-										<label>Verfied</label>
+										<label>Verfikasi oleh Pemimpin Ibadah</label>
 										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'disabled'?>>
 											<option value="YES">YES</option>
 											<option value="NO" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'selected'?>>NO</option>

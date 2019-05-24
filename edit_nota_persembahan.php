@@ -21,6 +21,13 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<style type="text/css">
+		table{
+			width: 100%;
+		}
+
+	</style>
 </head>
 <body>
 <?php
@@ -108,7 +115,7 @@
 													{
 														if($pemimpinibadah1 == $row['uname'])
 														{
-															echo "<option value=\"". $row['uname'] ."\" selected >".$row["uname"]." - ".$row["Jabatan"]."</option>";
+															echo "<option value=\"". $row['uname'] ."\" selected >".$row["Jabatan"]." - ".$row["uname"]."</option>";
 														}
 														else
 														{
@@ -155,59 +162,28 @@
                                         <input type="text" class="form-control" name="petugas_penghitung" value="<?=$penghitung1?>" required>
 									</div>
 
-									<!-- <div class="form-group">
-										<label>Gereja</label>
-                                        <?php
-                                            $sql = "SELECT * FROM Gereja WHERE idGereja='". $idgereja1 . "'";
-											$result = mysqli_query($mysqli, $sql);
-											$idgereja2 = '';
-											$jenisGereja2 = '';
-											$alamatGereja2 = '';
-                                            if($result->num_rows > 0)
-                                            {
-                                                while($row1 = $result->fetch_assoc())
-                                                {
-                                                    $jenisGereja2 = $row1['JenisGereja'];
-                                                    $alamatGereja2 = $row1['Nama'];
-                                                }
-                                            }
-                                        ?>
-									</div> -->
-
-									<!-- <div class="form-group">
-										<label>Verfied</label>
-										<select name="status_verifikasi">
-											<option value="YES">YES</option>
-											<option value="NO">NO</option>
-										</select>
-									</div> -->
-
-									<!-- <div class="form-group">
-										<label>Total Keseluruhan Persembahan</label>
-										<input type="text" class="form-control" name="total_seluruh_persembahan" disabled="true">
-									</div> -->
-
 									<div class="form-group">
-										<!-- <label font-size="24px">DETAIL NOTA PERSEMBAHAN</label> -->
 										<button type="submit" class="btn btn-primary" align="right" name="btn_pk_jemaat">ADD DETAIL</button>
 									</div>
 
 									<table class="table table-hover">
 										<thead>
 										  <tr>
-										  	<th>ID Jemaat</th>
-											<th>Nama Jemaat</th>
-											<th>Hari Tuhan</th>
-											<th>Perpuluhan</th>
-											<th>Ucapan Syukur</th>
-											<th>Pembangunan Gereja</th>
-											<th>Lain - lain</th>
-                                            <th>Cara Bayar</th>
+										  	<th>ID JEMAAT</th>
+											<th>NAMA JEMAAT</th>
+											<th>HARI TUHAN</th>
+											<th>PERPULUHAN</th>
+											<th>UCAPAN SYUKUR</th>
+											<th>JANJI IMAN</th>
+											<th>PEMBANGUNAN GEREJA</th>
+											<th>LAIN-LAIN</th>
+                                            <th>METODE PERSEMBAHAN</th>
 											<th>ACTION</th>
 										  </tr>
 										</thead>
 										<tbody>
 										<?php
+											$id = $row["idJemaat"];
 											$sql = "SELECT * FROM DetailNotaPersembahan, Jemaat WHERE idNotaPersembahan='" .$idnota. "' AND DetailNotaPersembahan.idJemaat=Jemaat.idJemaat";
 											$result = mysqli_query($mysqli, $sql);
 										?>	
@@ -222,6 +198,11 @@
                                                 <td><?=$row2["PK_PembangunanGereja"]?></td>
                                                 <td><?=$row2["PK_LainLain"]?></td>
                                                 <td><?=$row2["CaraPembayaran"]?></td>
+	                                            <td>
+													<button type="submit" class="btn btn-success" name="btn_edit_detail_pk" value="<?=$id?>"><i class="glyphicon glyphicon-edit"></i></i></button>
+
+													<button type="submit" class="btn btn-danger" id="delete" name="btn_delete_detail_pk"><i class="glyphicon glyphicon-trash"></i></button> 
+												</td>
 											</tr>
 										<?php } ?>
 										</tbody>

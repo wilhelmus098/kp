@@ -48,7 +48,25 @@ if(isset($_POST['btn_pk_jemaat']))
 
 if(isset($_POST['btn_detail_persembahan']))
 {
+    //echo $_POST['id_nota'];
     addDetailNota($_POST["id_nota"], $_POST["nama_jemaat"], $_POST["nilai_hari_tuhan"], $_POST["nilai_perpuluhan"], $_POST["nilai_ucapan_syukur"], $_POST["nilai_janji_iman"], $_POST["nilai_pembangunan_gereja"], $_POST["nilai_lain"], $_POST["metode_persembahan"]);
+}
+
+//BUTTON EDIT DARI HALAMAN EDIT_NOTA_PERSEMBAHAN.PHP DI DALAM TABLE UNTUK HEADER KE HALAMAN EDIT DETAIL PERSEMBAHAN KHUSUS
+if (isset($_POST['btn_edit_detail_pk']))
+{
+    header('Location:../edit_detail_persembahan_khusus.php?idjemaat='.$_POST['btn_edit_detail_pk']);
+}
+
+//BUTTON SAVE DI DALAM HALAMAN EDIT DETAIL PERSEMBAHAN KHUSUS
+if(isset($_POST['edit_detail_pk']))
+{
+    editDetailPK($_POST["id_nota"], $_POST["nama_jemaat"], $_POST["nilai_hari_tuhan"], $_POST["nilai_perpuluhan"], $_POST["nilai_ucapan_syukur"], $_POST["nilai_janji_iman"], $_POST["nilai_pembangunan_gereja"], $_POST["nilai_lain"], $_POST["metode_persembahan"]);
+}
+
+if(isset($_POST['btn_delete_detail_pk']))
+{
+    delete($_POST["btn_delete_detail_pk"]);
 }
 
 //METHOD
@@ -102,6 +120,62 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
     mysqli_close($mysqli);  
 }
 
+function editDetailPK($idPK, $jmtID, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode)
+{
+    global $mysqli;
+    $sql = "UPDATE DetailNotaPersembahan idJemaat = '" . $jmtID . "', PK_HariTuhan = '" . $pk1 ."', PK_Perpuluhan = '" . $pk2 ."', PK_UcapanSyukur = '" . $pk3 ."', PK_JanjiIman = '" . $pk4 ."', PK_PembangunanGereja = '" . $pk5 ."', PK_LainLain = '" . $pk6 ."', CaraPembayaran = '" . $metode . "' WHERE idNotaPersembahan = '" . $idPK . "'";
+    if (mysqli_query($mysqli, $sql))
+    {        
+         
+        header('Location:../edit_nota_persembahan.php?idnota='.$idPK);
+        
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    mysqli_close($mysqli); 
+}
+
+function delete($id)
+{
+    global $mysqli;
+    $sql = "DELETE FROM DetailNotaPersembahan WHERE idJemaat='" . $id . "'";
+    if (mysqli_query($mysqli, $sql)) 
+    {
+        header('Location:../list_nota_persembahan.php');
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    mysqli_close($mysqli);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//METHOD FOR DEBUGING
+//------------------------------------------------------------------------------------------------
+//METHOD FOR DEBUGING
 function addPK_HariTuhan($idnota, $idjemaat, $nilaipkhusus)
 {
     global $mysqli;
