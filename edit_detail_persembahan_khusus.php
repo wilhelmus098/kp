@@ -42,7 +42,7 @@
 	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
 	{
 		require_once('sidemenupemimpin.php');
-	}		
+	}
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -100,7 +100,7 @@
 												{
 													while($row = $result->fetch_assoc())
 													{
-														if($idnota1 == $row['idNotaPersembahan'])
+														if($row['idNotaPersembahan'] == $_GET['idnota'])
 														{
 															echo "<option value=\"". $row['idNotaPersembahan'] ."\" selected >".$row["idNotaPersembahan"]."</option>";
 														}
@@ -118,13 +118,13 @@
 										<label>NAMA JEMAAT</label>
 										<select class="form-control" name="nama_jemaat" required>
 											<?php
-												$sql = "select * from Jemaat WHERE idGereja = '" . $_SESSION["idgereja"] . "'";
+												$sql = "SELECT * FROM Jemaat WHERE idGereja = '" . $_SESSION["idgereja"] . "'";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
 													while($row = $result->fetch_assoc())
 													{
-														if($jemaat1 == $row['idJemaat'])
+														if($row['idJemaat'] == $_GET['idjemaat'])
 														{
 															echo "<option value=\"". $row['idJemaat'] ."\" selected >".$row["NamaJemaat"]."</option>";
 														}
@@ -177,8 +177,11 @@
 										</select>	
 									</div>
 
+									<?php
+
+									?>
 									<div class="text-center" style="margin: 8px">
-										<button class='btn btn-primary m-2' style="width:200px" value="<?=$currentid?>" name="edit_detail_pk">SAVE</button>				
+										<button class='btn btn-primary m-2' style="width:200px" value="<?php echo  $_GET['idjemaat'] . ',' . $_GET['idnota']?>" name="edit_detail_pk">UPDATE</button>				
 									</div>
 							</form>
 						</div>

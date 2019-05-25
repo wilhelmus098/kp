@@ -55,7 +55,9 @@ if(isset($_POST['btn_detail_persembahan']))
 //BUTTON EDIT DARI HALAMAN EDIT_NOTA_PERSEMBAHAN.PHP DI DALAM TABLE UNTUK HEADER KE HALAMAN EDIT DETAIL PERSEMBAHAN KHUSUS
 if (isset($_POST['btn_edit_detail_pk']))
 {
-    header('Location:../edit_detail_persembahan_khusus.php?idjemaat='.$_POST['btn_edit_detail_pk']);
+    $temp = explode(',', $_POST['btn_edit_detail_pk']);
+    header('Location:../edit_detail_persembahan_khusus.php?idjemaat='.$temp[1].'&idnota='.$temp[0]);
+    //print_r($temp);
 }
 
 //BUTTON SAVE DI DALAM HALAMAN EDIT DETAIL PERSEMBAHAN KHUSUS
@@ -120,10 +122,10 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
     mysqli_close($mysqli);  
 }
 
-function editDetailPK($idPK, $jmtID, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode)
+function editDetailPK($idNotaPK, $jmtID, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode)
 {
     global $mysqli;
-    $sql = "UPDATE DetailNotaPersembahan idJemaat = '" . $jmtID . "', PK_HariTuhan = '" . $pk1 ."', PK_Perpuluhan = '" . $pk2 ."', PK_UcapanSyukur = '" . $pk3 ."', PK_JanjiIman = '" . $pk4 ."', PK_PembangunanGereja = '" . $pk5 ."', PK_LainLain = '" . $pk6 ."', CaraPembayaran = '" . $metode . "' WHERE idNotaPersembahan = '" . $idPK . "'";
+    $sql = "UPDATE DetailNotaPersembahan idJemaat = '" . $jmtID . "', PK_HariTuhan = '" . $pk1 ."', PK_Perpuluhan = '" . $pk2 ."', PK_UcapanSyukur = '" . $pk3 ."', PK_JanjiIman = '" . $pk4 ."', PK_PembangunanGereja = '" . $pk5 ."', PK_LainLain = '" . $pk6 ."', CaraPembayaran = '" . $metode . "' WHERE idNotaPersembahan = '" . $idNotaPK . "' && idJemaat = '" . $jmtID . "'";
     if (mysqli_query($mysqli, $sql))
     {        
          

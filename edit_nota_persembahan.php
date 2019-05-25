@@ -42,7 +42,7 @@
 	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
 	{
 		require_once('sidemenupemimpin.php');
-	}		
+	}	
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -61,6 +61,7 @@
 						<div class="col-md-6">
                         <?php
 							$idnota = $_GET["idnota"];
+							//array_push($arrid, $idnota);
 							$sql = "SELECT * FROM NotaPersembahan WHERE idNotaPersembahan = '" .$idnota . "'";
 							$result = mysqli_query($mysqli, $sql);
 							$idnota1 = "";
@@ -183,12 +184,14 @@
 										</thead>
 										<tbody>
 										<?php
-											$id = $row["idJemaat"];
 											$sql = "SELECT * FROM DetailNotaPersembahan, Jemaat WHERE idNotaPersembahan='" .$idnota. "' AND DetailNotaPersembahan.idJemaat=Jemaat.idJemaat";
 											$result = mysqli_query($mysqli, $sql);
 										?>	
 										<?php while($row2 = $result->fetch_assoc()) { ?>
 											<tr>
+												<?php
+													$arrid1 = array();
+												?>
                                                 <td><?=$row2["idJemaat"]?></td>
 												<td><?=$row2["NamaJemaat"]?></td>
 												<td><?=$row2["PK_HariTuhan"]?></td>
@@ -198,11 +201,19 @@
                                                 <td><?=$row2["PK_PembangunanGereja"]?></td>
                                                 <td><?=$row2["PK_LainLain"]?></td>
                                                 <td><?=$row2["CaraPembayaran"]?></td>
+                                                <?php
+                                                	array_push($arrid1, $idnota, $row2['idJemaat']);
+                                                	//array_push($arrid1, $row2['idJemaat']);
+                                                	//var_dump($arrid1);
+                                                ?>
 	                                            <td>
-													<button type="submit" class="btn btn-success" name="btn_edit_detail_pk" value="<?=$id?>"><i class="glyphicon glyphicon-edit"></i></i></button>
+													<button type="submit" class="btn btn-success" name="btn_edit_detail_pk" value="<?php echo $arrid1[0] . ',' . $arrid1[1]?>"><i class="glyphicon glyphicon-edit"></i></i></button>
 
 													<button type="submit" class="btn btn-danger" id="delete" name="btn_delete_detail_pk"><i class="glyphicon glyphicon-trash"></i></button> 
 												</td>
+												<?php
+													unset($arrid1);
+												?>
 											</tr>
 										<?php } ?>
 										</tbody>

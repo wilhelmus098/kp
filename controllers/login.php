@@ -53,8 +53,8 @@ else if($row['pass'] == null)
 		// echo "<br><br>";
 	}
 	// print_r($_SESSION);
-	//header("Location:../list_nota_persembahan.php");
-	print_r($_SESSION);
+	header("Location:../list_nota_persembahan.php");
+	//print_r($_SESSION);
 }
 else if ($row == 0)
 {

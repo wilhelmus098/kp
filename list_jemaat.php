@@ -66,11 +66,13 @@
 		
 		
 		<div class="row">
+
 			<div class="col-lg-12">
-			<div class="text-center" style="margin: 8px;">
-				<button class='btn btn-primary m-2' style="width:200px" onclick="window.location.href='create_jemaat.php'">TAMBAH JEMAAT</button>
+			<div class="text-left" style="margin: 8px;">
+				<button class='btn btn-primary m-2' style="width:200px" onclick="window.location.href='create_jemaat.php'">TAMBAH</button>
 			</div>
 				<div class="panel panel-default"  id="section-to-print">
+
 					<div class="panel-body">
 						<div class="col-md-12">
 							<form method="POST" action=controllers/jemaat.php>
