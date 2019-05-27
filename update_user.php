@@ -52,7 +52,7 @@
 							<div class="col-md-6">
 							<?php
 								$iduser = $_SESSION["uname"];
-								$sql = "select * from User where uname='" . $iduser . "'";
+								$sql = "SELECT * FROM User WHERE uname='" . $iduser . "'";
 								$result = mysqli_query($mysqli, $sql);
 								$uname = "";
 								$userName = "";
@@ -85,7 +85,7 @@
 									<label>Jemaat GBA</label>
 										<select class="form-control" name="gereja_jemaat_id" required>
 											<?php
-												$sql = "select * from Gereja";
+												$sql = "SELECT * FROM Gereja";
 												$result = mysqli_query($mysqli, $sql);
 												if($result->num_rows > 0)
 												{
@@ -106,7 +106,6 @@
 										</select>
 								</div>
 								<input type="submit" class="btn btn-success" name="btnUpdate" value="UPDATE">
-								<!-- <input type="submit" class="btn btn-primary" name="btnDelete" value="Delete User"> -->
 							</form>
 						</div>					
 					</div>

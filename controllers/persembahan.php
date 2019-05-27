@@ -68,7 +68,8 @@ if(isset($_POST['edit_detail_pk']))
 
 if(isset($_POST['btn_delete_detail_pk']))
 {
-    delete($_POST["btn_delete_detail_pk"]);
+    $temp = explode(',', $_POST['btn_delete_detail_pk']);
+    delete($temp[0], $temp[1] );
 }
 
 //METHOD
@@ -125,11 +126,11 @@ function addDetailNota($idnotapersembahan, $idjemaat, $pk1, $pk2, $pk3, $pk4, $p
 function editDetailPK($idNotaPK, $jmtID, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $metode)
 {
     global $mysqli;
-    $sql = "UPDATE DetailNotaPersembahan idJemaat = '" . $jmtID . "', PK_HariTuhan = '" . $pk1 ."', PK_Perpuluhan = '" . $pk2 ."', PK_UcapanSyukur = '" . $pk3 ."', PK_JanjiIman = '" . $pk4 ."', PK_PembangunanGereja = '" . $pk5 ."', PK_LainLain = '" . $pk6 ."', CaraPembayaran = '" . $metode . "' WHERE idNotaPersembahan = '" . $idNotaPK . "' && idJemaat = '" . $jmtID . "'";
+    $sql = "UPDATE DetailNotaPersembahan SET PK_HariTuhan = '" . $pk1 ."', PK_Perpuluhan = '" . $pk2 ."', PK_UcapanSyukur = '" . $pk3 ."', PK_JanjiIman = '" . $pk4 ."', PK_PembangunanGereja = '" . $pk5 ."', PK_LainLain = '" . $pk6 ."', CaraPembayaran = '" . $metode . "' WHERE idNotaPersembahan = '" . $idNotaPK . "' AND idJemaat = '" . $jmtID . "'";
     if (mysqli_query($mysqli, $sql))
     {        
          
-        header('Location:../edit_nota_persembahan.php?idnota='.$idPK);
+        header('Location:../edit_nota_persembahan.php?idnota='.$idNotaPK);
         
     }
     else
@@ -139,13 +140,13 @@ function editDetailPK($idNotaPK, $jmtID, $pk1, $pk2, $pk3, $pk4, $pk5, $pk6, $me
     mysqli_close($mysqli); 
 }
 
-function delete($id)
+function delete($idnota, $idjemaat)
 {
     global $mysqli;
-    $sql = "DELETE FROM DetailNotaPersembahan WHERE idJemaat='" . $id . "'";
+    $sql = "DELETE FROM DetailNotaPersembahan WHERE idJemaat='" . $idjemaat . "' AND idNotaPersembahan ='" . $idnota . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
-        header('Location:../list_nota_persembahan.php');
+        header('Location:../edit_nota_persembahan.php?idnota='.$idnota);
     }
     else
     {

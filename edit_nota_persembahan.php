@@ -209,7 +209,7 @@
 	                                            <td>
 													<button type="submit" class="btn btn-success" name="btn_edit_detail_pk" value="<?php echo $arrid1[0] . ',' . $arrid1[1]?>"><i class="glyphicon glyphicon-edit"></i></i></button>
 
-													<button type="submit" class="btn btn-danger" id="delete" name="btn_delete_detail_pk"><i class="glyphicon glyphicon-trash"></i></button> 
+													<button type="submit" class="btn btn-danger" id="delete" name="btn_delete_detail_pk" value="<?php echo $arrid1[0] . ',' . $arrid1[1]?>"><i class="glyphicon glyphicon-trash"></i></button> 
 												</td>
 												<?php
 													unset($arrid1);

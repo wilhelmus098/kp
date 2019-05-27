@@ -1,6 +1,6 @@
 <?php
 include '../conn.php';
-
+include '../checksession.php';
 
 if(isset($_POST['btn_register']))
 {
@@ -23,19 +23,65 @@ if(isset($_POST['btn_register']))
 
 if(isset($_POST['btnUpdate']))
 {
-    if ($_POST["password"] == $_POST["password1"] || $_POST["password"] == $_POST["password2"])
-    {
-        echo "password lama sama dengan password baru";
+    $uname = $_SESSION['uname'];
+    $oldPass = $_POST['password'];
+    $oldCrypt = crypt($oldPass, $uname);
+
+    $newPass1 = $_POST['password1'];
+    $newCryptPass1 = crypt($newPass1, $uname);
+    
+    $newPass2 = $_POST['password2'];
+    $newCryptPass2 = crypt($newPass2, $uname);
+
+    $pos = $_SESSION['jabatan'];
+    $grjID = $_POST['gereja_jemaat_id'];
+        
+    if($newCryptPass1 == $newCryptPass2)
+    {  
+        global $mysqli;
+        $sql = "SELECT * FROM User WHERE uname = '" . $uname . "'";
+        $result = mysqli_query($mysqli, $sql);
+        while($row = $result->fetch_assoc())
+        {
+            if($oldCrypt != $newCryptPass1)
+            {
+                if($oldCrypt == $row['pass'])
+                {
+                    updateUser($uname, $newCryptPass1, $pos, $grjID);
+                }
+                else
+                {
+                    echo "PASSWORD LAMA TIDAK SESUAI";
+                }
+            }
+            else
+            {
+                "PASSWORD BARU TIDAK BOLEH SAMA DENGAN PASSWORD LAMA";
+            }
+        }     
     }
     else
     {
-        if ($_POST["password1"] == $_POST["password2"])
-        {
-            $plainpass = $_POST["password1"];
-            updateUser($_SESSION['uname'],$plainpass,$_SESSION['jabatan'], $_POST["gereja_jemaat_id"]);
-        }
+        echo "PASSWORD BARU TIDAK SAMA";
     }
+    mysqli_close($mysqli);
 }
+
+// if(isset($_POST['btnUpdate']))
+// {
+//     if ($_POST["password"] == $_POST["password1"] || $_POST["password"] == $_POST["password2"])
+//     {
+//         echo "password lama sama dengan password baru";
+//     }
+//     else
+//     {
+//         if ($_POST["password1"] == $_POST["password2"])
+//         {
+//             $plainpass = $_POST["password1"];
+//             updateUser($_SESSION['uname'],$plainpass,$_SESSION['jabatan'], $_POST["gereja_jemaat_id"]);
+//         }
+//     }
+// }
 
 // ---------------------------------------------------------
 // METHOD
@@ -46,7 +92,6 @@ function addUser($uname,$pwd,$pos, $grjid)
     $sql = "INSERT INTO User VALUE('" . $uname . "','" . $pwd . "','" . $pos . "','" . $grjid . "')";
     if (mysqli_query($mysqli, $sql)) 
     {
-       //echo "New record created successfully";
        header('Location:../register.php');
     }
     else
@@ -63,7 +108,6 @@ function updateUser($name,$pwd,$pos,$idgrj)
     $sql = "UPDATE User SET uname ='" . $name . "', pass = '" . $pwd . "', Jabatan = '" . $pos . "', idGereja = '" . $idgrj ."' WHERE uname = '" . $_SESSION['uname'] . "'";
     if (mysqli_query($mysqli, $sql))
     {
-        // echo "Successfully updated user on user id " . $name." <a href=\"../list_user.php\">back to list user</a>";
         header('Location:../logout.php');
     }
     else
@@ -73,18 +117,4 @@ function updateUser($name,$pwd,$pos,$idgrj)
     mysqli_close($mysqli);
 }
 
-// function deleteUser($id)
-// {
-//     global $mysqli;
-//     $sql = "DELETE FROM User WHERE iduser = '" . $id . "'";
-//     if (mysqli_query($mysqli, $sql))
-//     {
-//         echo "Successfully deleted user on user id " . $id." <a href=\"../list_user.php\">back to list user</a>";
-//     }
-//     else
-//     {
-//         echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
-//     }
-//     mysqli_close($mysqli);
-// }
 ?>
