@@ -229,11 +229,15 @@
 										<label>Verfikasi oleh Pemimpin Ibadah</label>
 										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'disabled'?>>
 											<option value="YES">YES</option>
-											<option value="NO" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'selected'?>>NO</option>
+											<option value="NO" >NO</option>
 										</select>
 									</div>
-									<?php
-										if($_SESSION['jabatan'] != "BENDAHARA")
+										<?php
+										if($_SESSION['jabatan']=="PENDETA" || $_SESSION['jabatan']=="PENGINJIL")
+										{
+											echo "<button type='submit' class='btn btn-primary' name='btn_edit_nota' value='$idnota'>SAVE</button>";
+										}
+										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=='1')
 										{
 											echo "<button type='submit' class='btn btn-primary' name='btn_edit_nota' value='$idnota'>SAVE</button>";
 										}
