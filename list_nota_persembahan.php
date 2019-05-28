@@ -36,6 +36,7 @@
 		//print_r($_SESSION);
 	}
 	$arrtotal = array();
+	$sumpersembahankhusus = 0;
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -71,7 +72,7 @@
 						<form>
 						
 						<form method="POST" action=controllers/persembahan.php>
-							<!-- <input type="hidden" name="idnotapersembahan" value="<?=$idNotaPersembahan?>"> -->
+							
 							<div class="text-center" style="margin: 8px">
 							<?php
 								if($_SESSION['jabatan'] == "BENDAHARA")
@@ -107,6 +108,7 @@
 								?>	
 								<?php while($row = $result->fetch_assoc()) { ?>
 									<?php 
+
 										$id = $row["idNotaPersembahan"];
 										$sum = $row['HariTuhan'] + $row['SekolahMinggu'] + $row['DoaTengahMinggu'];
 										array_push($arrtotal, $sum);
@@ -120,6 +122,7 @@
 											<?php
 											 	$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
 											 	$result0 =  mysqli_query($mysqli, $sql0);
+											 	
 											 	if($result0->num_rows > 0)
 											 	{
 											 		while($row0 = $result0->fetch_assoc())
