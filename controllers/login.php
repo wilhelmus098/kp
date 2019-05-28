@@ -53,7 +53,15 @@ else if($row['pass'] == null)
 		// echo "<br><br>";
 	}
 	// print_r($_SESSION);
-	header("Location:../list_nota_persembahan.php");
+	if($_SESSION["jabatan"] == "KOOR PUSAT" || $_SESSION["jabatan"] == "KOOR CABANG")
+	{
+		header("Location:../list_jemaat.php");
+		//print_r($_SESSION);
+	}
+	else if($_SESSION["jabatan"] == "PENDETA" || $_SESSION["jabatan"] == "BENDAHARA" || $_SESSION["jabatan"] == "PENGINJIL")
+	{
+		header("Location:../list_nota_persembahan.php");	
+	}
 	//print_r($_SESSION);
 }
 else if ($row == 0)

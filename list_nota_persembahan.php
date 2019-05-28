@@ -30,10 +30,13 @@
 	{
 		require_once('sidemenu.php');
 	}
-	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	if($_SESSION['jabatan'] == "PENGINJIL")
 	{
 		require_once('sidemenupemimpin.php');
-		//print_r($_SESSION);
+	}		
+	if($_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	{
+		require_once('sidemenukoor.php');
 	}
 	$arrtotal = array();
 	$sumpersembahankhusus = 0;

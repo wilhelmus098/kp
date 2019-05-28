@@ -32,10 +32,14 @@
 	{
 		require_once('sidemenu.php');
 	}
-	if($_SESSION['jabatan'] == "PENGINJIL" || $_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	if($_SESSION['jabatan'] == "PENGINJIL")
 	{
 		require_once('sidemenupemimpin.php');
 	}		
+	if($_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
+	{
+		require_once('sidemenukoor.php');
+	}
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -201,7 +205,7 @@
 											<th>Janji Iman</th>
 											<th>Pembangunan Gereja</th>
 											<th>Lain - lain</th>
-                                            <th>Cara Bayar</th>
+                                            <th>Metode Pemberian</th>
 										  </tr>
 										</thead>
 										<tbody>
