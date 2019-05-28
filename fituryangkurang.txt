@@ -1,0 +1,4 @@
+fitur yang kurang:
+- update yes/no untuk verifikasi
+- superadmin untuk bendahara lihat keseluruhan nota persembahan cabang
+- verifikasi by petugas penghitung 
