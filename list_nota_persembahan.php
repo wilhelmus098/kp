@@ -110,11 +110,23 @@
 								<?php
 									if(isset($_GET['awal']) && isset($_GET['akhir']))
 									{
+										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=="1")
+										{
+											$sql = "SELECT * FROM NotaPersembahan WHERE TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
+										}
 										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' AND TglIbadah >= '" . $_GET['awal'] . "' AND TglIbadah <= '" . $_GET['akhir'] . "' ORDER BY idNotaPersembahan DESC ";
 									}
 									else
 									{
-										$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=="1")
+										{
+											$sql = "SELECT * FROM NotaPersembahan";
+										}
+										else
+										{
+											$sql = "SELECT * FROM NotaPersembahan WHERE NotaPersembahan.idGereja ='" . $_SESSION['idgereja'] . "' ORDER BY idNotaPersembahan DESC ";
+										}
+										
 									}
 									// NAMPILINNYA DARI YANG PALING TERAKHIR DIINSERT
 									$result = mysqli_query($mysqli, $sql);
