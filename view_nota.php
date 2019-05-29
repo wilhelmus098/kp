@@ -71,7 +71,7 @@
                             $gtotal1 = "";
                             $bendahara1 = "";
                             $penghitung1 = "";
-                            $status1 = "";
+                            $verified = "";
                             $idgereja1 = "";
                             $sumpersembahanumum = "";
 							if ($result->num_rows > 0)
@@ -89,7 +89,7 @@
 		                            $gtotal1 = $row["GrandTotal"];
 		                            $bendahara1 = $row["Bendahara"];
 		                            $penghitung1 = $row["Penghitung"];
-		                            $status1 = $row["Verified"];
+		                            $verified = $row["Verified"];
 		                            $idgereja1 = $row["idGereja"];
 								}
 							}
@@ -231,19 +231,19 @@
 
 									<div class="form-group">
 										<label>Verfikasi oleh Pemimpin Ibadah</label>
-										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="BENDAHARA")echo 'disabled'?>>
-											<option value="YES">YES</option>
-											<option value="NO" >NO</option>
+										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="KOOR PUSAT" || $_SESSION['jabatan']=="KOOR CABANG")echo 'disabled'?>>
+											<option value="YES"<?php if($verified == "YES") echo "selected"; ?>>YES</option>
+											<option value="NO" <?php if($verified == "NO") echo "selected";?>>NO</option>
 										</select>
 									</div>
 										<?php
 										if($_SESSION['jabatan']=="PENDETA" || $_SESSION['jabatan']=="PENGINJIL")
 										{
-											echo "<button type='submit' class='btn btn-primary' name='btn_edit_nota' value='$idnota'>SAVE</button>";
+											echo "<button type='submit' class='btn btn-primary' name='btn_verify' value='$idnota'>SAVE</button>";
 										}
 										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=='1')
 										{
-											echo "<button type='submit' class='btn btn-primary' name='btn_edit_nota' value='$idnota'>SAVE</button>";
+											echo "<button type='submit' class='btn btn-primary' name='btn_verify' value='$idnota'>SAVE</button>";
 										}
 									?>
 							</form>

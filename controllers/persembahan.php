@@ -72,6 +72,14 @@ if(isset($_POST['btn_delete_detail_pk']))
     delete($temp[0], $temp[1] );
 }
 
+//BUTTON UNTUK PENDETA ATAU PENGINJIL VERIFIKASI NOTAPERSEMBAHAN
+if(isset($_POST['btn_verify']))
+{
+    $idnota = $_POST['btn_verify'];
+    $status = $_POST['status_verifikasi'];
+    verifyNota($idnota, $status);
+}
+
 //METHOD
 function addNota($idbaru1,$pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahminggu,$tengahminggu,$grandtotal,$bendahara,$penghitung,$verified,$idgereja,$idbaru)
 {
@@ -94,6 +102,22 @@ function editNota($pemimpin,$date,$hadir,$harituhan,$sekolahminggu,$tgltengahmin
 {
     global $mysqli;
     $sql = "UPDATE NotaPersembahan set PemimpinIbadah ='" . $pemimpin . "', TglIbadah = '" . $date ."', JumlahHadir = '". $hadir ."', HariTuhan = '" . $harituhan . "', SekolahMinggu = '" . $sekolahminggu ."', TglDoaTengahMinggu = '" . $tgltengahminggu ."', DoaTengahMinggu = '" . $tengahminggu ."', GrandTotal = '" . $grandtotal . "', Bendahara = '" . $bendahara ."', Penghitung = '" . $penghitung ."', Verified = '" . $verified . "', idGereja = '" . $idgereja ."' WHERE TglIbadah='" . $date . "'";
+    if (mysqli_query($mysqli, $sql)) 
+    {
+
+        header('Location:../list_nota_persembahan.php');
+    }
+    else
+    {
+        echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+    }
+    mysqli_close($mysqli);
+}
+
+function verifyNota($id, $ver)
+{
+    global $mysqli;
+    $sql = "UPDATE NotaPersembahan SET Verified = '" . $ver . "' WHERE idNotaPersembahan = '" . $id . "'";
     if (mysqli_query($mysqli, $sql)) 
     {
 
