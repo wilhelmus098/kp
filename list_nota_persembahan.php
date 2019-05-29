@@ -19,6 +19,15 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+
+	<style type="text/css">
+		.vn {
+			color: 'red';
+		}
+		.vy {
+			color: 'green';
+		}
+	</style>
 </head>
 <body>
 <?php
@@ -37,6 +46,7 @@
 	if($_SESSION['jabatan'] == "KOOR PUSAT" || $_SESSION['jabatan'] == "KOOR CABANG")
 	{
 		require_once('sidemenukoor.php');
+		header('Location:../list_jemaat.php');
 	}
 	$arrtotal = array();
 	$sumpersembahankhusus = 0;
@@ -120,7 +130,20 @@
 										<td><?=$row["idNotaPersembahan"]?></td>
 										<td><?=$row["TglIbadah"]?></td>
 										<td><?=$row["PemimpinIbadah"]?></td>
-										<td><?=$row["Verified"]?></td>
+										<!-- <td><?=$row["Verified"]?></td> -->
+										<td>
+											<?php
+												if($row["Verified"] == "NO")
+												{
+
+													echo"<i id='vn' class='glyphicon glyphicon-remove'></i>";
+												}
+												else
+												{
+													echo "<i id='vy' class='glyphicon glyphicon-ok'></i>";	
+												}
+											?>												
+										</td>
 										<td>
 											<?php
 											 	$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";

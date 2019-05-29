@@ -109,7 +109,7 @@
 										<td><?=$row["NoTelp"]?></td>
 										<td><?=$row["Nama"]?></td> 
 										<td>
-											<button type="submit" class="btn btn-success" name="edit_jemaat" value="<?=$row["idJemaat"]?>"><i class="glyphicon glyphicon-edit"></i></i></button>
+											<button type="submit" class="btn btn-success" name="edit_jemaat" value="<?=$row["idJemaat"]?>"><i class="glyphicon glyphicon-edit"></i></button>
 
 											<button type="submit" class="btn btn-danger" id="delete" name="delete_jemaat" value="<?=$row["idJemaat"]?>"><i class="glyphicon glyphicon-trash"></i></button> 
 										</td>
