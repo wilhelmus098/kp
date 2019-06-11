@@ -221,14 +221,36 @@
 											</tr>
 										<?php } ?>
 										</tbody>
+										<?php
+											$sql4 = "SELECT SUM(PK_HariTuhan) AS harituhan, SUM(PK_Perpuluhan) AS perpuluhan, SUM(PK_UcapanSyukur) AS ucapansyukur, SUM(PK_JanjiIman) AS janjiiman, SUM(PK_PembangunanGereja) AS pembangunangereja, SUM(PK_LainLain) AS lainlain FROM DetailNotaPersembahan WHERE idNotaPersembahan ='" . $idnota . "'";
+											$result4 = mysqli_query($mysqli, $sql4);
+											$ht = "";
+											$p = "";
+											$us = "";
+											$ji = "";
+											$pg = "";
+											$ll = "";
+											if($result4->num_rows > 0)
+												{
+													while($row4 = $result4->fetch_assoc())
+													{
+														$ht = $row4['harituhan'];
+														$p = $row4['perpuluhan'];
+														$us = $row4['ucapansyukur'];
+														$ji = $row4['janjiiman'];
+														$pg = $row4['pembangunangereja'];
+														$ll = $row4['lainlain'];
+													}
+												}
+										?>
 										<tfoot>
 											<td colspan="2">TOTAL SETIAP PERSEMBAHAN</td>
-											<td>RP ...</td>
-											<td>RP ...</td>
-											<td>RP ...</td>
-											<td>RP ...</td>
-											<td>RP ...</td>
-											<td>RP ...</td>
+											<td><?php echo $ht?></td>
+											<td><?php echo $p?></td>
+											<td><?php echo $us?></td>
+											<td><?php echo $ji?></td>
+											<td><?php echo $pg?></td>
+											<td><?php echo $ll?></td>
 											<td></td>
 											<td></td>
 										</tfoot>
