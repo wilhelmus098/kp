@@ -118,7 +118,7 @@
 									}
 									else
 									{
-										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=="1")
+										if($_SESSION['jabatan']=="BENDAHARA" && $_SESSION['idgereja']=="1" OR $_SESSION['jabatan']=="PENDETA" && $_SESSION['idgereja']=="1" )
 										{
 											$sql = "SELECT * FROM NotaPersembahan";
 										}
@@ -170,7 +170,7 @@
 											 	}
 											 	$grandtotal = $sum + $sumpersembahankhusus;
 											?>
-											 <?php echo $grandtotal;?>
+											 <?php echo "RP " . number_format($grandtotal);?>
 										</td>
 										<td>
 											<?php
@@ -197,7 +197,7 @@
 						</form>
 						<?php
 							$grandgrandtotal = array_sum($arrtotal) + $sumpersembahankhusus;
-							echo "GRAND TOTAL : " . $grandgrandtotal;
+							echo "GRAND TOTAL : RP " . number_format($grandgrandtotal);
 						?>
 						</div>
 					</div>

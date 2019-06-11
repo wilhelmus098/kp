@@ -9,7 +9,7 @@
 				<a class="navbar-brand" href="#"><span>Laporan </span>Persembahan</a>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">
 				
-					<span>Position : </span>
+					<span>Jabatan : </span>
 					<?php
 						if (isset($_SESSION["user_logged_in"]))
 						{
