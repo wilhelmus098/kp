@@ -221,6 +221,17 @@
 											</tr>
 										<?php } ?>
 										</tbody>
+										<tfoot>
+											<td colspan="2">TOTAL SETIAP PERSEMBAHAN</td>
+											<td>RP ...</td>
+											<td>RP ...</td>
+											<td>RP ...</td>
+											<td>RP ...</td>
+											<td>RP ...</td>
+											<td>RP ...</td>
+											<td></td>
+											<td></td>
+										</tfoot>
 						  			</table>
 									<button type="submit" class="btn btn-primary" name="btn_edit_nota">SAVE</button>
 							</form>
