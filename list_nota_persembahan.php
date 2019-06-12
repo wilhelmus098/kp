@@ -165,7 +165,7 @@
 											 	{
 											 		while($row0 = $result0->fetch_assoc())
 											 		{
-											 			$sumpersembahankhusus = $row0['totalkhusus'];
+											 			$sumpersembahankhusus = $sumpersembahankhusus + $row0['totalkhusus'];
 											 		}
 											 	}
 											 	$grandtotal = $sum + $sumpersembahankhusus;
