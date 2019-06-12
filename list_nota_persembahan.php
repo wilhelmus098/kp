@@ -50,6 +50,7 @@
 	}
 	$arrtotal = array();
 	$sumpersembahankhusus = 0;
+	$grandgrandtotal = 0;
 ?>
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
@@ -160,15 +161,16 @@
 											<?php
 											 	$sql0 = "SELECT (SUM(PK_HariTuhan)+SUM(PK_Perpuluhan)+SUM(PK_UcapanSyukur)+SUM(PK_JanjiIman)+SUM(PK_PembangunanGereja)+SUM(PK_LainLain)) as totalkhusus FROM DetailNotaPersembahan WHERE idNotaPersembahan = '" . $row['idNotaPersembahan'] . "'";
 											 	$result0 =  mysqli_query($mysqli, $sql0);
-											 	
+											 	$grand1 = 0;
 											 	if($result0->num_rows > 0)
 											 	{
 											 		while($row0 = $result0->fetch_assoc())
 											 		{
-											 			$sumpersembahankhusus = $sumpersembahankhusus + $row0['totalkhusus'];
+														$sumpersembahankhusus = $row0['totalkhusus'];
 											 		}
 											 	}
-											 	$grandtotal = $sum + $sumpersembahankhusus;
+												 $grandtotal = $sum + $sumpersembahankhusus;
+												 $grandgrandtotal = $grandgrandtotal + $sumpersembahankhusus;
 											?>
 											 <?php echo "RP " . number_format($grandtotal);?>
 										</td>
@@ -196,7 +198,7 @@
 						  </table>
 						</form>
 						<?php
-							$grandgrandtotal = array_sum($arrtotal) + $sumpersembahankhusus;
+							$grandgrandtotal = $grandgrandtotal + array_sum($arrtotal);
 							echo "GRAND TOTAL : RP " . number_format($grandgrandtotal);
 						?>
 						</div>
