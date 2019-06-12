@@ -24,10 +24,20 @@
 
 	<style type="text/css">
 		table{
-			width: 100%;
+			border-style: solid;
+			border-width: 10px;
 		}
-
+		th 
+		{
+ 			background-color: #002699;
+  			color: white;
+		}
+		tfoot{
+			background-color: #ffff66;
+			color: black;
+		}
 	</style>
+
 </head>
 <body>
 <?php
@@ -51,7 +61,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#">
+				<li><a href="list_nota_persembahan.php">
 					<em class="fa fa-home"></em>
 				</a></li>
 				<li class="active">EDIT NOTA PERSEMBAHAN</li>
@@ -198,12 +208,12 @@
 												?>
                                                 <td><?=$row2["idJemaat"]?></td>
 												<td><?=$row2["NamaJemaat"]?></td>
-												<td><?=$row2["PK_HariTuhan"]?></td>
-												<td><?=$row2["PK_Perpuluhan"]?></td>
-                                                <td><?=$row2["PK_UcapanSyukur"]?></td>
-                                                <td><?=$row2["PK_JanjiIman"]?></td>
-                                                <td><?=$row2["PK_PembangunanGereja"]?></td>
-                                                <td><?=$row2["PK_LainLain"]?></td>
+												<td><?= number_format($row2["PK_HariTuhan"])?></td>
+												<td><?= number_format($row2["PK_Perpuluhan"])?></td>
+                                                <td><?= number_format($row2["PK_UcapanSyukur"])?></td>
+                                                <td><?= number_format($row2["PK_JanjiIman"])?></td>
+                                                <td><?= number_format($row2["PK_PembangunanGereja"])?></td>
+                                                <td><?= number_format($row2["PK_LainLain"])?></td>
                                                 <td><?=$row2["CaraPembayaran"]?></td>
                                                 <?php
                                                 	array_push($arrid1, $idnota, $row2['idJemaat']);
@@ -245,12 +255,12 @@
 										?>
 										<tfoot>
 											<td colspan="2">TOTAL SETIAP PERSEMBAHAN</td>
-											<td><?php echo $ht?></td>
-											<td><?php echo $p?></td>
-											<td><?php echo $us?></td>
-											<td><?php echo $ji?></td>
-											<td><?php echo $pg?></td>
-											<td><?php echo $ll?></td>
+											<td><?php echo number_format($ht)?></td>
+											<td><?php echo number_format($p)?></td>
+											<td><?php echo number_format($us)?></td>
+											<td><?php echo number_format($ji)?></td>
+											<td><?php echo number_format($pg)?></td>
+											<td><?php echo number_format($ll)?></td>
 											<td></td>
 											<td></td>
 										</tfoot>

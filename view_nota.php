@@ -21,6 +21,21 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style type="text/css">
+		table{
+			border-style: solid;
+			border-width: 10px;
+		}
+		th 
+		{
+ 			background-color: #002699;
+  			color: white;
+		}
+		tfoot{
+			background-color: #ffff66;
+			color: black;
+		}
+	</style>
 </head>
 <body>
 <?php
@@ -44,7 +59,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#">
+				<li><a href="list_nota_persembahan.php">
 					<em class="fa fa-home"></em>
 				</a></li>
 				<li class="active">VIEW NOTA PERSEMBAHAN</li>
@@ -194,7 +209,7 @@
 										<input type="text" class="form-control" name="total_seluruh_persembahan" value="<?=$grandtotal?>" disabled="true">
 									</div>
 
-									<table class="table table-hover">
+									<table class="table table-striped">
 										<thead>
 										  <tr>
 										  	<th>ID Jemaat</th>
@@ -217,18 +232,49 @@
 											<tr>
                                                 <td><?=$row2["idJemaat"]?></td>
 												<td><?=$row2["NamaJemaat"]?></td>
-												<td><?=$row2["PK_HariTuhan"]?></td>
-												<td><?=$row2["PK_Perpuluhan"]?></td>
-                                                <td><?=$row2["PK_UcapanSyukur"]?></td>
-                                                <td><?=$row2["PK_JanjiIman"]?></td>
-                                                <td><?=$row2["PK_PembangunanGereja"]?></td>
-                                                <td><?=$row2["PK_LainLain"]?></td>
+												<td><?= number_format($row2["PK_HariTuhan"])?></td>
+												<td><?= number_format($row2["PK_Perpuluhan"])?></td>
+                                                <td><?= number_format($row2["PK_UcapanSyukur"])?></td>
+                                                <td><?= number_format($row2["PK_JanjiIman"])?></td>
+                                                <td><?= number_format($row2["PK_PembangunanGereja"])?></td>
+                                                <td><?= number_format($row2["PK_LainLain"])?></td>
                                                 <td><?=$row2["CaraPembayaran"]?></td>
 											</tr>
 										<?php } ?>
 										</tbody>
+										<?php
+											$sql4 = "SELECT SUM(PK_HariTuhan) AS harituhan, SUM(PK_Perpuluhan) AS perpuluhan, SUM(PK_UcapanSyukur) AS ucapansyukur, SUM(PK_JanjiIman) AS janjiiman, SUM(PK_PembangunanGereja) AS pembangunangereja, SUM(PK_LainLain) AS lainlain FROM DetailNotaPersembahan WHERE idNotaPersembahan ='" . $idnota . "'";
+											$result4 = mysqli_query($mysqli, $sql4);
+											$ht = "";
+											$p = "";
+											$us = "";
+											$ji = "";
+											$pg = "";
+											$ll = "";
+											if($result4->num_rows > 0)
+												{
+													while($row4 = $result4->fetch_assoc())
+													{
+														$ht = $row4['harituhan'];
+														$p = $row4['perpuluhan'];
+														$us = $row4['ucapansyukur'];
+														$ji = $row4['janjiiman'];
+														$pg = $row4['pembangunangereja'];
+														$ll = $row4['lainlain'];
+													}
+												}
+										?>
+										<tfoot>
+											<td colspan="2">TOTAL SETIAP PERSEMBAHAN</td>
+											<td><?php echo number_format($ht)?></td>
+											<td><?php echo number_format($p)?></td>
+											<td><?php echo number_format($us)?></td>
+											<td><?php echo number_format($ji)?></td>
+											<td><?php echo number_format($pg)?></td>
+											<td><?php echo number_format($ll)?></td>
+											<td></td>
+										</tfoot>
 						  			</table>
-
 									<div class="form-group">
 										<label>Verfikasi oleh Pemimpin Ibadah</label>
 										<select class="form-control" name="status_verifikasi" <?php if($_SESSION['jabatan']=="KOOR PUSAT" || $_SESSION['jabatan']=="KOOR CABANG")echo 'disabled'?>>

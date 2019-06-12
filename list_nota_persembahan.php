@@ -54,10 +54,10 @@
 	<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
 		<div class="row">
 			<ol class="breadcrumb">
-				<li><a href="#">
+				<li><a href="list_nota_persembahan.php">
 					<em class="fa fa-home"></em>
 				</a></li>
-				<li class="active">CREATE NEW RECEIPT!</li>
+				<li class="active">LIST PERSEMBAHAN</li>
 			</ol>
 		</div><!--/.row-->
 		
@@ -180,13 +180,13 @@
 													echo "&nbsp";
 													echo "<button type='submit' class='btn btn-warning' name='btn_edit' value='$id'> <i class='glyphicon glyphicon-edit'></i></button>";
 													echo "&nbsp";
-													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+													//echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
 												}
 												else
 												{
 													echo "<button type='submit' class='btn btn-success' name='btn_view' value='$id'> <i class='glyphicon glyphicon-eye-open'></i></button>";
 													echo "&nbsp";
-													echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
+													//echo "<button onclick='myFunction()'  class='btn btn-default' id='btn_print'><i class='glyphicon glyphicon-print'></i></button>";
 												}
 											?>
 										</td>											

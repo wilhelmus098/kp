@@ -6,7 +6,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span></button>
-				<a class="navbar-brand" href="#"><span>Laporan </span>Persembahan</a>
+				<a class="navbar-brand" href="list_nota_persembahan.php"><span>Laporan </span>Persembahan</a>
 				<div class="navbar-brand nav navbar-top-links navbar-right" href="#">
 				
 					<span>Jabatan : </span>
@@ -65,7 +65,7 @@
 				</a>
 				<ul class="children collapse" id="sub-item-3">
 					<li><a class="" href="update_user.php">
-						<span class="fa fa-arrow-right">&nbsp;</span> Change Password
+						<span class="fa fa-arrow-right">&nbsp;</span> Ubah Password
 					</a></li>
 				</ul>
 			</li>
