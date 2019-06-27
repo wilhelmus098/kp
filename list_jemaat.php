@@ -125,10 +125,9 @@
 			
 		</div><!-- /.row -->
 		<?php  
-			$sql = "SELECT COUNT(idGereja) FROM Gereja";  
+			$sql = "SELECT * FROM Jemaat j INNER JOIN Gereja g on j.idGereja = g.idGereja WHERE j.idGereja = '" . $_SESSION['idgereja'] . "' ";
 			$rs_result = mysqli_query($mysqli, $sql);  
-			$row = mysqli_fetch_row($rs_result);  
-			$total_records = $row[0];  
+			$total_records = mysqli_num_rows($rs_result);  
 			$total_pages = ceil($total_records / $limit);  
 			$pagLink = "<nav><ul class='pagination'>";  
 			for ($i=1; $i<=$total_pages; $i++) 
