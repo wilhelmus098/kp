@@ -19,13 +19,19 @@
 	<script src="js/html5shiv.js"></script>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	<style type="text/css">
-		.vn {
-			color: 'red';
+		table{
+			/*border-style: solid;*/
+			/*border-width: medium;*/
 		}
-		.vy {
-			color: 'green';
+		th 
+		{
+ 			background-color: #002699;
+  			color: white;
+		}
+		tfoot{
+			background-color: #ffff66;
+			color: black;
 		}
 	</style>
 </head>
@@ -101,6 +107,7 @@
 								  <tr>
 								  	<th>ID Nota</th>
 									<th>TANGGAL IBADAH</th>
+									<th>GEREJA</th>
 									<th>PEMIMPIN</th>
 									<th>VERIFIKASI</th>
 									<th>TOTAL/LAPORAN</th>
@@ -142,6 +149,34 @@
 									<tr>
 										<td><?=$row["idNotaPersembahan"]?></td>
 										<td><?=$row["TglIbadah"]?></td>
+										<td>
+											<?php
+												if($row["idGereja"] == 1)
+												{
+													echo "TANGERANG";
+												}
+												else if($row["idGereja"] == 2)
+												{
+													echo "SURABAYA";
+												}
+												else if($row["idGereja"] == 3)
+												{
+													echo "LOMBOK";
+												}
+												else if($row["idGereja"] == 4)
+												{
+													echo "SEKURA";
+												}
+												else if($row["idGereja"] == 5)
+												{
+													echo "BALI";
+												}
+												else if($row["idGereja"] == 6)
+												{
+													echo "PONTIANAK";
+												}
+											?>
+										</td>
 										<td><?=$row["PemimpinIbadah"]?></td>
 										<!-- <td><?=$row["Verified"]?></td> -->
 										<td>
@@ -199,7 +234,7 @@
 						</form>
 						<?php
 							$grandgrandtotal = $grandgrandtotal + array_sum($arrtotal);
-							echo "GRAND TOTAL : RP " . number_format($grandgrandtotal);
+							echo "<h3>TOTAL SEMUA PERSEMBAHAN : RP " . "<b>" . number_format($grandgrandtotal) . "</b>" . "</h3>";
 						?>
 						</div>
 					</div>
