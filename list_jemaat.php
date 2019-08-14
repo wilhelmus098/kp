@@ -22,8 +22,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     
-    </script>
 
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/font-awesome.min.css" rel="stylesheet">
@@ -68,19 +68,25 @@
 			</ol>
 		</div><!--/.row-->
 		
-		
-		<div class="row">
-
-			<div class="col-lg-12">
-			<div class="text-left" style="margin: 8px;">
+		<div class="rowA">
+			<div class="col-sm-6" style="margin: 8px;">
 				<button class='btn btn-primary m-2' style="width:200px" onclick="window.location.href='create_jemaat.php'">TAMBAH</button>
 			</div>
+ 			<!-- <div class="col-sm-6"  style="text-align: right; width: 500px" >
+				<label>SEARCH: <span>
+					<input type="text" class="form-control" style="width:200px" id="myInput" onkeyup="functionSearch()"></span>
+				</label>
+			</div>	 -->	
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
 				<div class="panel panel-default"  id="section-to-print">
 
 					<div class="panel-body">
 						<div class="col-md-12">
 							<form method="POST" action=controllers/jemaat.php>
-							<table class="table table-hover">
+							<table id="tableJemaat" class="table table-hover">
 								<thead>
 								  <tr>
 								  	<th>ID JEMAAT</th>
@@ -212,7 +218,20 @@
 			});	
 		
 		}
-	
+
+		$(document).ready(function()
+		{
+			$("#myInput").on("keyup", function() 
+			{
+				var value = $(this).val().toLowerCase();
+				$("#tableJemaat tr").filter(function() 
+				{
+		  			$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+			});
+		});
+		
+
     </script>
 		
 </body>

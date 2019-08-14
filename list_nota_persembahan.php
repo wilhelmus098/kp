@@ -178,7 +178,6 @@
 											?>
 										</td>
 										<td><?=$row["PemimpinIbadah"]?></td>
-										<!-- <td><?=$row["Verified"]?></td> -->
 										<td>
 											<?php
 												if($row["Verified"] == "NO")
