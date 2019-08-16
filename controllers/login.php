@@ -55,8 +55,8 @@ else if($row['pass'] == null)
 	// print_r($_SESSION);
 	if($_SESSION["jabatan"] == "KOOR PUSAT" || $_SESSION["jabatan"] == "KOOR CABANG")
 	{
-		header("Location:kp/list_jemaat.php");
-		//print_r($_SESSION);
+		header("Location:../list_jemaat.php");
+		//print_r($_SESSION);		
 	}
 	else if($_SESSION["jabatan"] == "PENDETA" || $_SESSION["jabatan"] == "BENDAHARA" || $_SESSION["jabatan"] == "PENGINJIL")
 	{
