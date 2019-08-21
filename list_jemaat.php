@@ -69,9 +69,16 @@
 		</div><!--/.row-->
 		
 		<div class="rowA">
-			<div class="col-sm-6" style="margin: 8px;">
-				<button class='btn btn-primary m-2' style="width:200px" onclick="window.location.href='create_jemaat.php'">TAMBAH</button>
-			</div>
+			<?php
+				if($_SESSION["jabatan"] == "BENDAHARA" || $_SESSION["jabatan"] == "KOOR PUSAT" || $_SESSION["jabatan"] == "KOOR CABANG")
+				{
+					echo
+						'<div class="col-sm-6" style="margin: 8px;"">
+							<button class="btn btn-primary m-2" style="width:200px" onclick="window.location.href="create_jemaat.php">TAMBAH</button>
+						</div>';
+				}				
+			?>
+			
  			<!-- <div class="col-sm-6"  style="text-align: right; width: 500px" >
 				<label>SEARCH: <span>
 					<input type="text" class="form-control" style="width:200px" id="myInput" onkeyup="functionSearch()"></span>
