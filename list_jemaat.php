@@ -77,13 +77,7 @@
 							<button class="btn btn-primary m-2" style="width:200px" onclick="window.location.href="create_jemaat.php">TAMBAH</button>
 						</div>';
 				}				
-			?>
-			
- 			<!-- <div class="col-sm-6"  style="text-align: right; width: 500px" >
-				<label>SEARCH: <span>
-					<input type="text" class="form-control" style="width:200px" id="myInput" onkeyup="functionSearch()"></span>
-				</label>
-			</div>	 -->	
+			?>		
 		</div>
 
 		<div class="row">
