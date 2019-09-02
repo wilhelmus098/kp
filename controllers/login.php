@@ -40,29 +40,30 @@ if ($row == 1)
 
 else if($row['pass'] == null)
 {
-	session_start();
-	$_SESSION["user_logged_in"] = true;
-	$_SESSION["uname"] = $un;
+	// session_start();
+	// $_SESSION["user_logged_in"] = true;
+	// $_SESSION["uname"] = $un;
 
-	while($row = $result->fetch_assoc()) 
-	{
-		$_SESSION['uname'] = $row['uname'];
-		$_SESSION["jabatan"] = $row['Jabatan'];
-		$_SESSION['idgereja'] = $row['idGereja'];
-		// print_r($row);
-		// echo "<br><br>";
-	}
-	// print_r($_SESSION);
-	if($_SESSION["jabatan"] == "KOOR PUSAT" || $_SESSION["jabatan"] == "KOOR CABANG")
-	{
-		header("Location:../list_jemaat.php");
-		//print_r($_SESSION);		
-	}
-	else if($_SESSION["jabatan"] == "PENDETA" || $_SESSION["jabatan"] == "BENDAHARA" || $_SESSION["jabatan"] == "PENGINJIL")
-	{
-		header("Location:../list_nota_persembahan.php");	
-	}
+	// while($row = $result->fetch_assoc()) 
+	// {
+	// 	$_SESSION['uname'] = $row['uname'];
+	// 	$_SESSION["jabatan"] = $row['Jabatan'];
+	// 	$_SESSION['idgereja'] = $row['idGereja'];
+	// 	// print_r($row);
+	// 	// echo "<br><br>";
+	// }
+	// // print_r($_SESSION);
+	// if($_SESSION["jabatan"] == "KOOR PUSAT" || $_SESSION["jabatan"] == "KOOR CABANG")
+	// {
+	// 	header("Location:../list_jemaat.php");
+	// 	//print_r($_SESSION);		
+	// }
+	// else if($_SESSION["jabatan"] == "PENDETA" || $_SESSION["jabatan"] == "BENDAHARA" || $_SESSION["jabatan"] == "PENGINJIL")
+	// {
+	// 	header("Location:../list_nota_persembahan.php");	
+	// }
 	//print_r($_SESSION);
+	header("Location:../login.php");
 }
 else if ($row == 0)
 {
