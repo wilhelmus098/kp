@@ -56,7 +56,7 @@ if(isset($_POST['btnUpdate']))
             }
             else
             {
-                "PASSWORD BARU TIDAK BOLEH SAMA DENGAN PASSWORD LAMA";
+                echo "PASSWORD BARU TIDAK BOLEH SAMA DENGAN PASSWORD LAMA";
             }
         }     
     }
